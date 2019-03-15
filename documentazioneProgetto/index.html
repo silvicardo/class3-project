@@ -3,12 +3,118 @@
  <head>
  	<meta charset=utf-8>
  	<link rel="stylesheet" href="dist/app.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
  	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700" rel="stylesheet">
  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
  	<title>documentazioneProgetto</title>
  </head>
  <body>
 
+    <div class="container py-5">
+
+      <div class="jumbotron text-center mb-5">
+        <h1>DOCUMENTO PROGETTO</h1>
+        <a href="https://docs.google.com/document/d/1prSZ-UUuJkmVuAvYSBqANrrmygi5nKWVeSIvOF1urKg/edit?usp=sharing">Documento di progetto</a>
+      </div>
+
+      <div class="jumbotron text-center mb-5">
+        <h1>MOCKUP PAGINE</h1>
+        <a href="https://docs.google.com/presentation/d/19ox-mnz_KIZS9P1K7MPbEoVrnjH6FnLH0-oH0NRgzN0/edit#slide=id.g27fb29ff30898801_127">Mockup</a>
+      </div>
+
+      <div class="jumbotron text-center mb-5">
+        <h1>GELOLOCALIZZAZIONE</h1>
+        <a href="https://ubilabs.github.io/geocomplete/">geocomplete</a>
+      </div>
+
+      <div class="jumbotron text-center mb-5">
+        <h1>PAGAMENTI</h1>
+        <a href="https://www.braintreepayments.com/">Braintree</a>
+      </div>
+
+      <div class="jumbotron text-center mb-5">
+        <h1>STRUTTURA DB</h1>
+        <p>In costruzione</p>
+      </div>
+
+      <div class="card text-center mb-5">
+        <div class="card-header">
+          UTENTE OSPITE
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li>NOME: VARCHAR (20) / NOTNULL</li>
+            <li>COGNOME: VARCHAR(35) / NOTNULL</li>
+            <li>EMAIL: VARCHAR(40) / NULL</li>
+            <li>PASSWORD:gestione laravel</li>
+            <li>DATA NASCITA: DATE / NULL</li>
+            <li>CREATED_AT/UPDATED_AT: laravel</li>
+            <li>PRENOTAZIONI: SMALL</li>
+          </ul>
+          <p><strong>NOTE:</strong>
+          - Validazione backend email non possono essere già presenti nel db se sono gli unici dati immessi</p>
+        </div>
+      </div>
+
+      <div class="card text-center mb-5">
+        <div class="card-header">
+          UTENTE PROPRIETARIO
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li>NOME: VARCHAR (20) / NOTNULL</li>
+            <li>COGNOME: VARCHAR(35) / NOTNULL</li>
+            <li>EMAIL: VARCHAR(40) / NULL</li>
+            <li>PASSWORD:gestione laravel</li>
+            <li>DATA NASCITA: DATE / NULL</li>
+            <li>CREATED_AT/UPDATED_AT: laravel</li>
+            <li>APPARTAMENTI: TINYINT</li>
+            <li>PRENOTAZIONI: SMALL</li>
+          </ul>
+          <p><strong>NOTE:</strong>
+          - Validazione backend email non possono essere già presenti nel db se sono gli unici dati immessi</p>
+        </div>
+      </div>
+
+      <div class="card text-center mb-5">
+        <div class="card-header">
+          PRENOTAZIONI
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li>UTENTE OSPITE ID</li>
+            <li>UTENTE PROPRIETARIO ID</li>
+            <li>APPARTEMENTO ID</li>
+            <li>NUMERO NOTTI: TINYINT (Numero di notti)</li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="card text-center mb-5">
+        <div class="card-header">
+          APPARTAMENTO
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li>PROPRIETARIO ID</li>
+            <li>NR STANZE: TINYINT /NOTNULL</li>
+            <li>LETTI: TINYINT /NOTNULL</li>
+            <li>DESCRIZIONE: TEXT /NOTNULL</li>
+            <li>NR BAGNI: TINYINT /NOTNULL</li>
+            <li>MQ: SMALL / NOTNULL</li>
+            <li>COSTO: SMALL/ NOTNULL</li>
+            <li>INDIRIZZO: VARCHAR(100)/NOTNULL</li>
+            <li>LAT: FLOAT</li>
+            <li>LON: FLOAT</li>
+            <li>URL IMMAGINE: TEXT//NOTNULL</li>
+            <li>OPTIONALS: ????</li>
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
 
 
  	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
