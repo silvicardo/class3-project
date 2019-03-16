@@ -98,7 +98,7 @@
 
       <div class="card text-center mb-5">
         <div class="card-header">
-        <h2>APPARTAMENTO</h2>
+        <h2>APPARTAMENTI</h2>
         </div>
         <div class="card-body">
           <ul class="list-unstyled">
@@ -121,6 +121,221 @@
 
     </div>
 
+    <div class="container">
+
+          <div class="jumbotron">
+            <h1>ROTTE</h1>
+          </div>
+
+          <h3>PUBBLICHE</h3>
+
+          <ul class="list-unstyled">
+
+            <li> / -> homepage</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Ricerca appartamenti in db</li>
+                <li>Accesso veloce pagina dettaglio appartamenti sponsorizzati</li>
+              </ul>
+            </li>
+
+            <li> /search -> paginaRicerca</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Ricerca appartamenti in db con filtri</li>
+                <li>Accesso pagina dettaglio appartamenti trovati</li>
+              </ul>
+            </li>
+
+            <li> /appartamenti/{id} -> dettaglio appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Visualizza dettagli appartamento</li>
+                <li>Form per invio messaggio al proprietario</li>
+              </ul>
+            </li>
+
+          </ul>
+
+          <h3>PROPRIETARIO</h3>
+          <ul class="list-unstyled">
+
+            <li> /proprietario/nuovo-> profilo proprietario</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Crea profilo proprietario</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}-> profilo proprietario</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Visualizza profilo proprietario</li>
+                <li>Visualizza appartamenti</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/aggiorna-> aggiorna profilo proprietario</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Aggiorna profilo proprietario</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/elimina-> elimina profilo proprietario</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>elimina profilo proprietario</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/-> tutti gli appartamenti</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Visualizza lista completa appartamenti</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/{appartamento_id} -> dettaglio singolo appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>dettaglio singolo appartamento</li>
+                <li>link sponsorizzazione singolo appartamento</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/nuovo -> pagina nuovo appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>creazione nuovo appartamento</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/{appartamento_id}/aggiorna -> aggiorna singolo appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>aggiornamento singolo appartamento</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/{appartamento_id}/elimina -> elimina singolo appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>elimina singolo appartamento</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/{appartamento_id}/statistiche -> statistiche singolo appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Visualizza statistiche appartamento</li>
+              </ul>
+            </li>
+
+            <li> /proprietario/{email}/appartamenti/{appartamento_id}/sponsorizza -> sponsorizzazione appartamento (solo utente)</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Creazione sponsorizzazione appartamento</li>
+                <li>Feature + : sponsorizzazione gratis nella settimana di nascita</li>
+              </ul>
+            </li>
+
+          </ul>
+
+          <h3>OSPITE</h3>
+          <ul class="list-unstyled">
+
+            <li> /ospite/nuovo-> profilo ospite</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Crea profilo ospite</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email} -> profilo ospite</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Visualizza profilo ospite</li>
+                <li>Visualizza prenotazioni</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/aggiorna-> aggiorna profilo ospite</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Aggiorna profilo ospite</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/elimina-> elimina profilo ospite</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>elimina profilo ospite</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/prenotazioni/-> tutte le prenotazioni</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>Visualizza lista completa prenotazioni</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/prenotazioni/{prenotazione_id} -> dettaglio singola prenotazione</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>dettaglio singola prenotazione</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/prenotazioni/nuovo -> nuova prenotazione appartamento</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>creazione nuovo prenotazione</li>
+                <li>pagamento nuova prenotazione</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/prenotazioni/{prenotazione_id}/aggiorna -> aggiorna singola prenotazione</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>aggiornamento singola prenotazione</li>
+              </ul>
+            </li>
+
+            <li> /ospite/{email}/prenotazioni/{prenotazione_id}/elimina -> elimina singola prenotazione</li>
+            <li>
+              <ul>
+                <li><strong>Feature rotta:</strong></li>
+                <li>elimina singola prenotazione</li>
+              </ul>
+            </li>
+
+          </ul>
+
+    </div>
 
  	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  	<script src="dist/app.js" charset="utf-8"></script>
