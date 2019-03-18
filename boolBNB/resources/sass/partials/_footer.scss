@@ -1,0 +1,25 @@
+footer {
+  h3 {
+    margin-left: 40px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 30px;
+    color:  rgb(72, 72, 72);
+  }
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: #767676;
+    &:hover {
+      color: #767676;
+    }
+  }
+  i {
+    color: rgb(118, 118, 118);
+    font-size: 20px;
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+}
