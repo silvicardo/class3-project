@@ -10661,13 +10661,16 @@ a.text-dark:focus {
 }
 
 .nav_bar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 70px;
+  background: white;
 }
 
 .nav_bar .nav_bar_left {
-  float: left;
-  width: 50%;
   height: 70px;
 }
 
@@ -10681,11 +10684,10 @@ a.text-dark:focus {
   display: flex;
   float: left;
   height: 50px;
-  width: 400px;
+  width: 60%;
   margin: 10px 30px;
-  border: 1px solid lightgray;
+  border: 1px solid #767676;
   border-radius: 5px;
-  background: white;
 }
 
 .nav_bar .nav_bar_left .search .search_img {
@@ -10699,20 +10701,19 @@ a.text-dark:focus {
 
 .nav_bar .nav_bar_left .search .search_img i {
   font-size: 18px;
-  color: lightgray;
+  color: #767676;
 }
 
 .nav_bar .nav_bar_left .search input {
   border-style: none;
   outline: none;
-  width: 85%;
+  width: 80%;
   height: 100%;
   font-size: 15px;
 }
 
 .nav_bar .nav_bar_right {
-  float: right;
-  width: 50%;
+  width: 100%;
   height: 70px;
   line-height: 70px;
   text-align: right;
@@ -10720,12 +10721,19 @@ a.text-dark:focus {
 
 .nav_bar .nav_bar_right ul li {
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 .nav_bar .nav_bar_right ul li a {
   font-weight: 600;
   text-decoration: none;
   color: #484848;
+}
+
+.jumbo {
+  width: 100%;
+  height: 2000px;
+  margin-top: 70px;
+  background: red;
 }
 
