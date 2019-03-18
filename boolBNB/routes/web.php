@@ -10,34 +10,41 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
+//ADMISSION PAGE
 
 Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
 Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 
 
 
+
+//STATIC PAGE
+
+Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
+Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
+
+
+
+
+//PUBLIC PAGE
+
+/// -> homepage
+
+
+
 Route::get('/', 'HomeController@index')->name('home');
-
-//static page
-
-Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static.privacy');
-Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static.work_with_us');
-
-//public page
-
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/search', 'searchController@index')->name('search');//ricerca apt su db
-Route::get('/apartment', 'apartmentController@index')->name('apartment');//ricerca dettaglio apt su db
-Route::get('/aptfilter', 'aptfilterController@index')->name('apartment');//ricerca filtri su db
+Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
+Route::get('/apartment', 'ApartmentController@index')->name('apartment');//ricerca dettaglio apt su db
+//Route::post('/apartment', 'ApartmentController@post')->name('apartment');//
+Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
 //form da includere in public
 
 
 
-//private page PROPRIETARIO
+
+
+
+//PRIVATE PAGE PROPRIETARIO
 
 Route::resource('/users', 'UserController');
 
@@ -45,10 +52,8 @@ Route::resource('/users', 'UserController');
 
 
 
-//navbar page
+//NAVBAR PAGE
 
-Route::get('/viaggi', 'TripsController@index')->name('trips');
+Route::get('/trips', 'TripsController@index')->name('trips');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

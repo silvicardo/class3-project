@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-progetto finale
+apartment
 @endsection

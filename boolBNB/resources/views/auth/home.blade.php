@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-progetto finale
+  <div class="jumbo">
+
+
+  </div>
+  
 @endsection
