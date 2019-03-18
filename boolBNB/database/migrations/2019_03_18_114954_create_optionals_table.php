@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApartmentOptionalsTable extends Migration
+class CreateOptionalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateApartmentOptionalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_optionals', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('optionals', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
             //(WiFi, Posto Macchina, Piscina, Portineria, Sauna, Vista Mare) max 20 chars
             $table->string('name', 20)->nullable(false)->unique(); //Nomi unici
@@ -28,6 +28,6 @@ class CreateApartmentOptionalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_optionals');
+        Schema::dropIfExists('optionals');
     }
 }
