@@ -10687,6 +10687,7 @@ a.text-dark:focus {
   width: 60%;
   margin: 10px 30px;
   border: 1px solid #767676;
+  box-shadow: 2px 2px 6px;
   border-radius: 5px;
 }
 
