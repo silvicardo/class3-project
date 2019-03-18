@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 //importo il model relativo
-use App\ApartmentOptional;
+use App\Optional;
 
-class ApartmentOptionalsTableSeeder extends Seeder
+class OptionalsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,7 @@ class ApartmentOptionalsTableSeeder extends Seeder
 
         foreach ($optionals as $optional) {
 
-          $newOptional = new ApartmentOptional;
+          $newOptional = new Optional;
           $newOptional->name = $optional;
           $newOptional->save();
         }
