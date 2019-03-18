@@ -1,4 +1,5 @@
 @extends('layouts.app')
-@section('content')
 
+@section('content')
+Ciao boolb&b
 @endsection
