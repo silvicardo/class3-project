@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-3">
+            <div class="col-sm-3">
               <h3>Boolbnb</h3>
               <ul>
                 <li>
@@ -37,7 +37,7 @@
               </ul>
 
             </div>
-            <div class="col-3">
+            <div class="col-sm-3">
               <h3>Scopri</h3>
               <ul>
                 <li>
@@ -77,7 +77,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-3">
+            <div class="col-sm-3">
               <h3>Ospita</h3>
               <ul>
                 <li>
@@ -97,25 +97,36 @@
                 </li>
                 <li>
                   <a href="#">
-                    Community Center
+                    Termini
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    Offri un esperienza
+                    Privacy
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    Open Homes
+                    Mappa del Sito
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="col-3">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
+            <div class="col-sm-3">
+              <ul>
+                <li class="icon">
+                  <i class="fab fa-facebook"></i>
+                </li>
+                <li class="icon">
+                  <i class="fab fa-twitter"></i>
+                </li>
+                <li class="icon">
+                  <i class="fab fa-instagram"></i>
+                </li>
+              </ul>
+
+
+
             </div>
         </div>
     </div>

@@ -10678,6 +10678,10 @@ footer ul {
   list-style: none;
 }
 
+footer ul .icon {
+  display: inline-block;
+}
+
 footer a {
   text-decoration: none;
   color: #767676;
@@ -10691,6 +10695,14 @@ footer i {
   color: #767676;
   font-size: 20px;
   margin-top: 50px;
+  margin-bottom: 20px;
   padding: 0 15px;
+}
+
+@media screen and (max-width: 991px) {
+  footer .icon {
+    display: block;
+    padding: 0 10px;
+  }
 }
 

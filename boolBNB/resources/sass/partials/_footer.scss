@@ -11,6 +11,9 @@ footer {
   }
   ul {
     list-style: none;
+    .icon {
+      display: inline-block;
+    }
   }
   a {
     text-decoration: none;
@@ -23,6 +26,14 @@ footer {
     color: rgb(118, 118, 118);
     font-size: 20px;
     margin-top: 50px;
+    margin-bottom: 20px;
     padding: 0 15px;
+  }
+  @media screen and (max-width: 991px)
+  {
+    .icon {
+      display: block;
+      padding: 0 10px;
+    }
   }
 }
