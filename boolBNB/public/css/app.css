@@ -10660,10 +10660,16 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+footer {
+  width: 100%;
+  height: 500px;
+}
+
 footer h3 {
   margin-left: 40px;
   font-weight: 600;
   font-size: 15px;
+  margin-top: 30px;
   margin-bottom: 30px;
   color: #484848;
 }
@@ -10684,7 +10690,7 @@ footer a:hover {
 footer i {
   color: #767676;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 0 15px;
 }
 
