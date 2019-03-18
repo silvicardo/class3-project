@@ -50,11 +50,11 @@
           <ul class="list-unstyled">
             <li>NOME: VARCHAR (20) / NOTNULL</li>
             <li>COGNOME: VARCHAR(35) / NOTNULL</li>
-            <li>EMAIL: VARCHAR(40) / NULL</li>
+            <li>EMAIL: VARCHAR(40) / NOTNULL</li>
             <li>PASSWORD:gestione laravel</li>
-            <li>DATA NASCITA: DATE / NULL</li>
+            <li>DATA NASCITA: DATE / NOTNULL</li>
             <li>CREATED_AT/UPDATED_AT: laravel</li>
-            <li>PRENOTAZIONI: SMALL</li>
+            <li>PRENOTAZIONI: SMALL (RELAZIONE)</li>
           </ul>
           <p><strong>NOTE:</strong>
           - Validazione backend email non possono essere già presenti nel db se sono gli unici dati immessi</p>
@@ -67,14 +67,14 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled">
-            <li>NOME: VARCHAR (20) / NOTNULL</li>
-            <li>COGNOME: VARCHAR(35) / NOTNULL</li>
-            <li>EMAIL: VARCHAR(40) / NULL</li>
+            <li>NOME: VARCHAR (20) / NULL</li>
+            <li>COGNOME: VARCHAR(35) / NULL</li>
+            <li>EMAIL: VARCHAR(40) / NOTNULL</li>
             <li>PASSWORD:gestione laravel</li>
             <li>DATA NASCITA: DATE / NULL</li>
             <li>CREATED_AT/UPDATED_AT: laravel</li>
-            <li>APPARTAMENTI: TINYINT</li>
-            <li>PRENOTAZIONI: SMALL</li>
+            <li>APPARTAMENTI: TINYINT/NULL</li>
+            <li>PRENOTAZIONI: SMALL </li>
           </ul>
           <p><strong>NOTE:</strong>
           - Validazione backend email non possono essere già presenti nel db se sono gli unici dati immessi</p>
@@ -91,6 +91,7 @@
             <li>UTENTE PROPRIETARIO ID</li>
             <li>APPARTEMENTO ID</li>
             <li>NUMERO NOTTI: TINYINT (Numero di notti)</li>
+            <li>OPTIONALS -> RELAZIONE?</li>
           </ul>
 
         </div>
