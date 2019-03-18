@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Apartment;
+use App\Optional;
 use Faker\Generator as Faker;
 
 class ApartmentsTableSeeder extends Seeder
