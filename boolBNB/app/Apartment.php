@@ -26,5 +26,4 @@ class Apartment extends Model
     //Proprietà da assegnare singolarmente
     protected $guarded = ['latitude', 'longitude'];
 
-
 }
