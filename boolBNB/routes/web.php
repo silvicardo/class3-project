@@ -10,11 +10,50 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//ADMISSION PAGE
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
+Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 
-Route::get('/ciao', function () {
-    return view ('ciao');
-});
+
+
+
+//STATIC PAGE
+
+Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
+Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
+
+
+
+
+//PUBLIC PAGE
+
+/// -> homepage
+
+
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
+Route::get('/apartment', 'ApartmentController@index')->name('apartment');//ricerca dettaglio apt su db
+//Route::post('/apartment', 'ApartmentController@post')->name('apartment');//
+Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+//form da includere in public
+
+
+
+
+
+
+//PRIVATE PAGE PROPRIETARIO
+
+Route::resource('/users', 'UserController');
+
+
+
+
+
+//NAVBAR PAGE
+
+Route::get('/trips', 'TripsController@index')->name('trips');
+
+Auth::routes();
