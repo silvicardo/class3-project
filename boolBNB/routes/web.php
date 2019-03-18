@@ -11,7 +11,9 @@
 |
 */
 
-//admission page
+Route::get('/', function () {
+    return view('home');
+});
 
 Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
 Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');

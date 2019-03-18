@@ -4,6 +4,7 @@
 
 // Variables
 @import 'variables';
+@import 'common';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -13,8 +14,5 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-@import "admission";
-@import "partials/_header";
-@import "partials/_home";
-@import "partials/_footer";
-@import "partials/_content";
+@import 'partials/_header';
+@import 'partials/_footer';
