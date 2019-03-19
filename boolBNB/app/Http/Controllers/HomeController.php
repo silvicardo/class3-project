@@ -8,10 +8,12 @@ use App\Apartment;
 class HomeController extends Controller
 {
 
-    public function index()
-    {
-        $allApartments = Apartment::all();
 
-        return view('home', compact('allApartments'));
-    }
+   public function index()
+   {
+       $allApartments = Apartment::all();
+
+       return view('home', compact('allApartments'));
+   }
+
 }
