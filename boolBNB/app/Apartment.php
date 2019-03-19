@@ -27,9 +27,20 @@ class Apartment extends Model
     //Proprietà da assegnare singolarmente
     protected $guarded = ['latitude', 'longitude'];
 
-    //RELAZIONE APPARTAMENTO <--->OPTIONALS - MANY TO MANY(MANY appartamento - MANY Optionals)
+    //********RELAZIONI*****************//
+
+    //RELAZIONE APPARTAMENTO <--->OPTIONALS
+    // MANY TO MANY(MANY appartamento - MANY Optionals)
     public function optionals(){
       return $this->belongsToMany('App\Optional');
+    }
+
+    //RELAZIONE UTENTI(ONE) <-> APPARTAMENTI(MANY)
+    //Un utente ha molti appartamenti
+    //Un appartamento ha un solo utente
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
 }

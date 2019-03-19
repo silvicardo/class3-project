@@ -15,4 +15,14 @@ class Reservation extends Model
   //Proprietà fillabili
   protected $fillable = ['nr_of_days'];
 
+  //********RELAZIONI*****************//
+
+  //RELAZIONE UTENTI(ONE) <-> PRENOTAZIONI(MANY)
+  //Un utente ha molte prenotazioni
+  //Una prenotazione ha un solo utente
+  public function user()
+  {
+      return $this->belongsTo('App\User');
+  }
+
 }
