@@ -1,8 +1,8 @@
 /public/hot
 /public/storage
-/storage/*.key
 /public/js/app.js
 /public/css/app.css
+/storage/*.key
 /vendor
 .env
 .phpunit.result.cache

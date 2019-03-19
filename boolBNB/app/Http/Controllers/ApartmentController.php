@@ -17,6 +17,6 @@ class ApartmentController extends Controller
     {
         $foundApartment = Apartment::find($id);
 
-        return view('apartment.show');
+        return view('apartment.show', compact('foundApartment'));
     }
 }
