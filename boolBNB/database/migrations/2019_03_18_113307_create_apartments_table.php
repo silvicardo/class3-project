@@ -17,9 +17,10 @@ class CreateApartmentsTable extends Migration
 
             $table->increments('id');
             $table->timestamps();
+            $table->string('title', 30)->nullable(false);//Titolo inserzione
             $table->tinyInteger('nr_of_rooms')->nullable(false);
             $table->tinyInteger('nr_of_beds')->nullable(false);
-            $table->text('description')->nullable(false);//Titolo descrittivo della stanza
+            $table->text('description')->nullable(false);//Descrizione appartamento
             $table->smallInteger('mq')->nullable(false)->comment('metri quadrati');
             $table->smallInteger('daily_price')->nullable(false);
             //indirizzi sempre diversi, non si può dare una stringa identica,
