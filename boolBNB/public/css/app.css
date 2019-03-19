@@ -16428,10 +16428,15 @@ readers do not read off random characters that represent icons */
 }
 
 .jumbo {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 2000px;
+  height: 100%;
   margin-top: 70px;
-  background: red;
+}
+
+.jumbo .card {
+  margin: 20px;
 }
 
 footer {
