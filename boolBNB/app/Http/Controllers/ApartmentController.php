@@ -19,4 +19,10 @@ class ApartmentController extends Controller
 
         return view('apartment.show');
     }
+
+    public function create(){
+
+      return view('apartment.create');
+
+    }
 }
