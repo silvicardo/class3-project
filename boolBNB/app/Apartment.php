@@ -17,6 +17,7 @@ class Apartment extends Model
                             'title',
                             'nr_of_rooms',
                             'nr_of_beds',
+                            'nr_of_bathrooms',
                             'description',
                             'mq',
                             'daily_price',
@@ -41,6 +42,20 @@ class Apartment extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    //RELAZIONE APPARTAMENTO(ONE) <-> PRENOTAZIONI(MANY)
+    //Un appartamento ha molte prenotazioni
+    //Una prentazione ha un solo appartamento
+    public function reservations(){
+      return $this->hasMany('App\Reservation');
+    }
+
+    //RELAZIONE APPARTAMENTO(MANY) <---> SPONSORIZZAZIONE(MANY)
+    //Un appartamento ha una sola sponsorizzazione alla volta, ma può averne molte totali
+    //Una sponsorizzazion può avere multipli appartamenti
+    public function sponsorship(){
+      return $this->belongsToMany('App\Sponsorship');
     }
 
 }

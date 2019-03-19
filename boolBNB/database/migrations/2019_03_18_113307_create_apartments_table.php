@@ -20,6 +20,7 @@ class CreateApartmentsTable extends Migration
             $table->string('title', 30)->nullable(false);//Titolo inserzione
             $table->tinyInteger('nr_of_rooms')->nullable(false);
             $table->tinyInteger('nr_of_beds')->nullable(false);
+            $table->tinyInteger('nr_of_bathrooms')->nullable(false);
             $table->text('description')->nullable(false);//Descrizione appartamento
             $table->smallInteger('mq')->nullable(false)->comment('metri quadrati');
             $table->smallInteger('daily_price')->nullable(false);

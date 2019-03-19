@@ -25,4 +25,11 @@ class Reservation extends Model
       return $this->belongsTo('App\User');
   }
 
+  //RELAZIONE APPARTAMENTO(ONE) <-> PRENOTAZIONI(MANY)
+  //Un appartamento ha molte prenotazioni
+  //Una prentazione ha un solo appartamento
+  public function apartment(){
+    return $this->belongsTo('App\Reservation');
+  }
+
 }

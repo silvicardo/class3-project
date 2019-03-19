@@ -50,9 +50,16 @@ class User extends Authenticatable
     //RELAZIONE UTENTI(ONE) <-> PRENOTAZIONI(MANY)
     //Un utente ha molte prenotazioni
     //Una prenotazione ha un solo utente
-    public function apartments()
+    public function reservations()
     {
         return $this->hasMany('App\Reservation');
+    }
+
+    //RELAZIONE UTENTI(MANY) <---> SPONSORIZZAZIONI(MANY)
+    //Un utente ha molte sponsorizzazioni
+    //un (tipo di) sponsorizzazione può avere molti utenti
+    public function sponshorships(){
+      return $this->belongsToMany('App\Sponsorship');
     }
 
 
