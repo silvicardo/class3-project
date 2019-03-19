@@ -14,7 +14,7 @@ class CreateSponsorshipsTable extends Migration
     public function up()
     {
         Schema::create('sponsorships', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
             $table->string('name', 40)->nullable(false)->comment('ex: 2 giorni in evidenza!');
             //duration -> in giorni esempio: 3, uniche 1 sponsorizzazione per ammontare di giorni

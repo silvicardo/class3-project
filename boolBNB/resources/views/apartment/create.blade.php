@@ -1,13 +1,11 @@
 @extends('layouts.app')
 @section('content')
-  @php
-    dd('ciao');
-  @endphp
 
   <div class="container">
     <div class="row">
       <div class="col-12">
-        @include('partials.errors')
+
+        {{-- @include('partials.errors') --}}
         <h1>Aggiungi Nuovo Appartamento</h1>
         <form class="form-group" action="" method="post">
           @csrf
