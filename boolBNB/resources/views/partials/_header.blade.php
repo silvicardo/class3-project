@@ -8,7 +8,7 @@
         <div class="search_img">
           <i class="fas fa-search"></i>
         </div>
-        <input type="text" placeholder="Cerca appartamento" value="">
+        <input type="text" placeholder="Cerca" value="">
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
@@ -31,6 +31,9 @@
           @if (Route::has('register'))
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un host') }}</a>
             </li>
           @endif
         @else

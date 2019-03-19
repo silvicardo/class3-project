@@ -1,10 +1,8 @@
 /public/hot
 /public/storage
-#/public/js/app.js
-#/public/css/app.css
 /storage/*.key
-#/public/js/app.js
-#/public/css/app.css
+/public/js/app.js
+/public/css/app.css
 /vendor
 .env
 .phpunit.result.cache
