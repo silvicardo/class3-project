@@ -30,7 +30,11 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
 Route::get('/apartment', 'ApartmentController@index')->name('apartment');//ricerca dettaglio apt su db
 //Route::post('/apartment', 'ApartmentController@post')->name('apartment');//
+<<<<<<< HEAD
 Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show');//show apartment per id
+=======
+Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show');
+>>>>>>> 25f7ed16551ac9fc3ccd473fbd856f3d1ef89ef9
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
 //form da includere in public
 
