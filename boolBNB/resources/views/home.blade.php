@@ -3,7 +3,9 @@
 @section('content')
   <div class="jumbo">
 
-      Sono in pagina view home
+
+      <h1>Sono in pagina view home</h1>
+
   </div>
 
 @endsection
