@@ -3,6 +3,7 @@
 @section('content')
   <div class="jumbo">
 
+
     <div class="container">
      @foreach(array_chunk($allApartments->all(), 3) as $row)
           <div class="row">
@@ -17,8 +18,9 @@
                 </div>
                @endforeach
           </div>
-     @endforeach
-</div>
+       @endforeach
+    </div>
+
   </div>
 
 @endsection

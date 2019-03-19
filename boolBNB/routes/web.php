@@ -16,21 +16,15 @@ Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
 Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 
 
-
-
 //STATIC PAGE
 
 Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
 Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
 
 
-
-
 //PUBLIC PAGE
 
 /// -> homepage
-
-
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
@@ -40,16 +34,9 @@ Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricer
 //form da includere in public
 
 
-
-
-
-
 //PRIVATE PAGE PROPRIETARIO
 
 Route::resource('/users', 'UserController');
-
-
-
 
 
 //NAVBAR PAGE
