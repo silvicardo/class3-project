@@ -29,7 +29,10 @@ class Reservation extends Model
   //Un appartamento ha molte prenotazioni
   //Una prentazione ha un solo appartamento
   public function apartment(){
-    return $this->belongsTo('App\Reservation');
+    return $this->belongsTo('App\Apartment');
   }
+
+  //gli optionals di un appartamento saranno visibili tramite
+  //la relazione con l'appartamento Prenotazione->Appartamento->Optionals
 
 }

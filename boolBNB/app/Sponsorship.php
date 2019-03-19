@@ -32,7 +32,7 @@ class Sponsorship extends Model
   //Un appartamento ha una sola sponsorizzazione alla volta, ma può averne molte totali
   //Una sponsorizzazion può avere multipli appartamenti
   public function apartments(){
-    return $this->belongsToMany('App\Sponsorship');
+    return $this->belongsToMany('App\Apartment');
   }
 
 }
