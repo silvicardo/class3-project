@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.card {
+  margin-top: 70px;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -16368,6 +16372,7 @@ readers do not read off random characters that represent icons */
 }
 
 .nav_bar .nav_bar_left {
+  display: flex;
   height: 70px;
 }
 
@@ -16381,9 +16386,10 @@ readers do not read off random characters that represent icons */
   display: flex;
   float: left;
   height: 50px;
-  width: 60%;
-  margin: 10px 30px;
+  width: 300px;
+  margin: 10px;
   border: 1px solid #767676;
+  box-shadow: 2px 2px 6px;
   border-radius: 5px;
 }
 
@@ -16407,31 +16413,33 @@ readers do not read off random characters that represent icons */
   width: 80%;
   height: 100%;
   font-size: 15px;
+  color: #484848;
 }
 
-.nav_bar .nav_bar_right {
-  width: 100%;
-  height: 70px;
-  line-height: 70px;
-  text-align: right;
+.nav_bar .nav_bar_left .navbar-toggler {
+  margin: auto 0px;
 }
 
-.nav_bar .nav_bar_right ul li {
-  display: inline-block;
+.nav_bar li {
   padding: 0 10px;
 }
 
-.nav_bar .nav_bar_right ul li a {
+.nav_bar li a {
   font-weight: 600;
+  font-size: 15px;
   text-decoration: none;
   color: #484848;
 }
 
+.nav_bar li.active a {
+  border-bottom: 2px solid #484848;
+}
+
 .jumbo {
   width: 100%;
-  height: 2000px;
-  margin-top: 70px;
-  background: red;
+  height: 1000px;
+  margin-top: 46px;
+  background: lightcoral;
 }
 
 footer {
