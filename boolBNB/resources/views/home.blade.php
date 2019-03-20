@@ -5,7 +5,7 @@
 
 
     <div class="container">
-    
+
       <div class="cardcontainer">
         @foreach(array_chunk($allApartments->all(), 3) as $row)
              <div class="row">
@@ -14,7 +14,7 @@
                       <div class="card" style="width: 16rem;">
                        <img class="card-img-top" src="{{ $allApartments->image_url}}" alt="Card image cap">
                        <div class="card-body">
-                         <h5 class="card-title">Card title</h5>
+                         <h5 class="card-title">{{ $allApartments->title }}</h5>
                          <p class="card-text">{{ $allApartments->description}}</p>
                        </div>
                       </div>
@@ -22,7 +22,7 @@
 
                   @endforeach
              </div>
-          @endforeach
+        @endforeach
       </div>
 
     </div>
