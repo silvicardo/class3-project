@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apartment;
 
+
 class HomeController extends Controller
 {
 
 
    public function index()
    {
+
+
        $allApartments = Apartment::all();
 
       //Abbreviamo la descrizione per il frontend

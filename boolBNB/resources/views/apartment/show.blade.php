@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
   <div class="container">
     <div class="showcardcontainer">
       <div class="card" style="width: 40rem;">
@@ -17,5 +20,7 @@
     </div>
 
   </div>
+
+    
 
 @endsection
