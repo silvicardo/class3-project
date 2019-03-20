@@ -28,11 +28,13 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
-Route::get('/apartment', 'ApartmentController@index')->name('apartment');//ricerca dettaglio apt su db
-//Route::post('/apartment', 'ApartmentController@post')->name('apartment');//
-Route::get('/apartment/new', 'ApartmentController@create')->name('apartment.create')->middleware('auth');
-Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show')->middleware('auth');
-Route::post('/apartment', 'ApartmentController@store')->name('apartment.store')->middleware('auth');
+Route::get('/apartment', 'ApartmentController@index')->name('apartment.index');//ricerca dettaglio apt su db
+
+
+Route::get('/apartment/new', 'ApartmentController@create')->name('apartment.create');
+Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show');
+Route::post('/apartment', 'ApartmentController@store')->name('apartment.store');
+
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
 //form da includere in public
 

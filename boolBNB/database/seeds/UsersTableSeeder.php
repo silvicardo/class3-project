@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use Faker\Generator as Faker;
+use App\Role;
+// use Faker\Generator as Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,17 +12,30 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        for ($i=0; $i < 5; $i++) {
+        //recuperiamo i ruoli
+        $proprietario = Role::where('name', '=', 'proprietario')->first();
+        $ospite = Role::where('name', '=', 'ospite')->first();
 
-          $newUser = new User;
-          $newUser->name = $faker->name;
-          $newUser->email = $faker->freeEmail;
-          //password momentaneamente in chiaro per il seeder
-          $newUser->password = $faker->password;
-          $newUser->save();
+        //crezione proprietario
+        $ownerTestUser = new User;
+        $ownerTestUser->name = 'Proprietario';
+        $ownerTestUser->email = 'proprietario@test.com';
+        //password momentaneamente in chiaro per il seeder
+        $ownerTestUser->password = bcrypt('proprietario');
+        $ownerTestUser->save();
 
-        }
+        //creazione user ospite
+        $guestTestUser = new User;
+        $guestTestUser->name = 'Ospite';
+        $guestTestUser->email = 'ospite@test.com';
+        //password momentaneamente in chiaro per il seeder
+        $guestTestUser->password = bcrypt('ospite1234');
+        $guestTestUser->save();
+
+        //aggiunta ruolo agli utenti salvati
+        $ownerTestUser->attachRole($proprietario);//assegnazione ruolo
+        $guestTestUser->attachRole($ospite);//assegnazione ruolo
     }
 }

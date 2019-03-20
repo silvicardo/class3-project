@@ -4,6 +4,7 @@
   <div class="container">
     <div class="create_form_container row">
       <div class="col-12">
+
         {{-- @include('partials.errors') --}}
         <h1>Aggiungi Nuovo Appartamento</h1>
         <form class="form-group" action="" method="post">
