@@ -2,7 +2,7 @@
 @section('content')
 
   <div class="container">
-    <div class="row">
+    <div class="create_form_container row">
       <div class="col-12">
 
         {{-- @include('partials.errors') --}}
@@ -19,7 +19,7 @@
           </div>
           <div class="form-group">
             <label for="nr_of_beds">Numero di posti letto</label>
-            <input type="numeber" name="nr_of_beds" class="form-control" placeholder="Inserisci numero posti letto">
+            <input type="number" name="nr_of_beds" class="form-control" placeholder="Inserisci numero posti letto">
           </div>
           <div class="form-group">
             <label for="">Numero di bagni</label>
@@ -34,8 +34,8 @@
             <input type="text" name="addres" class="form-control" placeholder="Inserisci numero posti letto">
           </div>
           <div class="form-group">
-            <label for="image_url">Immagine</label>
-            <input type="text" name="image_url" class="form-control" placeholder="Inserisci numero posti letto">
+            <label for="">Immagine</label>
+            <input type="file" name="" placeholder="Inserisci l'immagine del tuo appartamento" class="form-control">
           </div>
 
           <div class="form-group">

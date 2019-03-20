@@ -28,10 +28,12 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
-Route::get('/apartment', 'ApartmentController@index')->name('apartment');//ricerca dettaglio apt su db
-//Route::post('/apartment', 'ApartmentController@post')->name('apartment');//
+Route::get('/apartment', 'ApartmentController@index')->name('apartment.index');//ricerca dettaglio apt su db
+
+
 Route::get('/apartment/new', 'ApartmentController@create')->name('apartment.create');
 Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show');
+Route::post('/apartment', 'ApartmentController@store')->name('apartment.store');
 
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
 //form da includere in public
@@ -40,6 +42,11 @@ Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricer
 //PRIVATE PAGE PROPRIETARIO
 
 Route::resource('/users', 'UserController');
+Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
+Route::get('/admin/apartment', 'Admin\ApartmentController@index')->name('admin.apartment.index');
+
+
+
 
 
 //NAVBAR PAGE

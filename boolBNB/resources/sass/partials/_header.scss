@@ -20,7 +20,7 @@
       height: 50px;
       margin: 10px;
       border: 1px solid $colorGrey;
-      box-shadow: 2px 2px 6px;
+      box-shadow: 2px 2px 6px $colorGrey;
       border-radius: 5px;
       .search_img {
         display: flex;
