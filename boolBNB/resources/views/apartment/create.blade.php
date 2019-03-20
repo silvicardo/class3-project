@@ -4,8 +4,7 @@
   <div class="container">
     <div class="create_form_container row">
       <div class="col-12">
-
-        {{-- @include('partials.errors') --}}
+        @include('partials.error')
         <h1>Aggiungi Nuovo Appartamento</h1>
         <form class="form-group" action="{{ route('apartment.store')}}" method="post">
           @csrf
@@ -38,12 +37,13 @@
             <input type="text" name="description" class="form-control" placeholder="Inserisci descrizione">
           </div>
           <div class="form-group">
-            <label for="daily_price">Descrizione</label>
+            <label for="daily_price">Prezzo</label>
             <input type="number" name="daily_price" class="form-control" placeholder="Inserisci prezzo giornaliero">
           </div>
           <div class="form-group">
-            <label for="">Immagine</label>
-            <input type="text" name="image_url" placeholder="Inserisci l'immagine del tuo appartamento" class="form-control">
+            <label for="image_url">Scegli le immagini del tuo appartamento</label>
+            <br>
+            <input type="file" name="image_url">
           </div>
 
           <div class="form-group">
