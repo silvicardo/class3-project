@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apartment;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -43,9 +44,14 @@ class ApartmentController extends Controller
 
     public function show($id)
     {
+
+        // Get the currently authenticated user...
+        $user = Auth::user();
+
+        //dd($id);
         $foundApartment = Apartment::find($id);
 
-        return view('apartment.show', compact('foundApartment'));
+        return view('apartment.show', compact('foundApartment','user'));
     }
 
     public function create(){
