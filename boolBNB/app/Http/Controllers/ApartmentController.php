@@ -7,14 +7,17 @@ use App\Apartment;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Auth;
 
+
 class ApartmentController extends Controller
 {
 
     //middleware permessi sul costruttore
     public function __construct(){
 
+
       //se non sei loggato puoi accedere solo ad index e a show
       $this->middleware('auth')->except(['index', 'show']);
+
 
       //al netto del middleware Auth
 
@@ -79,13 +82,17 @@ class ApartmentController extends Controller
     public function store(Request $request, Faker $faker){
 
         $data = $request->all();
+
+        $newApartment = new Apartment;
         $newApartment->fill($data);
+        $newApartment->user_id = 1;
         //per ora dato fake per lat e lon
         $newApartment->latitude = $faker->latitude;
         $newApartment->longitude = $faker->longitude;
+
         $newApartment->save();
 
-        return redirect()->route('user.index');
+        return redirect()->route('home');
     }
 
     public function edit(Apartment $apartment){
