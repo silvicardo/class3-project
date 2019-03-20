@@ -16,7 +16,7 @@ class Optional extends Model
   protected $fillable = ['name'];
 
   //RELAZIONE APPARTAMENTO <--->OPTIONALS - MANY TO MANY(MANY appartamento - MANY Optionals)
-  public function apartment(){
+  public function apartments(){
     return $this->belongsToMany('App\Apartment');
   }
 

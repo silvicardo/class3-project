@@ -32,8 +32,12 @@ Route::get('/apartment', 'ApartmentController@index')->name('apartment.index');/
 
 
 Route::get('/apartment/new', 'ApartmentController@create')->name('apartment.create');
+// Route::get('/apartment/{id}/edit', 'ApartmentController@edit')->name('apartment.edit');
 Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show');
+Route::post('/apartment/{id}', 'ApartmentController@update')->name('apartment.update');
 Route::post('/apartment', 'ApartmentController@store')->name('apartment.store');
+// Route::post('/apartment', 'ApartmentController@store')->name('apartment.store');
+Route::post('/apartment/{id}/delete', 'ApartmentController@destroy')->name('apartment.destroy');
 
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
 //form da includere in public

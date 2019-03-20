@@ -15,7 +15,7 @@ class RolesTableSeeder extends Seeder
         //Creiamo i ruoli!
 
         $proprietario = new Role();
-        $proprietario->name         = 'proprietario';
+        $proprietario->name         = 'proprietario';//notnull - unique
         $proprietario->display_name = 'Utente Proprietario';
         $proprietario->description  = 'Utente che affitta appartamenti';
         $proprietario->save();

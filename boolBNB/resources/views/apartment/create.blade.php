@@ -7,7 +7,7 @@
 
         {{-- @include('partials.errors') --}}
         <h1>Aggiungi Nuovo Appartamento</h1>
-        <form class="form-group" action="{{ route('apartment.store')}}" method="post">
+        <form class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
           @csrf
           <div class="form-group">
             <label for="title">Titolo</label>
