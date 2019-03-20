@@ -11,7 +11,7 @@
 |
 */
 //ADMISSION PAGE
-
+Route::get('/owner-dashboard/{id}', 'HomeController@owner')->name('owner.dashboard');
 Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
 Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 
@@ -52,5 +52,8 @@ Route::get('/admin/apartment', 'Admin\ApartmentController@index')->name('admin.a
 //NAVBAR PAGE
 
 Route::get('/trips', 'TripsController@index')->name('trips');
+
+
+// Route::get('/user-dashboard', 'HomeController@user')->name('user.dashboard');
 
 Auth::routes();

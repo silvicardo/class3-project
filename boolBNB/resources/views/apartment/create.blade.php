@@ -6,7 +6,7 @@
       <div class="col-12">
         @include('partials.error')
         <h1>Aggiungi Nuovo Appartamento</h1>
-        <form class="form-group" action="" method="post">
+        <form class="form-group" action="{{ route('apartment.store')}}" method="post">
           @csrf
           <div class="form-group">
             <label for="title">Titolo</label>
@@ -26,11 +26,19 @@
           </div>
           <div class="form-group">
             <label for="mq">Metri quadrati</label>
-            <input type="numeber" name="mq" class="form-control" placeholder="Inserisci numero posti letto">
+            <input type="number" name="mq" class="form-control" placeholder="Inserisci numero posti letto">
           </div>
           <div class="form-group">
             <label for="address">Indirizzo</label>
             <input type="text" name="address" class="form-control" placeholder="Inserisci numero posti letto">
+          </div>
+          <div class="form-group">
+            <label for="description">Descrizione</label>
+            <input type="text" name="description" class="form-control" placeholder="Inserisci descrizione">
+          </div>
+          <div class="form-group">
+            <label for="daily_price">Prezzo</label>
+            <input type="number" name="daily_price" class="form-control" placeholder="Inserisci prezzo giornaliero">
           </div>
           <div class="form-group">
             <label for="image_url">Scegli le immagini del tuo appartamento</label>
