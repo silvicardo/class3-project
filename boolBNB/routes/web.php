@@ -42,6 +42,11 @@ Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricer
 //PRIVATE PAGE PROPRIETARIO
 
 Route::resource('/users', 'UserController');
+Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
+Route::get('/admin/apartment', 'Admin\ApartmentController@index')->name('admin.apartment.index');
+
+
+
 
 
 //NAVBAR PAGE
