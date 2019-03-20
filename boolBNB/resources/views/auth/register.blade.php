@@ -26,6 +26,16 @@
                         </div>
 
                         <div class="form-group row">
+                          <label class="col-md-4 col-form-label text-md-right" for="">Seleziona</label>
+                          <div class="col-md-6">
+                            <select class="form-control" id="">
+                              <option>Proprietario</option>
+                              <option>Ospite</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
