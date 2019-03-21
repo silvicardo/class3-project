@@ -95,10 +95,10 @@ class ApartmentController extends Controller
         return redirect()->route('home');
     }
 
-    public function edit(Apartment $apartment){
+    public function edit($id){
 
       $data = [
-        'action' => route('apartment.update', $apartment->id),
+        'action' => route('apartment.update', $id),
         'method' => 'POST',
       ];
 
