@@ -21,11 +21,17 @@
                        <h5 class="card-title">{{ $allApartments->title }}</h5>
                        <p class="card-text">{{ $allApartments->description}}</p>
                        <a class="btn btn-success" href="#">Modifica</a>
-                       <form action="{{ route('apartment.destroy', $apartments->id) }}" method="post">
-                         @method('DELETE')
-                         @csrf
-                         <input class="btn btn-danger" type="submit" value="Cancella">
-                       </form>
+                       @if (!empty(Auth::user()) && Auth::user()->can('edit-apartment'))
+                         <a class="btn btn-secondary btn-lg" href="{{ route('apartment.edit', $foundApartment->id)}}">Edita appartamento</a>
+                       @endif
+                       @if (!empty(Auth::user()) && Auth::user()->can('delete-apartment'))
+                       <form action="{{ "/apartment/" . $foundApartment->id . "/delete"}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
+                     @endif
                      </div>
                     </div>
                   </a>
