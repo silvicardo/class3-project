@@ -6,11 +6,12 @@
       <div class="col-12">
         @include('partials.error')
         <h1>Aggiungi Nuovo Appartamento</h1>
-        <form class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
+        <form class="form-group" action="{{ route('apartment.store') }}" method="post">
+          @method('PUT')
           @csrf
           <div class="form-group">
             <label for="title">Titolo</label>
-            <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo">
+            <input type="text" name="title" class="form-control" value"" placeholder="Inserisci il titolo">
           </div>
           <div class="form-group">
             <label for="nr_of_rooms">Numero stanze</label>
@@ -83,8 +84,8 @@
             <input type="file" name="image_url">
           </div> --}}
           <div class="form-group">
-            <label for="image_url">Immagine Text Provvisoria</label>
-            <input type="text" name="image_url" class="form-control" placeholder="Immagine Text Provvisoria">
+            <label for="imgText">Immagine Text Provvisoria</label>
+            <input type="text" name="imgText" class="form-control" value"" placeholder="Inserisci il titolo">
           </div>
 
           <div class="form-group">

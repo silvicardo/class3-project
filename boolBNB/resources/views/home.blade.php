@@ -26,7 +26,7 @@
       </div>
 
     </div>
-
+  CARDS HOMEPAGE
   </div>
 
 @endsection

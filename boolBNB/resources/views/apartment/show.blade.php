@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="container">
   <div class="showcardcontainer">
     <div class="card" style="width: 40rem;">
@@ -17,6 +15,7 @@
        <span>Metri quadrati: {{ $foundApartment->mq }}</span><br>
        <span>Indirizzo: {{ $foundApartment->address }}</span><br>
      </div>
+
     </div>
   </div>
   <div class="form-group">
@@ -24,7 +23,5 @@
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 </div>
-
-
 
 @endsection
