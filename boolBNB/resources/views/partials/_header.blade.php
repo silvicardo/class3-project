@@ -35,6 +35,12 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un host') }}</a>
             </li>
+            <li class="nav-item">
+              <div class="logo_user">
+                <img src="{{ asset('img/avatar1.png') }}" alt="">
+              </div>
+
+            </li>
           @endif
         @else
           <li class="nav-item dropdown">

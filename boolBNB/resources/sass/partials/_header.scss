@@ -59,4 +59,13 @@
       }
     }
   }
+  .logo_user {
+    margin: auto 0px;
+    background: red;
+    img {
+      max-width: 50px;
+      max-height: 50px;
+      border-radius: 50%;
+    }
+  }
 }
