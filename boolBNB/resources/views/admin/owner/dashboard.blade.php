@@ -6,8 +6,8 @@
 
 <div class="container py-5">
 
-  <h1>La tua dashboard</h1>
-  <h2>Ciao {{ $currentUser->name }} ecco i tuoi appartamenti</h2>
+  <h1 class="ownerdashboardtitle">La tua dashboard</h1>
+  <h2 class="ownerhello">Ciao {{ $currentUser->name }}, ecco i tuoi appartamenti</h2>
 
       <div class="row">
               @foreach($userApartments as $key => $apartment)
@@ -20,13 +20,13 @@
                        <p class="card-text">{{ $apartment->description}}</p>
 
                        @if (!empty(Auth::user()) && Auth::user()->can('edit-apartment'))
-                         <a class="btn btn-secondary btn-lg" href="{{ route('apartment.edit', $apartment->id)}}">Edita appartamento</a>
+                         <a class="btn btn-primary btn-lg" href="{{ route('apartment.edit', $apartment->id)}}">Modifica appartamento</a>
                        @endif
                        @if (!empty(Auth::user()) && Auth::user()->can('delete-apartment'))
                          <form action="{{ "/apartment/" . $apartment->id . "/delete"}}" method="POST">
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-danger">Delete</button>
+                              <button type="submit" class="btn btn-danger delete">Rimuovi appartamento</button>
                          </form>
                        @endif
                      </div>
@@ -39,11 +39,6 @@
 </div>
 
 
-@endif
 
-{{-- <a href="{{ route('apartment.create')}}">Crea nuovo</a>
-<a href="{{ route('apartment.show', 10)}}">Mostrami appartamento 10</a>
 
-{{-- tabella --}}
-{{-- <tr><a href="{{ route('apartment.show',1)}}">Mostrami appartamento 10</a></tr> --}}
 @endsection

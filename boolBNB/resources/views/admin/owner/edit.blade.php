@@ -22,6 +22,9 @@
           <label for="password">Password</label>
           <input type="number" name="nr_of_beds" class="form-control" placeholder="Inserisci la nuova password">
         </div>
+        <div class="form-group">
+          <input type="submit" class="form-control" value="Aggiorna i tuoi dati">
+        </div>
       </div>
   </div>
 </div>
