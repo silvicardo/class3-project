@@ -83,4 +83,9 @@ class OwnerController extends Controller
         return redirect()->route('admin.owner.dashboard');
 
     }
+    public function sponsor($id) {
+        $owner = User::find($id);
+
+        return view('admin.owner.sponsor', compact('owner'));
+    }
 }
