@@ -10,26 +10,29 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//ADMISSION PAGE
-Route::get('/owner-dashboard/{id}', 'HomeController@owner')->name('owner.dashboard');
+
+//***************ADMISSION PAGES***************//
+
 Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
 Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 
-
-//STATIC PAGE
+//***************STATIC PAGES***************//
 
 Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
 Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
 
-
-//PUBLIC PAGE
-
-/// -> homepage
+//***************PUBLIC PAGES***************//
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
+Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+//form da includere in public
+Route::get('/trips', 'TripsController@index')->name('trips');
 
 
+//***************WITH AUTH PAGES***************//
+
+//ROTTE apartment/.....
 Route::prefix('apartment')->name('apartment.')->group(function(){
 
   Route::get('/', 'ApartmentController@index')->name('index');//ricerca dettaglio apt su db
@@ -47,27 +50,18 @@ Route::prefix('apartment')->name('apartment.')->group(function(){
   // Route::resource('/categories', 'CategoryController');
 });
 
+//ROTTE owner/.....
+//prefix Url pagina
+//Namespace folder dei controller
+//name prefisso rotta per view (per frontend)
 
+Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 
-Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
-//form da includere in public
+  Route::get('/{id}', 'OwnerController@show')->name('show');
+  Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
+  Route::post('/{id}/delete', 'OwnerController@destroy')->name('destroy');
+  Route::get('/{id}/profile', 'OwnerController@profile')->name('profile');
 
-
-//PRIVATE PAGE PROPRIETARIO
-
-Route::resource('/users', 'UserController');
-Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
-Route::get('/admin/apartment', 'Admin\ApartmentController@index')->name('admin.apartment.index');
-
-
-
-
-
-//NAVBAR PAGE
-
-Route::get('/trips', 'TripsController@index')->name('trips');
-
-
-// Route::get('/user-dashboard', 'HomeController@user')->name('user.dashboard');
+});
 
 Auth::routes();

@@ -43,14 +43,13 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#"
-              onclick="event.preventDefault();
-              document.getElementById('#').submit();">
+              <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
+              >
               {{ __('Profilo') }}
               </a>
-              <a class="dropdown-item" href="#"
-              onclick="event.preventDefault();
-              document.getElementById('#').submit();">
+
+              <a class="dropdown-item" href="{{route('owner.show', Auth::User()->id)}}"
+              >
               {{ __('Appartamenti') }}
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
