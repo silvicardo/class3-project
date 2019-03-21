@@ -22,6 +22,7 @@ class OptionalsTableSeeder extends Seeder
           $newOptional = new Optional;
           $newOptional->name = $optional;
           $newOptional->save();
+          
         }
     }
 }

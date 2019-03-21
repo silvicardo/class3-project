@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
-
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,20 @@ class HomeController extends Controller
        }
 
        return view('home', compact('allApartments'));
+   }
+
+
+   public function owner($ownerId){
+
+
+      $currentUser = Auth::user();
+      
+      return view('admin.owner.dashboard', compact('currentUser'));
+
+
+
+
+
    }
 
 }

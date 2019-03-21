@@ -7,25 +7,30 @@ use App\Apartment;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Auth;
 
+
 class ApartmentController extends Controller
 {
 
     //middleware permessi sul costruttore
     public function __construct(){
 
-      //se non sei loggato puoi accedere solo ad index e a show
-      $this->middleware('auth')->except(['index', 'show']);
+      //1.se non sei loggato puoi accedere solo ad index e a show
+      $this->middleware('auth')->except(['index', 'show']); //NON PASSATO? REGISTER O LOGIN
+
+
+      //if user non ha un ruolo Auth::user() null
+      //escludere le rotte index e show e farle vedere comunque
 
       //al netto del middleware Auth
 
-      //Puoi accedere a index e show se hai i permessi per
+      //2.Puoi accedere a index e show se hai i permessi per
       //vedere e ricercare (sia ospite che proprietario)
       $this->middleware([
                           'permission:view-apartment',
                           'permission:search-apartment'
-                        ]);
+                        ])->except(['index', 'show']);;
 
-      //Solo i proprietari hanno i set dei permessi
+      //3.Solo i proprietari hanno i set dei permessi
       //per fare modifiche
       $this->middleware([
                           'permission:create-apartment',
@@ -39,39 +44,53 @@ class ApartmentController extends Controller
 
     public function index()
     {
-        return view('apartment.index');
+      $allApartments = Apartment::all();
+
+     //Abbreviamo la descrizione per il frontend
+      foreach ($allApartments as &$apartment) {
+        $apartment->description = implode(' ', array_slice(explode(' ', $apartment->description), 0, 30));
+      }
+
+        return view('apartment.index', compact('allApartments'));
     }
 
-    public function show($id)
+    public function show($apartmentId)
     {
-
-        // Get the currently authenticated user...
-        $user = Auth::user();
-
+        //
+        // // Get the currently authenticated user...
+        // $user = Auth::user();
         //dd($id);
-        $foundApartment = Apartment::find($id);
+        $foundApartment = Apartment::find($apartmentId);
 
-        return view('apartment.show', compact('foundApartment','user'));
+        return view('apartment.show', compact('foundApartment'));
     }
 
     public function create(){
 
-      //da inserire  la logica di autenticazione
-      //da determinare se Utente:
+      //MIDDLEWARE SUL COSTRUTTORE
+      //se Utente:
       //-> Loggato (middleware Auth)   Ok!!
-      //->Ruolo Proprietario o Ospite(middleware Ruoli)
+      //->Ruolo Proprietario (middleware Ruoli)
 
       //if (utente è proprietario)
-      // return view('appartamento.create', compact('idUtente')
+      // return view('appartamento.create', compact('DATA')
       //else (utente è ospite)
-      //return una view che dica che non sei autorizzato
+      //return una view che dica che non sei autorizzato(403 FORBIDDEN)
 
       $data = [
         'action' => route('apartment.store'),
         'method' => 'POST',
       ];
 
-      return view('apartment.create');
+      return view('apartment.create', compact('data'));
+
+      //E' UGUALE ANCHE FARE COSÌ
+
+        // $action = route('apartment.store');
+        // $method = 'POST';
+
+
+      // return view('apartment.create', compact('action','method'));
 
     }
 
@@ -79,42 +98,71 @@ class ApartmentController extends Controller
     public function store(Request $request, Faker $faker){
 
         $data = $request->all();
+
+        //validazione dei dati da fare
+
+        $newApartment = new Apartment;
         $newApartment->fill($data);
+        $newApartment->user_id = Auth::user()->id;
         //per ora dato fake per lat e lon
         $newApartment->latitude = $faker->latitude;
         $newApartment->longitude = $faker->longitude;
+
         $newApartment->save();
 
-        return redirect()->route('user.index');
+
+        return redirect()->route('apartment.index');
     }
 
-    public function edit(Apartment $apartment){
+    public function edit($apartmentId){
 
       $data = [
-        'action' => route('apartment.update', $apartment->id),
+        'action' => route('apartment.update', $apartmentId),
         'method' => 'POST',
       ];
 
-      return view('apartment.edit', $data);
+      $foundApartment = Apartment::find($apartmentId);
+
+      return view('apartment.edit', compact('data', 'foundApartment'));
 
     }
 
     public function update(Request $request, Apartment $apartment){
 
+      //i dati modificati dal form
       $data = $request->all();
 
-      $newApartment->update($data);
+      //aggiorniamo l'appartamento arrivato dal form di rimande dalla rotta edit
+      $apartment->update($data);
 
+      //salviamo il dato aggiornato
       $newApartment->save();
 
-      return redirect()->route('user.index');
+      //rimandiamo alla dashboard
+      return redirect()->route('admin.owner.index');
     }
 
-    public function destroy(Apartment $apartment){
+    public function destroy($apartmentId){
 
-      $apartment->delete();
+      $foundApartment = Apartment::find($apartmentId);
 
-      return view('apartment.index', $data);
+      //if foundApartment non è null
+
+      $foundApartment->delete();
+
+      //rimandiamo alla dashboard
+      //alla delete accede solo PROPRIETARIO
+      //ogni altro utente sarà già stato stoppato dai MIDDLEWARE
+      //PROPRIETARIO avrà probabilmente premuto un bottone cancella
+      //nella dashboard o comunque vorrà vedere lo stato
+      //dei suoi appartamenti dopo la cancellazion
+      //non ritorniamo la view secca senò lui vedrebbe sempre gli stessi appartamenti
+      //ma facciamo fornire la view dal controller richiamandone il name
+      //che appunto chiamera il controller dalle rotte
+      //che interrogherà il database e fornirà
+      //gli appartamenti di quell'utente aggiornati al netto della cancellazione
+      // return redirect()->route('admin.owner.index');
+       return redirect()->route('apartment.index');
 
     }
 }
