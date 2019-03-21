@@ -61,7 +61,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
   Route::post('/{id}/delete', 'OwnerController@destroy')->name('destroy');
   Route::get('/{id}/profile', 'OwnerController@profile')->name('profile');
-  Route::get('/{id}/sponsor', 'OwnerController@sponsor')->name('sponsor');
+  Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor');
 
 });
 
