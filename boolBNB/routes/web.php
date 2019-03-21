@@ -65,3 +65,17 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 });
 
 Auth::routes();
+
+//ROTTE GUEST
+
+Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
+
+  Route::get('/{id}', 'GuestController@show')->name('show');
+  Route::get('/{id}/edit', 'GuestController@edit')->name('edit');
+  Route::post('/{id}/delete', 'GuestController@destroy')->name('destroy');
+  Route::get('/{id}/profile', 'GuestController@profile')->name('profile');
+
+});
+
+
+Auth::routes();

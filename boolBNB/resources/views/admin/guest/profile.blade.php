@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container profile">
   <div class="row">
     <div class="col-sm-5">
@@ -36,5 +35,6 @@
     </div>
   </div>
 </div>
+
 
 @endsection
