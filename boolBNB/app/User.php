@@ -58,12 +58,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Reservation');
     }
 
+
+    //Andranno sostituite con le subscriptions
     //RELAZIONE UTENTI(MANY) <---> SPONSORIZZAZIONI(MANY)
     //Un utente ha molte sponsorizzazioni
     //un (tipo di) sponsorizzazione può avere molti utenti
-    public function sponshorships(){
-      return $this->belongsToMany('App\Sponsorship');
-    }
+    // public function sponshorships(){
+    //   return $this->belongsToMany('App\Sponsorship');
+    // }
 
 
 }
