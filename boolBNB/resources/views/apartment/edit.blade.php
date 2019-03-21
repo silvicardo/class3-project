@@ -35,11 +35,11 @@
           </div>
           <div class="form-group">
             <label for="description">Descrizione</label>
-            <input type="text" name="description" class="form-control" placeholder="Inserisci descrizione">
+            <input type="text" name="description" class="form-control" value="{{ $foundApartment->description }}" placeholder="Inserisci descrizione">
           </div>
           <div class="form-group">
             <label for="daily_price">Prezzo</label>
-            <input type="number" name="daily_price" class="form-control" placeholder="Inserisci prezzo giornaliero">
+            <input type="number" name="daily_price" class="form-control" value="{{ $foundApartment->daily_price }} " placeholder="Inserisci prezzo giornaliero">
           </div>
           <label for="">Scegli gli optional del tuo appartamento</label>
           <div class="form-check">
@@ -89,7 +89,7 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" class="form-control" value="Salva Appartamento">
+            <input type="submit" class="form-control" value="Salva modifiche appartamento">
           </div>
         </form>
       </div>
