@@ -12,6 +12,7 @@
         "braintree/braintree_php": "3.39.0",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
+        "laravel/cashier-braintree": "^3.1",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "zizaco/entrust": "^1.9"
