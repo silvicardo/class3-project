@@ -7,11 +7,11 @@
     <div class="sponsor">
       <div class="row">
         <div class="col-12">
-          <h2 class="sponsortitle">Benvenuto, sponsorizza il tuo appartamento: {{-- inserire variabile titolo appartamento --}} </h2>
+          <h2 class="sponsortitle">Benvenuto, sponsorizza il tuo appartamento {{-- inserire variabile titolo appartamento --}} </h2>
 
 
           <form class="form-group">
-            <label class="sponsorlabel" for="">Scegli la modalita della tua sponsorizzazione:</label>
+            <h3 class="sponsorlabel">Scegli la tua sponsorizzazione:</h3>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
               <label class="form-check-label" for="exampleRadios1">
