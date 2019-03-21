@@ -161,7 +161,8 @@ class ApartmentController extends Controller
       //che appunto chiamera il controller dalle rotte
       //che interrogherà il database e fornirà
       //gli appartamenti di quell'utente aggiornati al netto della cancellazione
-      return redirect()->route('admin.owner.index');
+      // return redirect()->route('admin.owner.index');
+       return redirect()->route('apartment.index');
 
     }
 }

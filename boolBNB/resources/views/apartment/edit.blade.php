@@ -85,7 +85,7 @@
           </div> --}}
           <div class="form-group">
             <label for="imgText">Immagine Text Provvisoria</label>
-            <input type="text" name="imgText" class="form-control" value"" placeholder="Inserisci il titolo">
+            <input type="text" name="imgText" class="form-control"  placeholder="Inserisci il titolo">
           </div>
 
           <div class="form-group">
@@ -95,4 +95,7 @@
       </div>
     </div>
   </div>
+
+
+  
 @endsection

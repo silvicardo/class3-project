@@ -28,23 +28,25 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
-Route::get('/apartment', 'ApartmentController@index')->name('apartment.index');//ricerca dettaglio apt su db
 
 
-Route::get('/apartment/new', 'ApartmentController@create')->name('apartment.create');
+Route::prefix('apartment')->name('apartment.')->group(function(){
 
-Route::get('/apartment/{id}/edit', 'ApartmentController@edit')->name('apartment.edit');
+  Route::get('/', 'ApartmentController@index')->name('index');//ricerca dettaglio apt su db
 
-// Route::get('/apartment/{id}/edit', 'ApartmentController@edit')->name('apartment.edit');
+  Route::get('/new', 'ApartmentController@create')->name('create');
+    Route::get('/{id}', 'ApartmentController@show')->name('show');
+  Route::get('/{id}/edit', 'ApartmentController@edit')->name('edit');
 
-Route::get('/apartment/{id}', 'ApartmentController@show')->name('apartment.show');
-Route::post('/apartment/{id}', 'ApartmentController@update')->name('apartment.update');
-Route::post('/apartment', 'ApartmentController@store')->name('apartment.store');
+  Route::post('/{id}', 'ApartmentController@update')->name('update');
+  Route::post('/', 'ApartmentController@store')->name('store');
 
-Route::post('/apartment/{id}', 'ApartmentController@update')->name('apartment.update');
+  Route::post('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
+  Route::get('/', 'HomeController@index')->name('home');
+   // Route::resource('/', 'ApartmentController');
+  // Route::resource('/categories', 'CategoryController');
+});
 
-// Route::post('/apartment', 'ApartmentController@store')->name('apartment.store');
-Route::post('/apartment/{id}/delete', 'ApartmentController@destroy')->name('apartment.destroy');
 
 
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
