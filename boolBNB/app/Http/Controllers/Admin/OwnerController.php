@@ -19,22 +19,27 @@ class OwnerController extends Controller
     public function show($id)
     {
       $currentUser = User::find($id);
-
+      // dd($currentUser->apartments);
       /*dd($currentUser->apartments);*/
       $userApartments = null;
-      if (count($currentUser->apartments) > 1)
+      if (count($currentUser->apartments) > 0)
       {
 
         $userApartments = $currentUser->apartments;
 
       }
-
+      // dd($userApartments);
 
       return view('admin.owner.dashboard', compact('currentUser', 'userApartments'));
 
 
+    }
 
+    public function profile($id){
 
+      $currentUser = User::find($id);
+
+      return view('admin.owner.profile', compact('currentUser'));
 
     }
 
