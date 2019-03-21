@@ -5,7 +5,7 @@
 
 
     <div class="container">
-    
+
       <div class="cardcontainer">
         @foreach(array_chunk($allApartments->all(), 3) as $row)
              <div class="row">
@@ -26,7 +26,7 @@
       </div>
 
     </div>
-
+  CARDS HOMEPAGE
   </div>
 
 @endsection
