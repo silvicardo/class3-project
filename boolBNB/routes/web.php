@@ -47,17 +47,43 @@ Route::prefix('apartment')->name('apartment.')->group(function(){
   // Route::resource('/categories', 'CategoryController');
 });
 
+//prefix Url pagina
+//Namespace folder dei controller
+//name prefisso rotta per view (per frontend)
+
+Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
+
+  Route::get('/{id}', 'OwnerController@show')->name('show');
+  Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
+  Route::post('/{id}/delete', 'OwnerController@destroy')->name('destroy');
+  
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+
 //form da includere in public
 
 
 //PRIVATE PAGE PROPRIETARIO
 
 Route::resource('/users', 'UserController');
+
 Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
-Route::get('/admin/apartment', 'Admin\ApartmentController@index')->name('admin.apartment.index');
+Route::get('/admin/apartment', 'Admin\ApartmentController@index')->name('admin.apartment.index')->middleware('auth');
 
 
 

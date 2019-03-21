@@ -22,12 +22,14 @@
 <body>
     <div id="app">
         @include('partials._header')
+        
 
         <main class="py-4">
             @yield('content')
         </main>
 
         @include('partials._footer')
+
     </div>
 </body>
 </html>
