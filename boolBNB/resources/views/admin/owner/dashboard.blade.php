@@ -6,12 +6,14 @@
 
 
 <h1>La tua dashboard</h1>
+@if(!empty($userApartments));
+
 <h2>Ciao {{ $currentUser->name }} ecco i tuoi appartamenti</h2>
 
 <a class="btn btn-primary" href="{{ route('apartment.create')}}">Aggiungi nuovo appartamento</a>
   <div class="container">
     <div class="cardcontainer">
-      @foreach(array_chunk($currentUser->apartments(), 3) as $row)
+      @foreach(array_chunk($currentUser->apartments, 3) as $row)
            <div class="row">
                 @foreach($row as $allApartments)
                   <a href="{{route('apartment.show', $allApartments->id) }}">
@@ -29,13 +31,12 @@
                      </div>
                     </div>
                   </a>
-
                 @endforeach
            </div>
       @endforeach
     </div>
   </div>
-
+@endif
 
 {{-- <a href="{{ route('apartment.create')}}">Crea nuovo</a>
 <a href="{{ route('apartment.show', 10)}}">Mostrami appartamento 10</a>

@@ -47,6 +47,30 @@ Route::prefix('apartment')->name('apartment.')->group(function(){
   // Route::resource('/categories', 'CategoryController');
 });
 
+//prefix Url pagina
+//Namespace folder dei controller
+//name prefisso rotta per view (per frontend)
+
+Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
+
+  Route::get('/{id}', 'OwnerController@show')->name('show');
+  Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
+  Route::post('/{id}/delete', 'OwnerController@destroy')->name('destroy');
+  
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
