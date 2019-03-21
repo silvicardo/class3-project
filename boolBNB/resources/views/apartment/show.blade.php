@@ -22,19 +22,66 @@
     <label for="exampleFormControlTextarea1">Example textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
+</div>
 
 
-    @if (!empty(Auth::user()) && Auth::user()->can('edit-apartment'))
-      <a class="btn btn-secondary btn-lg" href="{{ route('apartment.edit', $foundApartment->id)}}">Edita appartamento</a>
-    @endif
-  @if (!empty(Auth::user()) && Auth::user()->can('delete-apartment'))
-    <form action="{{ "/apartment/" . $foundApartment->id . "/delete"}}" method="POST">
-               @csrf
-               @method('DELETE')
-               <button type="submit" class="btn btn-danger">Delete</button>
-     </form>
 
-  @endif
+<div class="container">
+  <div class="form_container row">
+    <div class="col-12">
+      @include('partials.error')
+      <h1>Modifica i tuoi dati</h1>
+      <form class="form-group" action="" method="post">
+        @method('PUT')
+        @csrf
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" name="title" class="form-control" placeholder="inserisci il tuo nome">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="number" name="nr_of_rooms" class="form-control" placeholder="Inserisci la tua email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="number" name="nr_of_beds" class="form-control" placeholder="Inserisci la nuova password">
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="card" style="width: 18rem;">
+        <div class="card_user">
+          <img class="img_user card-img-top" src="{{ asset('img/avatar1.png') }}" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">"User"</h5>
+          <h6 class="card-title">"Email"</h6>
+          <h6 class="card-title">"Registrato il"</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="container_profile">
+        <div class="container_profile_edit">
+          <h2>Ciao, Massmiliano</h2>
+          <a href="#">Modifica profilo</a>
+        </div>
+        <div class="container_profile_delete">
+          <form action="#" method="POST">
+                     @csrf
+                     @method('DELETE')
+                     <button type="submit" class="btn btn-danger">Elimina il tuo account</button>
+           </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 </div>
 
 @endsection

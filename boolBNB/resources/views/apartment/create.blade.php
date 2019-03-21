@@ -2,7 +2,7 @@
 @section('content')
 
   <div class="container">
-    <div class="create_form_container row">
+    <div class="form_container row">
       <div class="col-12">
         @include('partials.error')
         <h1>Aggiungi Nuovo Appartamento</h1>
