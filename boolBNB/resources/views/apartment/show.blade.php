@@ -22,6 +22,19 @@
     <label for="exampleFormControlTextarea1">Example textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
+
+
+    @if (!empty(Auth::user()) && Auth::user()->can('edit-apartment'))
+      <a class="btn btn-secondary btn-lg" href="{{ route('apartment.edit', $foundApartment->id)}}">Edita appartamento</a>
+    @endif
+  @if (!empty(Auth::user()) && Auth::user()->can('delete-apartment'))
+    <form action="{{ "/apartment/" . $foundApartment->id . "/delete"}}" method="POST">
+               @csrf
+               @method('DELETE')
+               <button type="submit" class="btn btn-danger">Delete</button>
+     </form>
+
+  @endif
 </div>
 
 @endsection
