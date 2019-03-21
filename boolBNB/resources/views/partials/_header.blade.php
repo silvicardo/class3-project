@@ -35,6 +35,12 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un host') }}</a>
             </li>
+            <li class="nav-item">
+              <div class="logo_user">
+                <img src="{{ asset('img/avatar1.png') }}" alt="">
+              </div>
+
+            </li>
           @endif
         @else
           <li class="nav-item dropdown">
@@ -42,7 +48,13 @@
               {{ Auth::user()->name }} <span class="caret"></span>
             </a>
 
+
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+              @if(Auth::user()->hasRole('proprietario'))
+
+            
+
               <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
               >
               {{ __('Profilo') }}
@@ -52,6 +64,20 @@
               >
               {{ __('Appartamenti') }}
               </a>
+
+              @else
+
+              <a class="dropdown-item" href="{{route('guest.profile', Auth::User()->id)}}"
+              >
+              {{ __('Profilo') }}
+              </a>
+
+              <a class="dropdown-item" href="{{route('guest.show', Auth::User()->id)}}"
+              >
+              {{ __('Dashboard') }}
+              </a>
+
+              @endif
               <a class="dropdown-item" href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
