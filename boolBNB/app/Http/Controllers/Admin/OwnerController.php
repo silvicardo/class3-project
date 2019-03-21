@@ -4,39 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
-class ApartmentController extends Controller
+class OwnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -46,7 +18,29 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+      $currentUser = User::find($id);
+      // dd($currentUser->apartments);
+      /*dd($currentUser->apartments);*/
+      $userApartments = null;
+      if (count($currentUser->apartments) > 0)
+      {
+
+        $userApartments = $currentUser->apartments;
+
+      }
+      // dd($userApartments);
+
+      return view('admin.owner.dashboard', compact('currentUser', 'userApartments'));
+
+
+    }
+
+    public function profile($id){
+
+      $currentUser = User::find($id);
+
+      return view('admin.owner.profile', compact('currentUser'));
+
     }
 
     /**
@@ -57,7 +51,10 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        //prender l utente dal db//
+        $ownerToEdit = User::find($id);
+        //passare la view con il dato//
+        return view('admin.owner.edit', compact('ownerToEdit'));
     }
 
     /**
@@ -80,6 +77,10 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ownerToDelete = User::find($id);
+        $ownerToDelete->delete();
+
+        return redirect()->route('admin.owner.dashboard');
+
     }
 }
