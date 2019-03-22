@@ -53,7 +53,7 @@
 
               @if(Auth::user()->hasRole('proprietario'))
 
-            
+
 
               <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
               >
@@ -62,7 +62,7 @@
 
               <a class="dropdown-item" href="{{route('owner.show', Auth::User()->id)}}"
               >
-              {{ __('Appartamenti') }}
+              {{ __('I tuoi appartamenti') }}
               </a>
 
               @else
