@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        //comando per sincronizzare i plans di BrainTree
+         Commands\SyncPlans::class,
     ];
 
     /**

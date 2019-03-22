@@ -1,0 +1,71 @@
+.nav_bar {
+  position: fixed;
+  //A causa del dropin di BrainTree
+  //mettiamo questo valore enorme
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid $colorGrey;
+  background: white;
+  .nav_bar_left {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    img {
+      float: left;
+      height: 50px;
+      margin: 10px 0;
+    }
+    .search {
+      display: flex;
+      float: left;
+      height: 50px;
+      margin: 10px;
+      border: 1px solid $colorGrey;
+      box-shadow: 2px 2px 6px $colorGrey;
+      border-radius: 5px;
+      .search_img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        i {
+          font-size: 18px;
+          color: $colorGrey;
+        }
+      }
+      input {
+        border-style: none;
+        outline: none;
+        height: 100%;
+        width: 60%;
+        font-size: 15px;
+        color: $colorGreyStrong;
+      }
+    }
+  }
+  li {
+    padding: 0 10px;
+    a{
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      color: $colorGreyStrong;
+    }
+    &.active {
+      a {
+        border-bottom: 2px solid $colorGreyStrong;
+      }
+    }
+  }
+  .logo_user {
+    img {
+      max-width: 35px;
+      max-height: 35px;
+      border-radius: 50%;
+    }
+  }
+}
