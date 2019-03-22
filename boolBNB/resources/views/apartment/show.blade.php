@@ -14,6 +14,7 @@
        <span>Numero bagni: {{ $foundApartment->nr_of_bathrooms}}</span><br>
        <span>Metri quadrati: {{ $foundApartment->mq }}</span><br>
        <span>Indirizzo: {{ $foundApartment->address }}</span><br>
+
        <hr>
        <h2>Richiedi informazioni al proprietario su questo appartamento</h2>
        <form action="#" method="post">
@@ -33,10 +34,12 @@
          </div>
          <button type="submit" class="btn btn-primary">Invia</button>
        </form>
+
      </div>
 
     </div>
   </div>
+
 </div>
 
 
