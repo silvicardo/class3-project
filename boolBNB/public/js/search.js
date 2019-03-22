@@ -10484,7 +10484,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/riccardo/Scrivania/BOOLEAN/theEnd/boolBNB/resources/js/search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /var/www/html/class3-project/boolBNB/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
