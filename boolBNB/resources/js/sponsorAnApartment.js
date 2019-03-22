@@ -33,7 +33,9 @@ $(document).ready(function(){
               console.log('dropin Creato', createErr, instance);
 
               $('#loading-braintree').addClass('d-none');
+
               $('#payment-button').removeClass('d-none');
+
               $('#payment-button').click(function(event){
                 event.preventDefault();
                 instance.requestPaymentMethod(function (err, payload) {
