@@ -64,6 +64,11 @@
               {{ __('Appartamenti') }}
               </a>
 
+              <a class="dropdown-item" href="{{route('owner.sponsor', Auth::User()->id)}}"
+              >
+              {{ __('Sponsorizzazioni') }}
+              </a>
+
 
               @else
 

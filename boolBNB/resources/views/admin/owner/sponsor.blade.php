@@ -17,7 +17,7 @@
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">
-                  {{ $plan->name}}
+                   {{ $plan->description }}
                 </label>
               </div>
             @endforeach
@@ -28,4 +28,8 @@
     </div>
 
   </div>
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('js/sponsorAnApartment.js') }}" charset="utf-8"></script>
 @endsection

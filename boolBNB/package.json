@@ -23,5 +23,9 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.9"
+    },
+    "dependencies": {
+        "braintree": "^2.15.0",
+        "fs": "0.0.1-security"
     }
 }
