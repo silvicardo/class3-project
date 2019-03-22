@@ -22,6 +22,7 @@
         <div class="container_profile_edit">
           <h2>Ciao, {{ $currentUser->name }}</h2>
           <a href="{{ route('owner.edit', Auth::user()->id )}}">Modifica profilo</a>
+          <a href="{{--{{ route('owner.edit', Auth::user()->id )}}--}}">Leggi i tuoi messaggi</a>
         </div>
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-owner'))
@@ -38,6 +39,7 @@
     </div>
   </div>
 </div>
+
 
 
 {{-- CRUD messaggio proprietario  --}}
@@ -105,6 +107,7 @@
     <p>Contenuto mail:{{$message->description }}</p>
   </div>
 </div>
+
 
 
 @endsection

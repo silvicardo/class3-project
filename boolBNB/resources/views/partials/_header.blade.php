@@ -35,12 +35,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un host') }}</a>
             </li>
-            <li class="nav-item">
-              <div class="logo_user">
-                <img src="{{ asset('img/avatar1.png') }}" alt="">
-              </div>
 
-            </li>
           @endif
         @else
 
@@ -79,7 +74,7 @@
 
               <a class="dropdown-item" href="{{route('guest.show', Auth::User()->id)}}"
               >
-              {{ __('Dashboard') }}
+              {{ __('Le tue prenotazioni') }}
               </a>
 
 
@@ -96,6 +91,23 @@
               </form>
             </div>
           </li>
+          @if(Auth::user()->hasRole('proprietario'))
+            <a href="{{route('owner.profile', Auth::User()->id) }}">
+              <li class="nav-item">
+                <div class="logo_user">
+                  <img src="{{ asset('img/avatar1.png') }}" alt="">
+                </div>
+              </li>
+            </a>
+          @else
+            <a href="{{route('guest.profile', Auth::User()->id) }}">
+              <li class="nav-item">
+                <div class="logo_user">
+                  <img src="{{ asset('img/avatar1.png') }}" alt="">
+                </div>
+              </li>
+            </a>
+          @endif
         @endguest
       </ul>
     </div>
