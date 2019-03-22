@@ -65,7 +65,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 
 });
 
-Auth::routes();
+
 
 //ROTTE GUEST
 
@@ -78,5 +78,17 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
 
 });
 
+
+//ROTTE messaggi
+
+Route::prefix('messages')->name('messages.')->group(function(){
+  
+  Route::get('/', 'MessageController@index')->name('index');
+  Route::get('/create', 'MessageController@create')->name('create');
+  Route::post('/', 'MessageController@store')->name('store');
+  Route::get('/show', 'MessageController@show')->name('show');
+  Route::delete('/delete','MessageController@destroy')->name('destroy');
+
+});
 
 Auth::routes();
