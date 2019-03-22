@@ -26,11 +26,11 @@
           </div>
           <div class="form-group">
             <label for="mq">Metri quadrati</label>
-            <input type="number" name="mq" class="form-control" placeholder="Inserisci numero posti letto">
+            <input type="number" name="mq" class="form-control" placeholder="Inserisci numero metri quadrati">
           </div>
           <div class="form-group">
             <label for="address">Indirizzo</label>
-            <input type="text" name="address" class="form-control" placeholder="Inserisci numero posti letto">
+            <input type="text" name="address" class="form-control" placeholder="Inserisci l'indirizzo">
           </div>
           <div class="form-group">
             <label for="description">Descrizione</label>
