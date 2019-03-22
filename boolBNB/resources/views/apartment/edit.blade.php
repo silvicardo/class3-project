@@ -6,9 +6,11 @@
       <div class="col-12">
         @include('partials.error')
         <h1>Modifica Appartamento</h1>
-        <form class="form-group" action="{{ route('apartment.store') }}" method="post">
+        <form class="form-group" action="{{ $data['action']}}" method="post">
           @method('PUT')
           @csrf
+          <input type="hidden" name="user_id" value="{{ $foundApartment->user_id}}">
+
           <div class="form-group">
             <label for="title">Titolo</label>
             <input type="text" name="title" class="form-control"  value="{{ $foundApartment->title }}" placeholder="Inserisci il titolo">

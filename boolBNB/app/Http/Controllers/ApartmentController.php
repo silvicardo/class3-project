@@ -111,35 +111,37 @@ class ApartmentController extends Controller
         $newApartment->save();
 
 
-        return redirect()->route('apartment.index');
+        return redirect()->route('owner.show', Auth::user()->id);
     }
 
     public function edit($apartmentId){
 
+      $foundApartment = Apartment::find($apartmentId);
+
       $data = [
         'action' => route('apartment.update', $apartmentId),
-        'method' => 'POST',
+        'method' => 'PUT',
       ];
-
-      $foundApartment = Apartment::find($apartmentId);
 
       return view('apartment.edit', compact('data', 'foundApartment'));
 
     }
 
-    public function update(Request $request, Apartment $apartment){
-
+    public function update(Request $request, $id){
+       //($apartment);
       //i dati modificati dal form
       $data = $request->all();
+
+      $apartment = Apartment::find($id);
 
       //aggiorniamo l'appartamento arrivato dal form di rimande dalla rotta edit
       $apartment->update($data);
 
       //salviamo il dato aggiornato
-      $newApartment->save();
+      $apartment->save();
 
-      //rimandiamo alla dashboard
-      return redirect()->route('admin.owner.index');
+      //rimandiamo alla show
+      return redirect()->route('owner.show', Auth::user()->id);
     }
 
     public function destroy($apartmentId){
