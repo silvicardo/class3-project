@@ -39,7 +39,15 @@ class SubscriptionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Recupero il piano
+          $plan = Plan::findOrFail($request->plan_id);
+
+          // subscribe the user
+          $request->user()->newSubscription('main', $plan->braintree_plan)->create($request->payment_method_nonce);
+
+          // redirect to home after a successful subscription
+          return redirect()->route('owner.show', $request->user()->id);
+
     }
 
     /**
