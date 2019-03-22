@@ -67,5 +67,13 @@ class User extends Authenticatable
     //   return $this->belongsToMany('App\Sponsorship');
     // }
 
+    //Relazioni Utenti(ONE)<-> MESSAGGI(MANY)
+    //un messsaggio puo' avere un mittente,quindi 1 solo proprietario
+    //un utente puo' avere tanti messaggi
+
+    public function messages()
+    {
+      return $this->hasMany('App\Message');
+    }
 
 }
