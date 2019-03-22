@@ -22283,8 +22283,8 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
 
     Object.keys(parsed).forEach(function (key) {
-      if (!Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","MIX_API_AUTH_KEY":"finalproject","NODE_ENV":"development"}).hasOwnProperty(key)) {
-        Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","MIX_API_AUTH_KEY":"finalproject","NODE_ENV":"development"})[key] = parsed[key]
+      if (!Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).hasOwnProperty(key)) {
+        Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"})[key] = parsed[key]
       } else if (debug) {
         log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
       }
@@ -52997,7 +52997,7 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 var dotEnv = __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js");
 
 dotEnv.config();
-var MIX_API_AUTH_KEY = "finalproject";
+var MIX_API_AUTH_KEY = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).MIX_API_AUTH_KEY;
 $(document).ready(function () {
   MIX_API_AUTH_KEY = "Bearer ".concat(MIX_API_AUTH_KEY);
   $('#loading-braintree .progress-bar').css('width', '25%'); //chiamo l'api del nostro sito per
@@ -53042,7 +53042,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/riccardo/Scrivania/BOOLEAN/theEnd/boolBNB/resources/js/sponsorAnApartment.js */"./resources/js/sponsorAnApartment.js");
+module.exports = __webpack_require__(/*! /home/massi/Sites/class3-project/boolBNB/resources/js/sponsorAnApartment.js */"./resources/js/sponsorAnApartment.js");
 
 
 /***/ })
