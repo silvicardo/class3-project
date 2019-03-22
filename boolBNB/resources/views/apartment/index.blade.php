@@ -3,7 +3,6 @@
 @section('content')
   <div class="jumbo">
 
-
     <div class="container">
 
       <div class="cardcontainer">

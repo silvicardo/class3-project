@@ -26,6 +26,7 @@ Route::middleware('api.auth')->namespace('Api')->group(function() {
     // Route::get('/qualcosa/{id}', 'QualcosaController@show');
     // Route::post('/qualcosa/{id}', 'QualcosaController@update');
     // Route::post('/qualcosa/{id}/delete', 'QualcosaController@destroy');
+    Route::get('/braintree/token', 'BraintreeTokenController@token');
 
 });
 
