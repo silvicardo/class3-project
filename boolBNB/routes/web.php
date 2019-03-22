@@ -41,10 +41,10 @@ Route::prefix('apartment')->name('apartment.')->group(function(){
     Route::get('/{id}', 'ApartmentController@show')->name('show');
   Route::get('/{id}/edit', 'ApartmentController@edit')->name('edit');
 
-  Route::post('/{id}', 'ApartmentController@update')->name('update');
+  Route::put('/{id}', 'ApartmentController@update')->name('update');
   Route::post('/', 'ApartmentController@store')->name('store');
 
-  Route::post('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
+  Route::delete('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
   Route::get('/', 'HomeController@index')->name('home');
    // Route::resource('/', 'ApartmentController');
 });
@@ -58,7 +58,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 
   Route::get('/{id}', 'OwnerController@show')->name('show');
   Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
-  Route::post('/{id}/delete', 'OwnerController@destroy')->name('destroy');
+  Route::delete('/{id}/delete', 'OwnerController@destroy')->name('destroy');
   Route::get('/{id}/profile', 'OwnerController@profile')->name('profile');
   Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
@@ -73,7 +73,7 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
 
   Route::get('/{id}', 'GuestController@show')->name('show');
   Route::get('/{id}/edit', 'GuestController@edit')->name('edit');
-  Route::post('/{id}/delete', 'GuestController@destroy')->name('destroy');
+  Route::delete('/{id}/delete', 'GuestController@destroy')->name('destroy');
   Route::get('/{id}/profile', 'GuestController@profile')->name('profile');
 
 });

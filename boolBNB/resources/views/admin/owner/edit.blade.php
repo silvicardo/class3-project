@@ -14,10 +14,10 @@
           <label for="name">Nome</label>
           <input type="text" name="title" class="form-control" placeholder="inserisci il tuo nome">
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="email">Email</label>
           <input type="number" name="nr_of_rooms" class="form-control" placeholder="Inserisci la tua email">
-        </div>
+        </div> --}}
         <div class="form-group">
           <label for="exampleInputPassword1">Vecchia Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Inserisci vecchia Password">

@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Apartment;
 use App\Optional;
 use Faker\Generator as Faker;
+use App\User;
 
 class ApartmentsTableSeeder extends Seeder
 {
@@ -25,7 +26,7 @@ class ApartmentsTableSeeder extends Seeder
       for ($i=0; $i < 30; $i++) {
 
         $newApartment = new Apartment;
-        $newApartment->user_id = 1;//1 proprietario , 2 ospite
+        $newApartment->user_id = User::find(1)->id;//1 proprietario , 2 ospite
         $newApartment->title = 'Appartamento';
         $newApartment->nr_of_rooms = $faker->numberBetween(1,10);
         $newApartment->nr_of_beds = $faker->numberBetween(1,20);

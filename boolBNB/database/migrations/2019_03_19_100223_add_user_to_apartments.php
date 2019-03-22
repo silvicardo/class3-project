@@ -16,7 +16,7 @@ class AddUserToApartments extends Migration
         Schema::table('apartments', function (Blueprint $table) {
 
           //aggiungi la colonna user_id in apartments
-          $table->unsignedInteger('user_id')->after('id');
+          $table->unsignedInteger('user_id')->after('id')->default(1);
 
           //user_id in apartments è collegata con id in users
           $table->foreign('user_id')->references('id')->on('users');
