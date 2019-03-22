@@ -47,7 +47,6 @@ Route::prefix('apartment')->name('apartment.')->group(function(){
   Route::post('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
   Route::get('/', 'HomeController@index')->name('home');
    // Route::resource('/', 'ApartmentController');
-  // Route::resource('/categories', 'CategoryController');
 });
 
 //ROTTE owner/.....
@@ -61,7 +60,8 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
   Route::post('/{id}/delete', 'OwnerController@destroy')->name('destroy');
   Route::get('/{id}/profile', 'OwnerController@profile')->name('profile');
-  Route::get('/{id}/sponsor', 'OwnerController@sponsor')->name('sponsor');
+  Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
+  Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
 
 });
 

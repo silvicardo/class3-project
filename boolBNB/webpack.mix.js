@@ -12,4 +12,18 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+  .js('resources/js/sponsorAnApartment.js', 'public/js/sponsorAnApartment.js')
+  .js('resources/js/search.js', 'public/js/search.js')
    .sass('resources/sass/app.scss', 'public/css');
+
+
+ mix.webpackConfig({
+     node: {
+       fs: "empty" //Errore con fs per ora rimediato così....
+     },
+     resolve: {
+         alias: {
+             // "handlebars" : "handlebars/dist/handlebars.js"
+         }
+     },
+ });
