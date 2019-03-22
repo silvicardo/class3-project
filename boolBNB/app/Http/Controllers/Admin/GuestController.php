@@ -70,6 +70,7 @@ class GuestController extends Controller
      */
     public function destroy($id)
     {
+
         $guestToDelete = User::find($id);
         $guestToDelete->delete();
         return redirect()->route('admin.guest.dashboard');
