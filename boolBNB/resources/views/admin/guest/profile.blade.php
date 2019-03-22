@@ -23,13 +23,13 @@
           <a href="{{ route('guest.edit', Auth::user()->id )}}">Modifica profilo</a>
         </div>
         <div class="container_profile_delete">
-          <form action="#" method="POST">
-
-            @csrf
-            @method('DELETE')
-
-            <button type="submit" class="btn btn-danger">Elimina il tuo account</button>
-          </form>
+          @if (!empty(Auth::user()) && Auth::user()->can('manage-guest'))
+            <form action="{{ "/guest/" . $guest->id . "/delete"}}" method="POST">
+              @method('DELETE')
+               @csrf
+              <button type="submit" class="btn btn-danger">Elimina il tuo account</button>
+            </form>
+          @endif
         </div>
 
       </div>

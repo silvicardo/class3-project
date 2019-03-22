@@ -43,6 +43,7 @@
             </li>
           @endif
         @else
+
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
@@ -53,8 +54,6 @@
 
               @if(Auth::user()->hasRole('proprietario'))
 
-            
-
               <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
               >
               {{ __('Profilo') }}
@@ -62,8 +61,14 @@
 
               <a class="dropdown-item" href="{{route('owner.show', Auth::User()->id)}}"
               >
-              {{ __('Appartamenti') }}
+              {{ __('I tuoi appartamenti') }}
               </a>
+
+              <a class="dropdown-item" href="{{route('owner.sponsor.create', Auth::User()->id)}}"
+              >
+              {{ __('Sponsorizzazioni') }}
+              </a>
+
 
               @else
 
@@ -77,7 +82,9 @@
               {{ __('Dashboard') }}
               </a>
 
+
               @endif
+
               <a class="dropdown-item" href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
