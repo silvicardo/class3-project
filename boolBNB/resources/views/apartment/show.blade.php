@@ -14,14 +14,14 @@
        <span>Numero bagni: {{ $foundApartment->nr_of_bathrooms}}</span><br>
        <span>Metri quadrati: {{ $foundApartment->mq }}</span><br>
        <span>Indirizzo: {{ $foundApartment->address }}</span><br>
+       <h2>Richiedi informazioni al proprietario</h2>
+
+       
      </div>
 
     </div>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
+
 </div>
 
 
