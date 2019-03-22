@@ -61,7 +61,7 @@
 
               <a class="dropdown-item" href="{{route('owner.show', Auth::User()->id)}}"
               >
-              {{ __('Appartamenti') }}
+              {{ __('I tuoi appartamenti') }}
               </a>
 
               <a class="dropdown-item" href="{{route('owner.sponsor.create', Auth::User()->id)}}"
