@@ -24,6 +24,8 @@
         @include('partials._header')
 
         <main class="py-4">
+            @yield('user_feedback')
+            @yield('alerts')
             @yield('content')
         </main>
 

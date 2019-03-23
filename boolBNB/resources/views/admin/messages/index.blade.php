@@ -1,6 +1,14 @@
 
 @extends('layouts.app')
 
+@section('user_feedback')
+
+  @if(!empty($success))
+    <div class="container alert alert-success" role="alert">
+        A simple success alert—check it out!
+    </div>
+  @endif
+@endsection
 
 @section('content')
   <div class="container py-5">
@@ -24,7 +32,7 @@
             </thead>
 
             <tbody>
-              @foreach ()
+              @forelse ($messages as $message)
                 <tr>
                   <td>{{ $message->created_at }}</td>
                   <td>{{ $message->subject }}</td>
@@ -43,7 +51,9 @@
                     </form>
                   </td>
                 </tr>
-              @endforeach
+              @empty
+                <p>nessun messaggio</p>
+              @endforelse
             </tbody>
 
           </table>

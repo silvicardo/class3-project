@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class MessageController extends Controller
 {
@@ -37,6 +38,36 @@ class MessageController extends Controller
 
         $this->currentUser->role = $this->currentUser->roles()->first()->name;
 
+        // $this->currentUser->views = [
+        //   'messages' => [
+        //     'index' => 'admin.messages.index',
+        //     'create' => 'admin.messages.create',
+        //     'show' => 'admin.messages.show',
+        //   ],
+        //   'user' => [
+        //     'profile' => "admin.{$this->currentUser->role}.profile",
+        //     'dashboard' => "admin.{$this->currentUser->role}.dashboard",
+        //     'edit' => "admin.{$this->currentUser->role}.edit",
+        //   ],
+        // ];
+
+        // $this->currentUser->routes = [
+        //   'messages' => [
+        //     'index' => 'message.index',
+        //     'create' => 'messages.create',
+        //     'store' => 'messages.store',
+        //     'show' => 'messages.show',
+        //     'destroy' => 'messages.destroy'
+        //   ],
+        //   'user' => [
+        //     'profile' => "{$this->currentUser->role}.profile",
+        //     'create' => "{$this->currentUser->role}.create",
+        //     'store' => "{$this->currentUser->role}.store",
+        //     'show' => "{$this->currentUser->role}.show",
+        //     'destroy' => "{$this->currentUser->role}.destroy",
+        //   ],
+        // ];
+
         return $next($request);
 
       });
@@ -50,16 +81,21 @@ class MessageController extends Controller
      */
     public function index()
     {
+
       //visualizzare messaggi del mittente
+      $messages = Message::where('sender_id','=', $this->currentUser->id)->get();
 
-      $allMessages = Message::where('sender_id','=', $this->currentUser->id);
-      if (empty($allMessages->count() === 0)){
+      if ($messages->isEmpty()){
 
-        dd('no messaggi');
-        $id = $this->currentUser->id;
-        return view("${$this->currentUser->role}.profile", compact('id'));
+        return view("admin.{$this->currentUser->role}.profile",
+                    [
+                      'currentUser' => $this->currentUser,
+                      'alert' => 'Non hai messaggi'
+                    ]
+                    );
       }
-        return view('admin.messages.index', compact('allMessages'));
+
+      return view('admin.messages.index', compact('messages'));
 
     }
 
@@ -70,7 +106,13 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('messages.create');
+
+        return view("admin.messages.create",
+                    [
+                      'currentUser' => $this->currentUser,
+                      'title' => ($this->currentUser->role === 'owner') ? "Invia un messaggio all'ospite" : 'Richiedi informazioni',
+                      'action' => route('messages.store')
+                    ]);
     }
 
     /**
@@ -83,15 +125,12 @@ class MessageController extends Controller
     {
 
         $data = $request->all();
-        $id = Auth::user()->id;
         $newMessage = new Message;
-        $newMessage->sender_id = $id;
+        $newMessage->sender_id = $this->currentUser->id;
         $newMessage->fill($data);
         $newMessage->save();
 
-        return redirect()->route('messages.index');
-
-
+        return redirect()->route('messages.index',['success' => 'Messaggio consegnato']);
 
     }
 
