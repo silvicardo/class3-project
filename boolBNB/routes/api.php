@@ -29,11 +29,12 @@ Route::middleware('api.auth')->namespace('Api')->group(function() {
     Route::get('/braintree/token', 'BraintreeTokenController@token');
     Route::get('/user/{email}', 'UserController@getIdbyMail');
 
+
 });
 
 //rotte api AUTENTICATE
-Route::middleware('api.auth')->namespace('Api')->group(function() {
-
+Route::namespace('Api')->group(function() {
+    Route::post('/search-city', 'SearchController@getApartmentsByCity');
     //Template rotte Api ()
     // Route::get('/qualcosa', 'QualcosaController@index');
     // Route::post('/qualcosa', 'QualcosaController@create');
