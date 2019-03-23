@@ -97,7 +97,7 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 
 //***************PUBLIC PAGES***************//
 
-Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
+Route::post('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
 Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
 //form da includere in public
 Route::get('/trips', 'TripsController@index')->name('trips');

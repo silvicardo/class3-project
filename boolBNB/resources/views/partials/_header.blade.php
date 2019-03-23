@@ -4,12 +4,18 @@
       <a href="{{ url('/') }}">
         <img src="{{ asset('img/logo.png') }}" alt="">
       </a>
-      <div class="search">
-        <div class="search_img">
-          <i class="fas fa-search"></i>
-        </div>
-        <input type="text" placeholder="Cerca città" value="">
-      </div>
+      {{-- controlliamo la rotta per non far proprio arrivare in pagina --}}
+      @if(Route::current()->getName() !== 'search')
+        <form id="navbar_search" action="{{route('search')}}" class="search" method="POST">
+          @csrf
+          @method('POST')
+          <div class="search_img">
+            <i class="fas fa-search"></i>
+          </div>
+          <input id="campo_citta" type="text" name="citta_cercata" placeholder="Cerca città" value="">
+        </form>
+      @endif
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
       </button>
