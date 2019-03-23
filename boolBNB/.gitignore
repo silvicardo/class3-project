@@ -1,7 +1,7 @@
 /public/hot
 /public/storage
 /public/js/*.js
-#/public/fonts/vendor/@fortawesome/fontawesome-free
+/public/fonts/vendor/@fortawesome/fontawesome-free
 /public/css/app.css
 /storage/*.key
 /vendor
