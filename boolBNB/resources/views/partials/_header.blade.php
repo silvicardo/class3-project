@@ -4,12 +4,18 @@
       <a href="{{ url('/') }}">
         <img src="{{ asset('img/logo.png') }}" alt="">
       </a>
-      <div class="search">
-        <div class="search_img">
-          <i class="fas fa-search"></i>
-        </div>
-        <input type="text" placeholder="Cerca" value="">
-      </div>
+      {{-- controlliamo la rotta per non far proprio arrivare in pagina --}}
+      @if(Route::current()->getName() !== 'search')
+        <form id="navbar_search" action="{{route('search')}}" class="search" method="POST">
+          @csrf
+          @method('POST')
+          <div class="search_img">
+            <i class="fas fa-search"></i>
+          </div>
+          <input id="campo_citta" type="text" name="citta_cercata" placeholder="Cerca città" value="">
+        </form>
+      @endif
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,8 +41,8 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un host') }}</a>
             </li>
-
           @endif
+
         @else
 
           <li class="nav-item dropdown">
@@ -47,7 +53,7 @@
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-              @if(Auth::user()->hasRole('proprietario'))
+              @if(Auth::user()->hasRole('owner'))
 
               <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
               >
@@ -91,7 +97,9 @@
               </form>
             </div>
           </li>
-          @if(Auth::user()->hasRole('proprietario'))
+
+          @if(Auth::user()->hasRole('owner'))
+
             <a href="{{route('owner.profile', Auth::User()->id) }}">
               <li class="nav-item">
                 <div class="logo_user">
@@ -109,6 +117,8 @@
             </a>
           @endif
         @endguest
+
+
       </ul>
     </div>
   </div>

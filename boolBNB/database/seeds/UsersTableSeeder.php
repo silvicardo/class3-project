@@ -15,8 +15,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //recuperiamo i ruoli
-        $proprietario = Role::where('name', '=', 'proprietario')->first();
-        $ospite = Role::where('name', '=', 'ospite')->first();
+        $proprietario = Role::where('name', '=', 'owner')->first();
+        $ospite = Role::where('name', '=', 'guest')->first();
 
         //crezione proprietario
         $ownerTestUser = new User;

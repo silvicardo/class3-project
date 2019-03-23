@@ -1,7 +1,12 @@
 @extends('layouts.app')
-
+@section('alerts')
+  @if (!empty($error))
+    <div class="container alert alert-primary" role="alert">
+        {{$error}}
+    </div>
+  @endif
+@endsection
 @section('content')
-
 
 <div class="container profile">
   <div class="row">
@@ -20,10 +25,16 @@
     <div class="col-sm-7">
       <div class="container_profile">
         <div class="container_profile_edit">
-          <h2>Ciao, {{ $currentUser->name }}</h2>
-          <a href="{{ route('owner.edit', Auth::user()->id )}}">Modifica profilo</a>
-          <a href="{{--{{ route('owner.edit', Auth::user()->id )}}--}}">Leggi i tuoi messaggi</a>
+          <h2>Ciao,{{ $currentUser->name }}</h2>
+          <a class="btn btn-success text-white" href="{{ route('owner.edit', $currentUser->id) }}">Modifica profilo</a>
+          <a class="btn btn-primary text-white" href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
+          <a class="btn btn-primary text-white" href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
         </div>
+        @if (!empty($alert))
+          <div class="w-50 alert alert-primary" role="alert">
+              {{$alert}}
+          </div>
+        @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-owner'))
             <form action="{{ "/owner/" . $currentUser->id . "/delete"}}" method="POST">
@@ -39,75 +50,5 @@
     </div>
   </div>
 </div>
-
-
-
-{{-- CRUD messaggio proprietario  --}}
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1>Ciao Proprietario, questi sono i tuoi messaggi:</h1>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>"Creata il"</th>
-            <th>"Oggetto"</th>
-            <th>"Nome Mittente"</th>
-            <th>"Mail mittente"</th>
-            <th>"dal giorno - al giorno"</th>
-            <th>Visualizza</th>
-            <th>Elimina</th>
-          </tr>
-        </thead>
-
-        {{-- <tbody>
-          @foreach ()
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="#" class="btn btn-primary">Visualizza</a>
-              </td>
-              <td>
-                <a href="#" class="btn btn-success">Modifica</a>
-              </td>
-              <td>
-                <form action="#" method="post">
-                  @method('DELETE')
-                  @csrf
-                  <input class="btn btn-danger" type="submit" value="Elimina">
-                </form>
-              </td>
-            </tr>
-          @endforeach
-        </tbody> --}}
-
-      </table>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-<div class="card w-50">
-  <div class="card-body">
-    <h5 class="card-title">{{-- 0ggetto --}}</h5>
-    <span>Creato il: {{$message->created_at}}</span><br>
-    <span>Nome mittente: {{}}</span><br>
-    <span>Mail mittente: {{}}</span><br>
-
-    <p>Contenuto mail:{{$message->description }}</p>
-  </div>
-</div>
-
-
 
 @endsection
