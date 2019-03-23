@@ -19,8 +19,8 @@ class PermissionsTableSeeder extends Seeder
 
 
         //Recuperiamo i ruoli
-        $proprietario = Role::where('name', '=', 'proprietario')->first();
-        $ospite = Role::where('name', '=', 'ospite')->first();
+        $proprietario = Role::where('name', '=', 'owner')->first();
+        $ospite = Role::where('name', '=', 'guest')->first();
 
 
         //******PERMESSI APPARTAMENTI*****//

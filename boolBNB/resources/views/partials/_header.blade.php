@@ -47,7 +47,7 @@
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-              @if(Auth::user()->hasRole('proprietario'))
+              @if(Auth::user()->hasRole('owner'))
 
               <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
               >
@@ -92,7 +92,8 @@
             </div>
           </li>
 
-          @if(Auth::user()->hasRole('proprietario'))
+          @if(Auth::user()->hasRole('owner'))
+
             <a href="{{route('owner.profile', Auth::User()->id) }}">
               <li class="nav-item">
                 <div class="logo_user">
