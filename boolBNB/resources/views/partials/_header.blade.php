@@ -8,7 +8,7 @@
         <div class="search_img">
           <i class="fas fa-search"></i>
         </div>
-        <input type="text" placeholder="Cerca" value="">
+        <input type="text" placeholder="Cerca città" value="">
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
@@ -35,8 +35,8 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un host') }}</a>
             </li>
-
           @endif
+
         @else
 
           <li class="nav-item dropdown">
@@ -91,6 +91,7 @@
               </form>
             </div>
           </li>
+
           @if(Auth::user()->hasRole('proprietario'))
             <a href="{{route('owner.profile', Auth::User()->id) }}">
               <li class="nav-item">
@@ -109,6 +110,8 @@
             </a>
           @endif
         @endguest
+
+
       </ul>
     </div>
   </div>
