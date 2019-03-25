@@ -9,6 +9,7 @@ use App\User;
 
 class MessageController extends Controller
 {
+
     //variabile per conservare l'utente
     // che passa sul controller
     //e il suo ruolo
@@ -73,6 +74,7 @@ class MessageController extends Controller
       });
 
     }
+
 
     /**
      * Display a listing of the resource.
