@@ -6,7 +6,7 @@
   <div class="form_container row">
     <div class="col-12">
       @include('partials.error')
-      <h1>Modifica i tuoi dati:</h1>
+      <h2 class="my-4">Modifica i tuoi dati:</h2>
       <form class="form-group" action="#" method="post">
         @method('PUT')
         @csrf
@@ -31,7 +31,7 @@
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Conferma nuova Password">
         </div>
         <div class="form-group">
-          <input type="submit" class="form-control" value="Aggiorna i tuoi dati">
+          <input type="submit" class="form-control mt-5" value="Aggiorna i tuoi dati">
         </div>
       </div>
   </div>

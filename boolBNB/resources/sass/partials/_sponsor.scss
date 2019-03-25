@@ -1,10 +1,8 @@
 .sponsor {
+  @include flex;
   width: 100%;
   border: 1px solid $colorGrey;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-top: 50px;
   .sponsortitle {
     margin-bottom: 60px;

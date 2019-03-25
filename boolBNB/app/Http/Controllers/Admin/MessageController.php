@@ -18,8 +18,6 @@ class MessageController extends Controller
     //middleware permessi sul costruttore
     public function __construct(){
 
-      $this->currentUser = null;
-
       //1.se non sei loggato puoi accedere solo ad index e a show
       $this->middleware('auth'); //NON PASSATO? REGISTER O LOGIN
 
@@ -39,7 +37,6 @@ class MessageController extends Controller
 
         $this->currentUser->role = $this->currentUser->roles()->first()->name;
 
-        
         return $next($request);
 
       });

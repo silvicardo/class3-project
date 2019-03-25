@@ -6,7 +6,7 @@
 
   {{-- richiesta info guest + owner  --}}
     <div class="container py-5">
-      <h2>{{ $title }}</h2>
+      <h2 class="my-4">{{ $title }}</h2>
       <form id="send_message" action="{{ $action }}" method="post">
         @csrf
         @method('POST')
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
           <label for="message">Messaggio</label>
-          <textarea class="form-control" name="message" rows="3"></textarea>
+          <textarea class="form-control" name="message" placeholder="Scrivi messaggio"rows="3"></textarea>
         </div>
         <button  type="submit" class="btn btn-primary">Invia</button>
       </form>
