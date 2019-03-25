@@ -5,7 +5,7 @@
     <div class="form_container row">
       <div class="col-12">
         @include('partials.error')
-        <h1>Aggiungi Nuovo Appartamento</h1>
+        <h2 class="my-4">Aggiungi Nuovo Appartamento</h2>
         <form class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
           @csrf
           <div class="form-group">
@@ -41,38 +41,38 @@
             <input type="number" name="daily_price" class="form-control" placeholder="Inserisci prezzo giornaliero">
           </div>
           <label for="">Scegli gli optional del tuo appartamento</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <div class="form-check mb-3">
+            <input name="optional" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="defaultCheck1">
               Wifi
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <div class="form-check mb-3">
+            <input name="optional" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="defaultCheck1">
               Posto macchina
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <div class="form-check mb-3">
+            <input name="optional" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="defaultCheck1">
               Piscina
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <div class="form-check mb-3">
+            <input name="optional" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="defaultCheck1">
               Portineria
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <div class="form-check mb-3">
+            <input name="optional" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="defaultCheck1">
               Vista mare
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <div class="form-check mb-3">
+            <input name="optional" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="defaultCheck1">
               Sauna
             </label>
@@ -88,7 +88,7 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" class="form-control" value="Salva Appartamento">
+            <input type="submit" class="form-control mt-5" value="Salva Appartamento">
           </div>
         </form>
       </div>

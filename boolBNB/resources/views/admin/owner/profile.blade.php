@@ -25,10 +25,10 @@
     <div class="col-sm-7">
       <div class="container_profile">
         <div class="container_profile_edit">
-          <h2>Ciao,{{ $currentUser->name }}</h2>
-          <a class="btn btn-success text-white" href="{{ route('owner.edit', $currentUser->id) }}">Modifica profilo</a>
-          <a class="btn btn-primary text-white" href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
-          <a class="btn btn-primary text-white" href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
+          <h2 class="mb-4">Ciao,{{ $currentUser->name }}</h2>
+          <a href="{{ route('owner.edit', $currentUser->id) }}">Modifica profilo</a>
+          <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
+          <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
         </div>
         @if (!empty($alert))
           <div class="w-50 alert alert-primary" role="alert">
