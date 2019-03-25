@@ -1,4 +1,11 @@
 @extends('layouts.app')
+@section('alerts')
+  @if (!empty($error))
+    <div class="container alert alert-primary" role="alert">
+        {{$error}}
+    </div>
+  @endif
+@endsection
 
 @section('content')
 
@@ -19,9 +26,16 @@
     <div class="col-sm-7">
       <div class="container_profile">
         <div class="container_profile_edit">
-          <h2>Ciao, {{ $guest->name }}</h2>
-          <a href="{{ route('guest.edit', Auth::user()->id )}}">Modifica profilo</a>
+          <h2 class="mb-4">Ciao, {{ $guest->name }}</h2>
+          <a href="{{ route('guest.edit', $guest->id )}}">Modifica profilo</a>
+          <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
+          <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
         </div>
+        @if (!empty($alert))
+          <div class="w-50 alert alert-primary" role="alert">
+              {{$alert}}
+          </div>
+        @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-guest'))
             <form action="{{ "/guest/" . $guest->id . "/delete"}}" method="POST">

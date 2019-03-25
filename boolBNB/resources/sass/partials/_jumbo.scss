@@ -1,19 +1,10 @@
 .jumbo {
-  width: 100%;
-  height: 100%;
-  .cardcontainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    a {
+
+  a {
+    color: $colorGreyStrong;
+    &:hover {
+      color: $colorGreyStrong;
       text-decoration: none;
-      color: $colorGrey;
     }
-    .card {
-      margin: 40px;
-    }
-
   }
-
 }

@@ -32,9 +32,14 @@ $(document).ready(function(){
 
   $('#go_search').click(function(){
 
+
+
     avviaRicercaCon(estraiDatiPerRicercaDallaPagina(), isAdvanced)
 
   });
+
+
+
 
   //**************FUNZIONI***********//
 

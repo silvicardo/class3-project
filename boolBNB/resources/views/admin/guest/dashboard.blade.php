@@ -7,9 +7,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h1>Ciao User, queste sono le tue prenotazioni:</h1>
+        <h2 class="mt-4">Ciao User, queste sono le tue prenotazioni:</h2>
 
-        <a href="#" class="btn btn-primary">Aggiungi nuova prenotazione</a>
+        <a href="#" class="btn btn-primary mb-5 mt-4">Aggiungi nuova prenotazione</a>
 
         <table class="table">
           <thead>

@@ -7,8 +7,9 @@ use App\User;
 
 class UserController extends Controller
 {
+  //ROTTE NON UTILIZZATE IN WEB.PHP
 
-    public function index()
+  /*  public function index()
     {
         $users = User::all();
 
@@ -30,9 +31,10 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
 
-    
+
     }
 
+    //ROTTE NON UTILIZZATE IN WEB.PHP
     public function show(User $user)
     {
         if (empty($user)) {
@@ -70,5 +72,5 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->back();
-    }
+    }*/
 }
