@@ -3,6 +3,20 @@
 @section('content')
   <div class="container py-5">
 
+    <style>
+      #my_map {
+        width: 400px;
+        height: 400px;
+      }
+    </style>
+
+    <div class="my_map">
+
+
+    </div>
+
+
+
     <div id="sto_caricando" class="d-none">
 
         <p>Sto caricando la ricerca</p>

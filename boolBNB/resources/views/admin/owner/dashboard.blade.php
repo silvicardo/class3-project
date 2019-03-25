@@ -6,11 +6,9 @@
 
     <div class="container py-5">
 
-      <h1 class="ownerdashboardtitle">La tua dashboard</h1>
+      <h2  class="ownerhello mb-5">Ciao {{ $currentUser->name }}, ecco i tuoi appartamenti:</h2>
 
-      <h2 class="ownerhello">Ciao {{ $currentUser->name }}, ecco i tuoi appartamenti:</h2>
-
-      <a href="{{ route('apartment.create', $currentUser->id)}}" class="btn btn-large btn-primary">Crea nuovo appartamento</a>
+      <a href="{{ route('apartment.create', $currentUser->id)}}" class="btn btn-large btn-primary mb-5">Crea nuovo appartamento</a>
       <div class="row">
         @foreach($userApartments as $key => $apartment)
           <div class="col-md-4 mb-5">
@@ -22,13 +20,13 @@
                   <p class="card-text">{{ $apartment->description}}</p>
 
                   @if (!empty(Auth::user()) && Auth::user()->can('edit-apartment'))
-                    <a class="btn btn-primary btn-lg" href="{{ route('apartment.edit', $apartment->id)}}">Modifica appartamento</a>
+                    <a class="btn btn-primary" href="{{ route('apartment.edit', $apartment->id)}}">Modifica appartamento</a>
                   @endif
                   @if (!empty(Auth::user()) && Auth::user()->can('delete-apartment'))
                     <form action="{{ "/apartment/" . $apartment->id . "/delete"}}" method="POST">
                       @method('DELETE')
                       @csrf
-                      <button type="submit" class="btn btn-danger delete">Rimuovi appartamento</button>
+                      <button type="submit" class="btn btn-danger delete mt-4">Rimuovi appartamento</button>
                     </form>
                   @endif
                 </div>
