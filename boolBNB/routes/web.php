@@ -45,6 +45,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::delete('/delete', 'OwnerController@destroy')->name('destroy');
   Route::get('/profile', 'OwnerController@profile')->name('profile');
   Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
+  Route::get('/sponsor', 'OwnerController@sponsor')->name('sponsor.newfromnav');
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
 
 });

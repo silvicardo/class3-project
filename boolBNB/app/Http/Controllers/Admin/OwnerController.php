@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Subscription;
 
 class OwnerController extends Controller
 {
@@ -51,11 +53,9 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-      $currentUser = User::find($id);
-      // dd($currentUser->apartments);
-      /*dd($currentUser->apartments);*/
+      $currentUser = $this->currentUser;
       $userApartments = null;
       if (count($currentUser->apartments) > 0)
       {
@@ -70,11 +70,10 @@ class OwnerController extends Controller
 
     }
 
-    public function profile($id){
+    public function profile(){
 
-      $currentUser = User::find($id);
 
-      return view('admin.owner.profile', compact('currentUser'));
+      return view('admin.owner.profile', ['currentUser' => $this->currentUser]);
 
     }
 
@@ -84,12 +83,12 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //prender l utente dal db//
-        $ownerToEdit = User::find($id);
+
+
         //passare la view con il dato//
-        return view('admin.owner.edit', compact('ownerToEdit'));
+        return view('admin.owner.edit', ['currentUser' => $this->currentUser]);
     }
 
     /**
@@ -99,9 +98,10 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      return redirect()->route('owner.show');
+
     }
 
     /**
@@ -110,17 +110,19 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $ownerToDelete = User::find($id);
-        $ownerToDelete->delete();
 
-        return redirect()->route('admin.owner.dashboard');
+        $this->currentUser->delete();
+
+        return redirect()->route('owner.show');
 
     }
-    public function sponsor($id) {
-        $owner = User::find($id);
+    public function sponsor() {
 
-        return view('admin.owner.sponsor', compact('owner'));
+      //da fare passare tipi di Sponsor//
+        
+
+        return view('admin.owner.sponsor', ['currentUser' => $this->currentUser, 'allSponsors' => Subscription::all()]);
     }
 }
