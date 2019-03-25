@@ -25,7 +25,7 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
-Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+
 //form da includere in public
 Route::get('/trips', 'TripsController@index')->name('trips');
 
@@ -82,7 +82,7 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
 //ROTTE messaggi
 
 Route::prefix('messages')->name('messages.')->group(function(){
-  
+
   Route::get('/', 'MessageController@index')->name('index');
   Route::get('/create', 'MessageController@create')->name('create');
   Route::post('/', 'MessageController@store')->name('store');

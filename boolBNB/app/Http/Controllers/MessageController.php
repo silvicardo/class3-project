@@ -8,6 +8,40 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
+      protected $currentUser;
+
+      public function __construct(){
+
+        //1.se non sei loggato puoi accedere solo ad index e a show
+        $this->middleware('auth')->except(['index', 'show']); //NON PASSATO? REGISTER O LOGIN
+
+
+        //if user non ha un ruolo Auth::user() null
+        //escludere le rotte index e show e farle vedere comunque
+
+        //al netto del middleware Auth
+
+        //2.Puoi accedere a index e show se hai i permessi per
+        //vedere e ricercare (sia ospite che proprietario)
+        $this->middleware([
+                            'permission:view-apartment',
+                            'permission:search-apartment'
+                          ])->except(['index', 'show']);;
+
+        //3.Solo i proprietari hanno i set dei permessi
+        //per fare modifiche
+        $this->middleware([
+                            'permission:create-apartment',
+                            'permission:edit-apartment',
+                            'permission:delete-apartment',
+                          ])->except(['index', 'show']);
+
+      //In caso non si soddisfino le proprietà si riviene
+      //mandati alla pagina 403:forbidden
+      }
+
+
+
     /**
      * Display a listing of the resource.
      *
