@@ -1,9 +1,13 @@
 .jumbo {
+  & p:hover {
+    text-decoration: none;
+  }
   a {
     color: $colorGreyStrong;
     &:hover {
       color: $colorGreyStrong;
       text-decoration: none;
+
     }
   }
 }
