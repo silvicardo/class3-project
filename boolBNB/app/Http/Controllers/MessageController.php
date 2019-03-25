@@ -5,41 +5,75 @@ namespace App\Http\Controllers;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class MessageController extends Controller
 {
-      protected $currentUser;
 
-      public function __construct(){
+    //variabile per conservare l'utente
+    // che passa sul controller
+    //e il suo ruolo
+    protected $currentUser;
 
-        //1.se non sei loggato puoi accedere solo ad index e a show
-        $this->middleware('auth')->except(['index', 'show']); //NON PASSATO? REGISTER O LOGIN
+    //middleware permessi sul costruttore
+    public function __construct(){
 
+      $this->currentUser = null;
 
-        //if user non ha un ruolo Auth::user() null
-        //escludere le rotte index e show e farle vedere comunque
+      //1.se non sei loggato puoi accedere solo ad index e a show
+      $this->middleware('auth'); //NON PASSATO? REGISTER O LOGIN
 
-        //al netto del middleware Auth
-
-        //2.Puoi accedere a index e show se hai i permessi per
-        //vedere e ricercare (sia ospite che proprietario)
-        $this->middleware([
-                            'permission:view-apartment',
-                            'permission:search-apartment'
-                          ])->except(['index', 'show']);;
-
-        //3.Solo i proprietari hanno i set dei permessi
-        //per fare modifiche
-        $this->middleware([
-                            'permission:create-apartment',
-                            'permission:edit-apartment',
-                            'permission:delete-apartment',
-                          ])->except(['index', 'show']);
+      //tutti gli user registrati hanno permesso di
+      //gestire la propria messaggistica,
+      //esplicitiamo comunque questa possibilità
+      $this->middleware('permission:manage-owner|manage-guest');
 
       //In caso non si soddisfino le proprietà si riviene
       //mandati alla pagina 403:forbidden
-      }
 
+      //Popoliamo la var user del controller
+      //per non dover ripetere la ricerca ogni volta
+      $this->middleware(function ($request, $next) {
+
+        $this->currentUser = Auth::user();
+
+        $this->currentUser->role = $this->currentUser->roles()->first()->name;
+
+        // $this->currentUser->views = [
+        //   'messages' => [
+        //     'index' => 'admin.messages.index',
+        //     'create' => 'admin.messages.create',
+        //     'show' => 'admin.messages.show',
+        //   ],
+        //   'user' => [
+        //     'profile' => "admin.{$this->currentUser->role}.profile",
+        //     'dashboard' => "admin.{$this->currentUser->role}.dashboard",
+        //     'edit' => "admin.{$this->currentUser->role}.edit",
+        //   ],
+        // ];
+
+        // $this->currentUser->routes = [
+        //   'messages' => [
+        //     'index' => 'message.index',
+        //     'create' => 'messages.create',
+        //     'store' => 'messages.store',
+        //     'show' => 'messages.show',
+        //     'destroy' => 'messages.destroy'
+        //   ],
+        //   'user' => [
+        //     'profile' => "{$this->currentUser->role}.profile",
+        //     'create' => "{$this->currentUser->role}.create",
+        //     'store' => "{$this->currentUser->role}.store",
+        //     'show' => "{$this->currentUser->role}.show",
+        //     'destroy' => "{$this->currentUser->role}.destroy",
+        //   ],
+        // ];
+
+        return $next($request);
+
+      });
+
+    }
 
 
     /**
@@ -49,10 +83,21 @@ class MessageController extends Controller
      */
     public function index()
     {
+
       //visualizzare messaggi del mittente
-        $id = Auth::user()->id;
-        $allMessages = Message::where('sender_id','=', $id);
-        return view('messages.index', compact('allMessages'));
+      $messages = Message::where('sender_id','=', $this->currentUser->id)->get();
+
+      if ($messages->isEmpty()){
+
+        return view("admin.{$this->currentUser->role}.profile",
+                    [
+                      'currentUser' => $this->currentUser,
+                      'alert' => 'Non hai messaggi'
+                    ]
+                    );
+      }
+
+      return view('admin.messages.index', compact('messages'));
 
     }
 
@@ -63,7 +108,13 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('messages.create');
+
+        return view("admin.messages.create",
+                    [
+                      'currentUser' => $this->currentUser,
+                      'title' => ($this->currentUser->role === 'owner') ? "Invia un messaggio all'ospite" : 'Richiedi informazioni',
+                      'action' => route('messages.store')
+                    ]);
     }
 
     /**
@@ -76,15 +127,12 @@ class MessageController extends Controller
     {
 
         $data = $request->all();
-        $id = Auth::user()->id;
         $newMessage = new Message;
-        $newMessage->sender_id = $id;
+        $newMessage->sender_id = $this->currentUser->id;
         $newMessage->fill($data);
         $newMessage->save();
 
-        return redirect()->route('messages.index');
-
-
+        return redirect()->route('messages.index',['success' => 'Messaggio consegnato']);
 
     }
 

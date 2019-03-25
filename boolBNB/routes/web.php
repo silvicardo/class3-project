@@ -11,45 +11,29 @@
 |
 */
 
-//***************ADMISSION PAGES***************//
-
-Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
-Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
-
-//***************STATIC PAGES***************//
-
-Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
-Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
-
-//***************PUBLIC PAGES***************//
+//***************HOMEPAGE***************//
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
 
-//form da includere in public
-Route::get('/trips', 'TripsController@index')->name('trips');
-
-
+//*********************************************//
 //***************WITH AUTH PAGES***************//
+//*********************************************//
 
-//ROTTE apartment/.....
+//***************PUBLIC PAGES***************//
 Route::prefix('apartment')->name('apartment.')->group(function(){
 
   Route::get('/', 'ApartmentController@index')->name('index');//ricerca dettaglio apt su db
-
   Route::get('/new', 'ApartmentController@create')->name('create');
-    Route::get('/{id}', 'ApartmentController@show')->name('show');
+  Route::get('/{id}', 'ApartmentController@show')->name('show');
   Route::get('/{id}/edit', 'ApartmentController@edit')->name('edit');
-
   Route::put('/{id}', 'ApartmentController@update')->name('update');
   Route::post('/', 'ApartmentController@store')->name('store');
-
   Route::delete('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
-  Route::get('/', 'HomeController@index')->name('home');
-   // Route::resource('/', 'ApartmentController');
+
 });
 
-//ROTTE owner/.....
+//***************OWNER PAGES***************//
+
 //prefix Url pagina
 //Namespace folder dei controller
 //name prefisso rotta per view (per frontend)
@@ -65,9 +49,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 
 });
 
-
-
-//ROTTE GUEST
+//***************GUEST PAGES***************//
 
 Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
 
@@ -78,8 +60,7 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
 
 });
 
-
-//ROTTE messaggi
+//***************MESSAGES PAGES***************//
 
 Route::prefix('messages')->name('messages.')->group(function(){
 
@@ -91,4 +72,36 @@ Route::prefix('messages')->name('messages.')->group(function(){
 
 });
 
+//***************LARAVEL AUTH PAGES***************//
+
 Auth::routes();
+
+//***************************************************//
+//***************WITH AUTH PAGES - END***************//
+//***************************************************//
+
+
+//********************************************//
+//***************NO AUTH PAGES ***************//
+//********************************************//
+
+//***************ADMISSION PAGES***************//
+
+Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
+Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
+
+//***************STATIC PAGES***************//
+
+Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
+Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
+
+//***************PUBLIC PAGES***************//
+
+Route::post('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
+Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+//form da includere in public
+Route::get('/trips', 'TripsController@index')->name('trips');
+
+//**************************************************//
+//***************NO AUTH PAGES - END ***************//
+//**************************************************//
