@@ -39,6 +39,8 @@ class ApartmentsTableSeeder extends Seeder
         $newApartment->longitude = $faker->longitude;
         $newApartment->image_url = $faker->imageUrl(640, 480, 'city');
         $newApartment->save();
+        $newApartment->optionals()->sync([1, 2]);
+        $newApartment->save();
 
         //NOTA
         //per popolare gli optionals randomicamente quando ci saranno le relazioni

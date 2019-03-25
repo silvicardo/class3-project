@@ -40,11 +40,12 @@ Route::prefix('apartment')->name('apartment.')->group(function(){
 
 Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 
-  Route::get('/{id}', 'OwnerController@show')->name('show');
-  Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
-  Route::delete('/{id}/delete', 'OwnerController@destroy')->name('destroy');
-  Route::get('/{id}/profile', 'OwnerController@profile')->name('profile');
+  Route::get('/', 'OwnerController@show')->name('show');
+  Route::get('/edit', 'OwnerController@edit')->name('edit');
+  Route::delete('/delete', 'OwnerController@destroy')->name('destroy');
+  Route::get('/profile', 'OwnerController@profile')->name('profile');
   Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
+  Route::get('/sponsor', 'OwnerController@sponsor')->name('sponsor.newfromnav');
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
 
 });
@@ -53,16 +54,16 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
 
 Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
 
-  Route::get('/{id}', 'GuestController@show')->name('show');
-  Route::get('/{id}/edit', 'GuestController@edit')->name('edit');
-  Route::delete('/{id}/delete', 'GuestController@destroy')->name('destroy');
-  Route::get('/{id}/profile', 'GuestController@profile')->name('profile');
+  Route::get('/', 'GuestController@show')->name('show');
+  Route::get('/edit', 'GuestController@edit')->name('edit');
+  Route::delete('/delete', 'GuestController@destroy')->name('destroy');
+  Route::get('/profile', 'GuestController@profile')->name('profile');
 
 });
 
 //***************MESSAGES PAGES***************//
 
-Route::prefix('messages')->name('messages.')->group(function(){
+Route::prefix('messages')->namespace('Admin')->name('messages.')->group(function(){
 
   Route::get('/', 'MessageController@index')->name('index');
   Route::get('/create', 'MessageController@create')->name('create');
@@ -98,7 +99,7 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 //***************PUBLIC PAGES***************//
 
 Route::post('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
-Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+
 //form da includere in public
 Route::get('/trips', 'TripsController@index')->name('trips');
 
