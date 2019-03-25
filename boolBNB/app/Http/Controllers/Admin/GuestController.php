@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class GuestController extends Controller
 {
@@ -16,7 +18,7 @@ class GuestController extends Controller
       //middleware permessi sul costruttore
       public function __construct(){
 
-        //$this->currentUser = null;//
+
 
         //1.se non sei loggato puoi accedere solo ad index e a show
         $this->middleware('auth'); //NON PASSATO? REGISTER O LOGIN
@@ -33,10 +35,10 @@ class GuestController extends Controller
         //per non dover ripetere la ricerca ogni volta
         $this->middleware(function ($request, $next) {
 
-          $this->currentUser = Auth::user();
+          $this->guest = Auth::user();
 
           //ci servirà al momento dell unificazione controller
-          $this->currentUser->role = $this->currentUser->roles()->first()->name;
+          $this->guest->role = $this->guest->roles()->first()->name;
 
 
           return $next($request);
@@ -56,23 +58,23 @@ class GuestController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show()
     {
-        $guest = User::find($id);
+        $guest = $this->guest;
         /*$userApartments = null;
-        if (count($currentUser->apartments) > 0)
+        if (count($guest->apartments) > 0)
         {
-          $userApartments = $currentUser->apartments;
+          $userApartments = $guest->apartments;
         }*/
         return view('admin.guest.dashboard', compact('guest'));
 
     }
 
-    public function profile($id){
+    public function profile(){
 
-      $guest = User::find($id);
 
-      return view('admin.guest.profile', compact('guest'));
+
+      return view('admin.guest.profile', ['guest' => $this->guest]);
 
     }
 
@@ -85,10 +87,10 @@ class GuestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $guestToEdit = User::find($id);
-        return view('admin.guest.edit', compact('guestToEdit'));
+
+        return view('admin.guest.edit', ['guest' => $this->guest]);
     }
 
     /**
@@ -98,9 +100,9 @@ class GuestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
     }
 
     /**
@@ -109,11 +111,11 @@ class GuestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
 
-        $guestToDelete = User::find($id);
-        $guestToDelete->delete();
+        $this->guest->delete();
+
         return redirect()->route('admin.guest.dashboard');
     }
 }

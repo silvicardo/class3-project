@@ -19,7 +19,7 @@ class OwnerController extends Controller
       //middleware permessi sul costruttore
       public function __construct(){
 
-        $this->currentUser = null;
+        
 
         //1.se non sei loggato puoi accedere solo ad index e a show
         $this->middleware('auth'); //NON PASSATO? REGISTER O LOGIN
@@ -121,7 +121,7 @@ class OwnerController extends Controller
     public function sponsor() {
 
       //da fare passare tipi di Sponsor//
-        
+
 
         return view('admin.owner.sponsor', ['currentUser' => $this->currentUser, 'allSponsors' => Subscription::all()]);
     }
