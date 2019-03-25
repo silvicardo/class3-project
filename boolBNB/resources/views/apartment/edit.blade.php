@@ -5,7 +5,7 @@
     <div class="form_container row">
       <div class="col-12">
         @include('partials.error')
-        <h1>Modifica Appartamento</h1>
+        <h2 class="my-4">Modifica Appartamento</h2>
         <form class="form-group" action="{{ $data['action']}}" method="post">
           @method('PUT')
           @csrf
@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <label for="mq">Metri quadrati</label>
-            <input type="number" name="mq" class="form-control" value="{{ $foundApartment->mq }} "placeholder="Inserisci numero metri quadrati">
+            <input type="number" name="mq" class="form-control" value="{{ $foundApartment->mq }}" placeholder="Inserisci numero metri quadrati">
           </div>
           <div class="form-group">
             <label for="address">Indirizzo</label>
@@ -41,57 +41,33 @@
           </div>
           <div class="form-group">
             <label for="daily_price">Prezzo</label>
-            <input type="number" name="daily_price" class="form-control" value="{{ $foundApartment->daily_price }} " placeholder="Inserisci prezzo giornaliero">
+            <input type="number" name="daily_price" class="form-control" value="{{ $foundApartment->daily_price }}" placeholder="Inserisci prezzo giornaliero">
           </div>
           <label for="">Scegli gli optional del tuo appartamento</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          
+          @foreach($data['availableOptionals'] as $optional)
+          <div class="form-check  mb-3">
+            <input class="form-check-input" type="checkbox" name="{{ $optional->name }}"
+            value="{{ $optional->id }}" {{ (in_array($optional->id, $foundApartment->optionals()->get()->toArray())) ? 'checked="checked"' : '' }} >
+
             <label class="form-check-label" for="defaultCheck1">
-              Wifi
+              {{ $optional->name }}
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Posto macchina
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Piscina
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Portineria
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Vista mare
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Sauna
-            </label>
-          </div>
+          @endforeach
+
           {{-- <div class="form-group">
             <label for="image_url">Scegli le immagini del tuo appartamento</label>
             <br>
             <input type="file" name="image_url">
           </div> --}}
           <div class="form-group">
-            <label for="imgText">Immagine Text Provvisoria</label>
-            <input type="text" name="imgText" class="form-control"  placeholder="Inserisci il titolo">
+            <label for="image_url">Immagine Text Provvisoria</label>
+            <input type="text" name="image_url" class="form-control" value="{{ $foundApartment->image_url }}"  placeholder="Inserisci il titolo">
           </div>
 
           <div class="form-group">
-            <input type="submit" class="form-control" value="Salva modifiche appartamento">
+            <input type="submit" class="form-control mt-5" value="Salva modifiche appartamento">
           </div>
         </form>
       </div>

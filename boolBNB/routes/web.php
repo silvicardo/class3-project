@@ -11,6 +11,81 @@
 |
 */
 
+//***************HOMEPAGE***************//
+
+Route::get('/', 'HomeController@index')->name('home');
+
+//*********************************************//
+//***************WITH AUTH PAGES***************//
+//*********************************************//
+
+//***************PUBLIC PAGES***************//
+Route::prefix('apartment')->name('apartment.')->group(function(){
+
+  Route::get('/', 'ApartmentController@index')->name('index');//ricerca dettaglio apt su db
+  Route::get('/new', 'ApartmentController@create')->name('create');
+  Route::get('/{id}', 'ApartmentController@show')->name('show');
+  Route::get('/{id}/edit', 'ApartmentController@edit')->name('edit');
+  Route::put('/{id}', 'ApartmentController@update')->name('update');
+  Route::post('/', 'ApartmentController@store')->name('store');
+  Route::delete('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
+
+});
+
+//***************OWNER PAGES***************//
+
+//prefix Url pagina
+//Namespace folder dei controller
+//name prefisso rotta per view (per frontend)
+
+Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
+
+  Route::get('/', 'OwnerController@show')->name('show');
+  Route::get('/edit', 'OwnerController@edit')->name('edit');
+  Route::delete('/delete', 'OwnerController@destroy')->name('destroy');
+  Route::get('/profile', 'OwnerController@profile')->name('profile');
+  Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
+  Route::get('/sponsor', 'OwnerController@sponsor')->name('sponsor.newfromnav');
+  Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
+
+});
+
+//***************GUEST PAGES***************//
+
+Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
+
+  Route::get('/', 'GuestController@show')->name('show');
+  Route::get('/edit', 'GuestController@edit')->name('edit');
+  Route::delete('/delete', 'GuestController@destroy')->name('destroy');
+  Route::get('/profile', 'GuestController@profile')->name('profile');
+
+});
+
+//***************MESSAGES PAGES***************//
+
+Route::prefix('messages')->namespace('Admin')->name('messages.')->group(function(){
+
+  Route::get('/', 'MessageController@index')->name('index');
+  Route::get('/create', 'MessageController@create')->name('create');
+  Route::post('/', 'MessageController@store')->name('store');
+  Route::get('/show', 'MessageController@show')->name('show');
+  Route::delete('/delete','MessageController@destroy')->name('destroy');
+
+});
+
+//***************LARAVEL AUTH PAGES***************//
+
+Auth::routes();
+
+//***************************************************//
+//***************WITH AUTH PAGES - END***************//
+//***************************************************//
+
+
+//********************************************//
+//***************NO AUTH PAGES ***************//
+//********************************************//
+
 //***************ADMISSION PAGES***************//
 
 Route::get('/iscriviti', 'AdmissionController@index')->name('admission.index');
@@ -23,60 +98,11 @@ Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages
 
 //***************PUBLIC PAGES***************//
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
-Route::get('/aptfilter', 'AptfilterController@index')->name('aptfilter');//ricerca filtri su db
+Route::post('/search', 'SearchController@index')->name('search');//Ricerca appartamenti in db
+
 //form da includere in public
 Route::get('/trips', 'TripsController@index')->name('trips');
 
-
-//***************WITH AUTH PAGES***************//
-
-//ROTTE apartment/.....
-Route::prefix('apartment')->name('apartment.')->group(function(){
-
-  Route::get('/', 'ApartmentController@index')->name('index');//ricerca dettaglio apt su db
-
-  Route::get('/new', 'ApartmentController@create')->name('create');
-    Route::get('/{id}', 'ApartmentController@show')->name('show');
-  Route::get('/{id}/edit', 'ApartmentController@edit')->name('edit');
-
-  Route::put('/{id}', 'ApartmentController@update')->name('update');
-  Route::post('/', 'ApartmentController@store')->name('store');
-
-  Route::delete('/{id}/delete', 'ApartmentController@destroy')->name('destroy');
-  Route::get('/', 'HomeController@index')->name('home');
-   // Route::resource('/', 'ApartmentController');
-});
-
-//ROTTE owner/.....
-//prefix Url pagina
-//Namespace folder dei controller
-//name prefisso rotta per view (per frontend)
-
-Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
-
-  Route::get('/{id}', 'OwnerController@show')->name('show');
-  Route::get('/{id}/edit', 'OwnerController@edit')->name('edit');
-  Route::delete('/{id}/delete', 'OwnerController@destroy')->name('destroy');
-  Route::get('/{id}/profile', 'OwnerController@profile')->name('profile');
-  Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
-  Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
-
-});
-
-Auth::routes();
-
-//ROTTE GUEST
-
-Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
-
-  Route::get('/{id}', 'GuestController@show')->name('show');
-  Route::get('/{id}/edit', 'GuestController@edit')->name('edit');
-  Route::delete('/{id}/delete', 'GuestController@destroy')->name('destroy');
-  Route::get('/{id}/profile', 'GuestController@profile')->name('profile');
-
-});
-
-
-Auth::routes();
+//**************************************************//
+//***************NO AUTH PAGES - END ***************//
+//**************************************************//
