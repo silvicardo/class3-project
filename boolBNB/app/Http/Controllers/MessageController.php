@@ -17,8 +17,6 @@ class MessageController extends Controller
     //middleware permessi sul costruttore
     public function __construct(){
 
-      $this->currentUser = null;
-
       //1.se non sei loggato puoi accedere solo ad index e a show
       $this->middleware('auth'); //NON PASSATO? REGISTER O LOGIN
 
@@ -40,14 +38,14 @@ class MessageController extends Controller
 
         // $this->currentUser->views = [
         //   'messages' => [
-        //     'index' => 'admin.messages.index',
-        //     'create' => 'admin.messages.create',
-        //     'show' => 'admin.messages.show',
+        //     'index' => 'Admin.messages.index',
+        //     'create' => 'Admin.messages.create',
+        //     'show' => 'Admin.messages.show',
         //   ],
         //   'user' => [
-        //     'profile' => "admin.{$this->currentUser->role}.profile",
-        //     'dashboard' => "admin.{$this->currentUser->role}.dashboard",
-        //     'edit' => "admin.{$this->currentUser->role}.edit",
+        //     'profile' => "Admin.{$this->currentUser->role}.profile",
+        //     'dashboard' => "Admin.{$this->currentUser->role}.dashboard",
+        //     'edit' => "Admin.{$this->currentUser->role}.edit",
         //   ],
         // ];
 
