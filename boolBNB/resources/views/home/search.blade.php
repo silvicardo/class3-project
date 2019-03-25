@@ -3,6 +3,7 @@
 @section('content')
   <div class="container py-5">
 
+
     <div id="sto_caricando" class="d-none">
 
         <p>Sto caricando la ricerca</p>
@@ -15,6 +16,21 @@
     </div>
 
     <div id="ho_caricato">
+
+      {{-- inizio mappa --}}
+      <link rel='stylesheet' type='text/css' href="{{ asset('sdk/map.css')}}"/>
+      <script src="{{ asset('sdk/tomtom.min.js') }}"></script>
+      <div id='map' style='height:500px;width:500px'></div>
+        <script>
+    	    tomtom.setProductInfo('progettoClasse3', '2');
+          tomtom.L.map('map', {
+		        key: 'A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh',
+            center: [37.769167, -122.478468],
+            source: 'vector',
+            basePath: '/sdk',
+            zoom: 15
+    	    });
+        </script>
 
       <div class="barraricerca input-group mb-5">
         <input id="citta_cercata" type="text" class="form-control" placeholder="Cerca città" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4" value="{{ $citta_cercata }}">

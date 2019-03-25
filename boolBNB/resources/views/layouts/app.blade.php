@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <link rel='stylesheet' type='text/css' href="{{ asset('sdk/map.css')}}">
+    <script src="{{ asset('sdk/tomtom.min.js') }}"></script>
 </head>
 <body>
     <div id="app">
