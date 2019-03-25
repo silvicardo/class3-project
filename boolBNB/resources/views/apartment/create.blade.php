@@ -40,43 +40,47 @@
             <label for="daily_price">Prezzo</label>
             <input type="number" name="daily_price" class="form-control" placeholder="Inserisci prezzo giornaliero">
           </div>
+
+
           <label for="">Scegli gli optional del tuo appartamento</label>
+
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Wifi
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Posto macchina
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Piscina
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Portineria
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Vista mare
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Sauna
             </label>
           </div>
+
           {{-- <div class="form-group">
             <label for="image_url">Scegli le immagini del tuo appartamento</label>
             <br>
