@@ -3,5 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/navbarSearch.js": "/js/navbarSearch.js",
     "/js/search.js": "/js/search.js",
-    "/js/sponsorAnApartment.js": "/js/sponsorAnApartment.js"
+    "/js/sponsorAnApartment.js": "/js/sponsorAnApartment.js",
+    "/sdk/form.js": "/sdk/form.js",
+    "/sdk/tomtom.min.js": "/sdk/tomtom.min.js"
 }

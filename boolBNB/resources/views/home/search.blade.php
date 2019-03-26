@@ -16,6 +16,8 @@
 
     <div id="ho_caricato">
 
+    <button id="opzioni">Logga opzioni</button>
+
       {{-- inizio mappa --}}
 
       {{-- <link rel='stylesheet' type='text/css' href="{{ asset('sdk/map.css')}}"/>
@@ -37,10 +39,10 @@
           <meta charset='UTF-8'>
           <title>Maps SDK for Web - Map</title>
           <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
-          <link rel='stylesheet' type='text/css' href="{{ asset('sdk/map.css')}}"/>
-          <link rel='stylesheet' type='text/css' href="{{ asset('sdk/elements.css')}}">
-          <link rel='stylesheet' type='text/css' href="{{ asset('sdk/assets/css/tomtom2.css')}}">
-          <script type='text/javascript' src={{ asset('sdk/js/form.js')}}></script>
+
+          {{-- <link rel='stylesheet' type='text/css' href="{{ asset('sdk/elements.css')}}"> --}}
+          {{-- <link rel='stylesheet' type='text/css' href="{{ asset('sdk/assets/css/tomtom2.css')}}"> --}}
+          <script type='text/javascript' src={{ asset('sdk/form.js')}}></script>
           <script src="{{ asset('sdk/tomtom.min.js') }}"></script>
         </head>
         <body class='use-all-space'>
@@ -92,7 +94,7 @@
             <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
           </div>
           <script>
-          (function(tomtom) {
+          // (function(tomtom) {
 
             // Define your product name and version
             tomtom.setProductInfo('progettoClasse3', '2');
@@ -374,7 +376,20 @@
               markersLayer.clearLayers();
             }
 
-          })(tomtom, window);
+
+            function stampaOpzioni(){
+              var options = getOptions();
+              tomtom.geocode(options).go(function(responses){
+                console.log(responses);
+              })
+            }
+
+             document.getElementById('opzioni').onclick =function(){
+               stampaOpzioni();
+             }
+
+
+
           </script>
         </body>
 

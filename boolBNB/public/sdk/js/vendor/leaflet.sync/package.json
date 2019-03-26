@@ -1,0 +1,79 @@
+{
+  "_args": [
+    [
+      "leaflet.sync@0.2.2",
+      "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk"
+    ]
+  ],
+  "_from": "leaflet.sync@0.2.2",
+  "_id": "leaflet.sync@0.2.2",
+  "_inBundle": false,
+  "_integrity": "sha1-DO25JFyiD8mJ8wz/mErr0jKtMfo=",
+  "_location": "/leaflet.sync",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "leaflet.sync@0.2.2",
+    "name": "leaflet.sync",
+    "escapedName": "leaflet.sync",
+    "rawSpec": "0.2.2",
+    "saveSpec": null,
+    "fetchSpec": "0.2.2"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/leaflet.sync/-/leaflet.sync-0.2.2.tgz",
+  "_spec": "0.2.2",
+  "_where": "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk",
+  "author": {
+    "name": "Bjorn Sandvik"
+  },
+  "bugs": {
+    "url": "https://github.com/turban/Leaflet.Sync/issues"
+  },
+  "contributors": [
+    {
+      "name": "Bails Pierre",
+      "email": "bails@getredbird.com"
+    }
+  ],
+  "description": "Sync two or more Leaflet map instances",
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "chai-leaflet": "0.0.13",
+    "eslint": "^4.3.0",
+    "eslint-plugin-html": "^3.1.1",
+    "leaflet": "^1.0.3",
+    "mocha": "^3.4.2",
+    "mocha-phantomjs-core": "^2.0.1",
+    "mversion": "^1.10.0",
+    "phantomjs-prebuilt": "^2.1.4"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "homepage": "https://github.com/turban/Leaflet.Sync#readme",
+  "keywords": [
+    "Leaflet",
+    "map",
+    "geo",
+    "sync"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "L.Map.Sync.js",
+  "name": "leaflet.sync",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/turban/Leaflet.Sync.git"
+  },
+  "scripts": {
+    "lint": "eslint L.Map.Sync.js examples/* test/*",
+    "release": "mversion patch -m",
+    "release-minor": "mversion minor -m",
+    "spec": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/index.html",
+    "test": "npm run lint && npm run spec"
+  },
+  "version": "0.2.2"
+}

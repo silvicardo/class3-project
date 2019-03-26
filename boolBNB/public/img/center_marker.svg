@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="34"
+   height="34"
+   viewBox="0, 0, 34, 34"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="locate_me_btn.svg">
+  <metadata
+     id="metadata23">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs21" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     id="namedview19"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="13.882353"
+     inkscape:cx="-0.57057495"
+     inkscape:cy="19.957568"
+     inkscape:window-x="1600"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g" />
+  <style
+     id="style4">#g:hover g{opacity:.9}</style>
+  <g
+     id="g">
+    <g
+       opacity=".6"
+       id="g7">
+      <path
+         d="M32 17c0 8.284-6.716 15-15 15-8.284 0-15-6.716-15-15C2 8.716 8.716 2 17 2c8.284 0 15 6.716 15 15z"
+         id="path9" />
+      <path
+         d="M17 2c8.283 0 15 6.716 15 15 0 8.284-6.717 15-15 15-8.286 0-15-6.716-15-15C2 8.716 8.714 2 17 2m0-2C7.626 0 0 7.626 0 17c0 9.374 7.626 17 17 17 9.374 0 17-7.626 17-17 0-9.374-7.626-17-17-17z"
+         fill="#FFF"
+         opacity=".5"
+         id="path11" />
+    </g>
+  </g>
+  <circle
+     style="opacity:1;fill:#01e6ff;fill-opacity:1"
+     id="path4168"
+     cx="17"
+     cy="17"
+     r="5.6186442" />
+  <circle
+     style="opacity:1;fill:#ffffff;fill-opacity:1"
+     id="path4151"
+     cx="17"
+     cy="17"
+     r="2.3050847" />
+</svg>
