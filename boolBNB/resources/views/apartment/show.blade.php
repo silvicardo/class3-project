@@ -3,20 +3,20 @@
 @section('content')
 
 <div class="container">
-  <div class="showcardcontainer">
+  <div class="showcardcontainer mt-5">
     <div class="card" style="width: 40rem;">
      <img class="card-img-top" src="{{ $foundApartment->image_url}}" alt="Card image cap">
      <div class="card-body">
        <h5 class="card-title">Card title</h5>
        <p class="card-text">{{ $foundApartment->description}}</p>
-       <span>Numero stanze: {{ $foundApartment->nr_of_rooms}}</span><br>
-       <span>Numero posti letto: {{ $foundApartment->nr_of_beds}}</span><br>
-       <span>Numero bagni: {{ $foundApartment->nr_of_bathrooms}}</span><br>
-       <span>Metri quadrati: {{ $foundApartment->mq }}</span><br>
-       <span>Indirizzo: {{ $foundApartment->address }}</span><br>
+       <span><strong>Numero stanze:</strong> {{ $foundApartment->nr_of_rooms}}</span><br>
+       <span><strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}</span><br>
+       <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
+       <span><strong>Metri quadrati:</strong> {{ $foundApartment->mq }}</span><br>
+       <span><strong>Indirizzo:</strong> {{ $foundApartment->address }}</span><br>
 
        <hr>
-       <h2>Richiedi informazioni al proprietario su questo appartamento</h2>
+       <h2 class="my-5">Richiedi informazioni al proprietario su questo appartamento</h2>
        <form action="#" method="post">
          @csrf
          @method('POST')

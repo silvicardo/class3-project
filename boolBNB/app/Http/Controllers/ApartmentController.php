@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Auth;
+use App\Optional;
 
 
 class ApartmentController extends Controller
@@ -119,6 +120,7 @@ class ApartmentController extends Controller
       $foundApartment = Apartment::find($apartmentId);
 
       $data = [
+        'availableOptionals' => Optional::all(),
         'action' => route('apartment.update', $apartmentId),
         'method' => 'PUT',
       ];

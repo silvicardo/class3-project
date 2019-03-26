@@ -9,6 +9,7 @@ use App\User;
 
 class MessageController extends Controller
 {
+
     //variabile per conservare l'utente
     // che passa sul controller
     //e il suo ruolo
@@ -16,8 +17,6 @@ class MessageController extends Controller
 
     //middleware permessi sul costruttore
     public function __construct(){
-
-      $this->currentUser = null;
 
       //1.se non sei loggato puoi accedere solo ad index e a show
       $this->middleware('auth'); //NON PASSATO? REGISTER O LOGIN
@@ -38,41 +37,12 @@ class MessageController extends Controller
 
         $this->currentUser->role = $this->currentUser->roles()->first()->name;
 
-        // $this->currentUser->views = [
-        //   'messages' => [
-        //     'index' => 'admin.messages.index',
-        //     'create' => 'admin.messages.create',
-        //     'show' => 'admin.messages.show',
-        //   ],
-        //   'user' => [
-        //     'profile' => "admin.{$this->currentUser->role}.profile",
-        //     'dashboard' => "admin.{$this->currentUser->role}.dashboard",
-        //     'edit' => "admin.{$this->currentUser->role}.edit",
-        //   ],
-        // ];
-
-        // $this->currentUser->routes = [
-        //   'messages' => [
-        //     'index' => 'message.index',
-        //     'create' => 'messages.create',
-        //     'store' => 'messages.store',
-        //     'show' => 'messages.show',
-        //     'destroy' => 'messages.destroy'
-        //   ],
-        //   'user' => [
-        //     'profile' => "{$this->currentUser->role}.profile",
-        //     'create' => "{$this->currentUser->role}.create",
-        //     'store' => "{$this->currentUser->role}.store",
-        //     'show' => "{$this->currentUser->role}.show",
-        //     'destroy' => "{$this->currentUser->role}.destroy",
-        //   ],
-        // ];
-
         return $next($request);
 
       });
 
     }
+
 
     /**
      * Display a listing of the resource.

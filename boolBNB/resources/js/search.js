@@ -32,9 +32,14 @@ $(document).ready(function(){
 
   $('#go_search').click(function(){
 
+
+
     avviaRicercaCon(estraiDatiPerRicercaDallaPagina(), isAdvanced)
 
   });
+
+
+
 
   //**************FUNZIONI***********//
 
@@ -52,7 +57,8 @@ $(document).ready(function(){
 
   function estraiDatiPerRicercaDallaPagina(){
 
-    var form = document.getElementById('advanced_form');
+    // var form = document.getElementById('advanced_form');
+    var form = $('#advanced_form');
 
     var dalForm = Object.values(form).reduce((obj,input) => {
       if (input.type === 'checkbox'){

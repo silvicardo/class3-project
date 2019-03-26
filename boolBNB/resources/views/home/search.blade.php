@@ -3,7 +3,6 @@
 @section('content')
   <div class="container py-5">
 
-
     <div id="sto_caricando" class="d-none">
 
         <p>Sto caricando la ricerca</p>
