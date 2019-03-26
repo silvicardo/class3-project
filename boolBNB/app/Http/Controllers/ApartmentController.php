@@ -106,8 +106,8 @@ class ApartmentController extends Controller
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
         //per ora dato fake per lat e lon
-        $newApartment->latitude = $faker->latitude;
-        $newApartment->longitude = $faker->longitude;
+        $newApartment->latitude = $data['latitude'];
+        $newApartment->longitude = $data['longitude'];
         $newApartment->save();
         $newApartment->optionals()->sync($data['optionals']);
 
@@ -117,7 +117,7 @@ class ApartmentController extends Controller
     public function edit($apartmentId){
 
       $foundApartment = Apartment::find($apartmentId);
-      
+
       $apartmentOptionals = $foundApartment->optionals()->get()->toArray();
       $optionalsIds = [];
       foreach ($apartmentOptionals as $optional) {
@@ -144,6 +144,8 @@ class ApartmentController extends Controller
 
       //aggiorniamo l'appartamento arrivato dal form di rimande dalla rotta edit
       $apartment->update($data);
+      $apartment->latitude = $data['latitude'];
+      $apartment->longitude = $data['longitude'];
 
       //salviamo il dato aggiornato
       $apartment->save();

@@ -6,7 +6,7 @@
       <div class="col-12">
         @include('partials.error')
         <h2 class="my-4">Modifica Appartamento</h2>
-        <form class="form-group" action="{{ $data['action']}}" method="post">
+        <form id="form_appartamento" class="form-group" action="{{ $data['action']}}" method="post">
           @method('PUT')
           @csrf
           <input type="hidden" name="user_id" value="{{ $foundApartment->user_id}}">
@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
             <label for="address">Indirizzo</label>
-            <input type="text" name="address" class="form-control" value="{{ $foundApartment->address }}" placeholder="Inserisci l'indirizzo">
+            <input id="indirizzo" type="text" name="address" class="form-control" value="{{ $foundApartment->address }}" placeholder="Inserisci l'indirizzo">
           </div>
           <div class="form-group">
             <label for="description">Descrizione</label>
@@ -67,7 +67,17 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" class="form-control mt-5" value="Salva modifiche appartamento">
+            <input type="hidden" id="input_lat" name="latitude" value="">
+            <input type="hidden" id="input_lon" name="longitude" value="">
+          </div>
+
+          {{-- <div class="form-group">
+            <label for="image_url">Immagine Text Provvisoria</label>
+            <input type="text" name="image_url" class="form-control" placeholder="Immagine Text Provvisoria">
+          </div> --}}
+
+          <div class="form-group">
+            <input id="submit_form_appartamento" type="submit" class="form-control mt-5" value="Salva modifiche appartamento">
           </div>
         </form>
       </div>
@@ -76,4 +86,17 @@
 
 
 
+@endsection
+
+
+@section('scripts')
+  <script>
+
+  var tomtom = tomtom;
+
+  console.log(tomtom);
+  </script>
+
+
+  <script src="{{ asset('js/findLatLon.js') }}" charset="utf-8"></script>
 @endsection

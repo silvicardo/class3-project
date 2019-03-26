@@ -6,7 +6,7 @@
       <div class="col-12">
         @include('partials.error')
         <h2 class="my-4">Aggiungi Nuovo Appartamento</h2>
-        <form class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
+        <form id="form_appartamento" class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
           @csrf
           <div class="form-group">
             <label for="title">Titolo</label>
@@ -30,7 +30,7 @@
           </div>
           <div class="form-group">
             <label for="address">Indirizzo</label>
-            <input type="text" name="address" class="form-control" placeholder="Inserisci l'indirizzo">
+            <input id="indirizzo" type="text" name="address" class="form-control" placeholder="Inserisci l'indirizzo">
           </div>
           <div class="form-group">
             <label for="description">Descrizione</label>
@@ -64,10 +64,28 @@
           </div>
 
           <div class="form-group">
-            <button type="submit" class="form-control mt-5">Salva Appartamento</button>
+            <input type="hidden" id="input_lat" name="latitude" value="">
+            <input type="hidden" id="input_lon" name="longitude" value="">
+          </div>
+
+
+          <div class="form-group">
+            <button id="submit_form_appartamento" type="submit" class="form-control mt-5">Salva Appartamento</button>
           </div>
         </form>
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <script>
+
+  var tomtom = tomtom;
+
+  console.log(tomtom);
+  </script>
+
+
+  <script src="{{ asset('js/findLatLon.js') }}" charset="utf-8"></script>
 @endsection

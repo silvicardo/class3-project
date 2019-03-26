@@ -26,9 +26,11 @@
 
     <link rel='stylesheet' type='text/css' href="{{ asset('sdk/map.css')}}">
 
-    @if ($nomePaginaCorrente === 'search')
-    {{-- <script type='text/javascript' src={{ asset('sdk/form.js')}}></script>
-    <script src="{{ asset('sdk/tomtom.min.js') }}"></script> --}}
+    @if ($nomePaginaCorrente === 'search'
+          || $nomePaginaCorrente === 'apartment.create'
+          || $nomePaginaCorrente === 'apartment.edit' )
+      <script type='text/javascript' src={{ asset('sdk/form.js')}}></script>
+      <script src="{{ asset('sdk/tomtom.min.js') }}"></script>
   @endif
 </head>
 <body>

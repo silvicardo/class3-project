@@ -1,29 +1,20 @@
 
 var $ = require("jquery");
-// var tomtom = require('./tomtom.min.js');
-import Handlebars from 'handlebars/dist/cjs/handlebars.js';
 
-// import {tomtom} from './tomtom.min.js';
 
 $(document).ready(function(){
 
-  console.log('search script');
+  console.log('latLon script');
 
   //*********PUNTATORI JQUERY********//
 
-  var latInput = $('#latParam');
-  var lonInput = $('#lonParam');
-  var limit = $('#limit');
-  var radius = $('#radius');
-  var geoBias = $('#geoBias');
 
   //**************VARIABILI***********//
 
-  var isAdvanced = false;
+
 
   //**************PRIMO AVVIO PAGINA***********//
 
-  avviaRicercaCon();//default città nella barra di ricerca e tipo ricerca non avanzata
 
   // Define your product name and version
   tomtom.setProductInfo('progettoClasse3', '2');
@@ -32,59 +23,30 @@ $(document).ready(function(){
 
   //**************LISTENERS***********//
 
-  $('#toggle_advanced').click(function(){
 
-    isAdvanced = !isAdvanced;
 
-    $('.filtriRicerca').toggleClass('d-none');
+  $('#submit_form_appartamento').click((event)=>{
+    event.preventDefault();
 
-  })
-
-  $('#go_search').click(()=>{
-
-    console.log('isAdvanced search = ', isAdvanced);
-
-    var options = getOptions();
+    var options = getOptions($('#indirizzo').val(),);
     console.log('options',options);
-      // debugger
+
     tomtom.geocode(options).go(function(responses){
-        console.log('geoce');
+
       var result = responses[0];
-          // debugger
-      var toDb = {
-        lat: result.position.lat,
-        lon: result.position.lon,
-        fullAddress: getResultAddress(result),
-        radius: 20
-      }
+      console.log(result);
 
-
-      //indirizzo trovato
-      console.log('toDb',toDb);
-
-      $.post('api/search-city', toDb, function(apartments){
-          console.log('ilJson', apartments);
-            stampaAppartamenti(apartments)
-      });
-
-      //qui va il filtraggio per raggio(di base 20Km)
-
-
-
+      //compilare gli input nascosti
+      $('#input_lat').val(result.position.lat);
+      $('#input_lon').val(result.position.lon);
+      debugger
+      $('#form_appartamento').submit();
 
     })
   });
 
-
-
-
   //**************FUNZIONI***********//
 
-function avviaRicercaCon(parametri = {citta_cercata: $('#citta_cercata').val()}, isAdvanced = false){
-
-
-
-  }
 
   function estraiDatiPerRicercaDallaPagina(){
 
@@ -143,7 +105,7 @@ function avviaRicercaCon(parametri = {citta_cercata: $('#citta_cercata').val()},
     return address.join(', ');
   }
 
-  function getOptions() {
+  function getOptions(indirizzo) {
     // var wrapper = $('#tomtom-example-inputsWrapper');
     // var inputs = wrapper.getElementsByTagName('input');
     // var options = {unwrapBbox: true};
@@ -158,7 +120,7 @@ function avviaRicercaCon(parametri = {citta_cercata: $('#citta_cercata').val()},
     var options = {
       language:  'it-IT',
       unwrapBbox: true,
-      query: $('#citta_cercata').val(),
+      query: indirizzo,
       limit: "1",
       radius: "0",
       // center: { lat: "39.0898543", lon: "1.6328772"},
