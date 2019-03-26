@@ -92,12 +92,12 @@ $(document).ready(function(){
     });
   }
 
-  async function richiediCoordinate(){
-    var risultati = await $.getJSON('https://api.tomtom.com/search/2/geocode/4 north 2nd street san jose.json?storeResult=true&countrySet=US&lat=37.337&lon=-121.89&topLeft=37.553%2C-122.453&btmRight=37.4%2C-122.55&language=it-IT&view=Unified&key=A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh');
-
-    console.log(risultati);
-
-  }
+  // async function richiediCoordinate(){
+  //   var risultati = await $.getJSON('https://api.tomtom.com/search/2/geocode/4 north 2nd street san jose.json?storeResult=true&countrySet=US&lat=37.337&lon=-121.89&topLeft=37.553%2C-122.453&btmRight=37.4%2C-122.55&language=it-IT&view=Unified&key=A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh');
+  //
+  //   console.log(risultati);
+  //
+  // }
 
   // function mostraMappaTomtom(tomtom){
   //   tomtom.setProductInfo('progettoClasse3', '2');
