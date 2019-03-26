@@ -1,0 +1,11 @@
+{
+  "name": "t.js",
+  "version": "0.0.0",
+  "description": "-",
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "readme": "-",
+  "_napaResolved": "git+https://bitbucket.tomtomgroup.com/scm/jssdk/t.js.git"
+}
