@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "rome@2.1.22",
+      "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk"
+    ]
+  ],
+  "_from": "rome@2.1.22",
+  "_id": "rome@2.1.22",
+  "_inBundle": false,
+  "_integrity": "sha1-S/JTGMwFIq6S3QkEcs56bgsfXgI=",
+  "_location": "/rome",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "rome@2.1.22",
+    "name": "rome",
+    "escapedName": "rome",
+    "rawSpec": "2.1.22",
+    "saveSpec": null,
+    "fetchSpec": "2.1.22"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/rome/-/rome-2.1.22.tgz",
+  "_spec": "2.1.22",
+  "_where": "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk",
+  "author": {
+    "name": "Nicolas Bevacqua",
+    "email": "hello@bevacqua.io",
+    "url": "http://ponyfoo.com"
+  },
+  "bugs": {
+    "url": "https://github.com/bevacqua/rome/issues"
+  },
+  "dependencies": {
+    "bullseye": "1.4.6",
+    "contra": "1.9.1",
+    "crossvent": "1.5.0",
+    "moment": "^2.8.2"
+  },
+  "description": "Customizable date (and time) picker. Opt-in UI, no jQuery!",
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "gulp": "^3.8.6",
+    "gulp-bump": "^0.1.8",
+    "gulp-clean": "^0.2.4",
+    "gulp-git": "^0.4.2",
+    "gulp-header": "^1.0.2",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-size": "^0.3.1",
+    "gulp-streamify": "0.0.5",
+    "gulp-stylus": "^1.0.0",
+    "gulp-uglify": "^0.3.0",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^0.6.8",
+    "lodash.assign": "^3.2.0",
+    "nib": "^1.0.3",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^3.2.3"
+  },
+  "homepage": "https://github.com/bevacqua/rome",
+  "license": "MIT",
+  "main": "src/rome.moment.js",
+  "name": "rome",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bevacqua/rome.git"
+  },
+  "version": "2.1.22"
+}

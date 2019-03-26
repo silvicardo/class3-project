@@ -1,3 +1,4 @@
+
 <nav class="nav_bar navbar navbar-expand-md navbar-light navbar-laravel">
   <div class="container">
     <div class="nav_bar_left">
@@ -5,7 +6,7 @@
         <img src="{{ asset('img/logo.png') }}" alt="">
       </a>
       {{-- controlliamo la rotta per non far proprio arrivare in pagina --}}
-      @if(Route::current()->getName() !== 'search')
+      @if($nomePaginaCorrente !== 'search')
         <form id="navbar_search" action="{{route('search')}}" class="search" method="POST">
           @csrf
           @method('POST')
@@ -65,7 +66,7 @@
               {{ __('I tuoi appartamenti') }}
               </a>
 
-              <a class="dropdown-item" href="{{route('owner.sponsor.create', Auth::User()->id)}}"
+              <a class="dropdown-item" href="{{route('owner.sponsor.create')}}"
               >
               {{ __('Sponsorizzazioni') }}
               </a>

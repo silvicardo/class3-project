@@ -11,7 +11,6 @@ $(document).ready(function(){
 
    $('#loading-braintree .progress-bar').css('width', '25%');
 
-
   //chiamo l'api del nostro sito per
   //ottenere il token che ci serve per
   //poter implementare il servizio di pagamento
