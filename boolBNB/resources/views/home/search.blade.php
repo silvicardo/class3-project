@@ -169,6 +169,7 @@
 
               clear();
               var options = getOptions();
+              console.log(options);
               if (!options) {
                 return true;
               }
@@ -363,6 +364,8 @@
                 lat: center[0],
                 lon: center[1]
               };
+
+              console.log(options);
               return options;
             }
 
