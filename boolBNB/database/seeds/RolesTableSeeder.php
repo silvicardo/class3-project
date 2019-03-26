@@ -15,13 +15,13 @@ class RolesTableSeeder extends Seeder
         //Creiamo i ruoli!
 
         $proprietario = new Role();
-        $proprietario->name         = 'proprietario';
+        $proprietario->name         = 'owner';//notnull - unique
         $proprietario->display_name = 'Utente Proprietario';
         $proprietario->description  = 'Utente che affitta appartamenti';
         $proprietario->save();
 
         $ospite = new Role();
-        $ospite->name         = 'ospite';
+        $ospite->name         = 'guest';
         $ospite->display_name = 'User Administrator';
         $ospite->description  = 'Utente ospite degli appartamenti';
         $ospite->save();

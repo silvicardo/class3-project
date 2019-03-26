@@ -1,0 +1,18 @@
+.sponsor {
+  @include flex;
+  width: 100%;
+  border: 1px solid $colorGrey;
+  border-radius: 5px;
+  margin-top: 50px;
+  .sponsortitle {
+    margin-bottom: 60px;
+    font-size: 40px;
+  }
+  label {
+    font-size: 18px;
+
+  }
+  .sponsorlabel {
+    margin-bottom: 30px;
+  }
+}

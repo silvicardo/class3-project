@@ -1,9 +1,12 @@
 .nav_bar {
   position: fixed;
-  z-index: 1;
+  //A causa del dropin di BrainTree
+  //mettiamo questo valore enorme
+  z-index: 999999;
   top: 0;
   left: 0;
   width: 100%;
+  border-bottom: 1px solid $colorGrey;
   background: white;
   .nav_bar_left {
     display: flex;
@@ -23,9 +26,7 @@
       box-shadow: 2px 2px 6px $colorGrey;
       border-radius: 5px;
       .search_img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex;
         height: 50px;
         width: 50px;
         cursor: pointer;
@@ -56,6 +57,13 @@
       a {
         border-bottom: 2px solid $colorGreyStrong;
       }
+    }
+  }
+  .logo_user {
+    img {
+      max-width: 35px;
+      max-height: 35px;
+      border-radius: 50%;
     }
   }
 }

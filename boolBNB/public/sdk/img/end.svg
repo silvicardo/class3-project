@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="route_marker_finish-51.79837,19.60319" x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" style="position: absolute; left: 408px; top: 341px;" class="routeWaypointMarkerNormal">
+
+	<g>
+		<path fill="#00B9D3" d="M15,29.2C7.1,29.2,0.8,22.9,0.8,15S7.1,0.8,15,0.8S29.2,7.1,29.2,15S22.9,29.2,15,29.2z" id="shapeBackground"></path>
+		<path fill="#005D73" d="M15,1.5c7.4,0,13.5,6.1,13.5,13.5S22.4,28.5,15,28.5S1.5,22.4,1.5,15S7.6,1.5,15,1.5 M15,0    C6.7,0,0,6.7,0,15c0,8.3,6.7,15,15,15c8.3,0,15-6.7,15-15C30,6.7,23.3,0,15,0L15,0z"></path>
+	</g>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<g>
+	<path fill="#FFFFFF" d="M8.8,9.1c-0.4,0-0.7,0.3-0.7,0.7v11.3h1.3V9.8C9.5,9.4,9.2,9.1,8.8,9.1z"></path>
+	<path fill="#FFFFFF" d="M21.5,9.1c-0.4,0-0.7,0.3-0.7,0.7v11.3h1.3V9.8C22.2,9.4,21.9,9.1,21.5,9.1z"></path>
+	<rect x="10.2" y="10.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="12.2" y="12.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="14.2" y="10.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="10.2" y="14.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="14.2" y="14.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="16.2" y="12.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="18.2" y="10.5" fill="#FFFFFF" width="2" height="2"></rect>
+	<rect x="18.2" y="14.5" fill="#FFFFFF" width="2" height="2"></rect>
+</g>
+</svg></svg>

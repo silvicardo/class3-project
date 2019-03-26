@@ -15,15 +15,15 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //recuperiamo i ruoli
-        $proprietario = Role::where('name', '=', 'proprietario')->first();
-        $ospite = Role::where('name', '=', 'ospite')->first();
+        $proprietario = Role::where('name', '=', 'owner')->first();
+        $ospite = Role::where('name', '=', 'guest')->first();
 
         //crezione proprietario
         $ownerTestUser = new User;
         $ownerTestUser->name = 'Proprietario';
         $ownerTestUser->email = 'proprietario@test.com';
         //password momentaneamente in chiaro per il seeder
-        $ownerTestUser->password = bcrypt('proprietario');
+        $ownerTestUser->password = \Hash::make('proprietario');;
         $ownerTestUser->save();
 
         //creazione user ospite
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         $guestTestUser->name = 'Ospite';
         $guestTestUser->email = 'ospite@test.com';
         //password momentaneamente in chiaro per il seeder
-        $guestTestUser->password = bcrypt('ospite1234');
+        $guestTestUser->password = \Hash::make('ospite1234');;
         $guestTestUser->save();
 
         //aggiunta ruolo agli utenti salvati

@@ -6,12 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Laravel\Cashier\Billable; //per le sponsorizzazioni
 
 class User extends Authenticatable
 {
     use Notifiable;
     use EntrustUserTrait; // add this trait to your user model
-
+    use Billable; //Billable Trait
     /**
      * The attributes that are mass assignable.
      *
@@ -57,12 +58,22 @@ class User extends Authenticatable
         return $this->hasMany('App\Reservation');
     }
 
+
+    //Andranno sostituite con le subscriptions
     //RELAZIONE UTENTI(MANY) <---> SPONSORIZZAZIONI(MANY)
     //Un utente ha molte sponsorizzazioni
     //un (tipo di) sponsorizzazione può avere molti utenti
-    public function sponshorships(){
-      return $this->belongsToMany('App\Sponsorship');
-    }
+    // public function sponshorships(){
+    //   return $this->belongsToMany('App\Sponsorship');
+    // }
 
+    //Relazioni Utenti(ONE)<-> MESSAGGI(MANY)
+    //un messsaggio puo' avere un mittente,quindi 1 solo proprietario
+    //un utente puo' avere tanti messaggi
+
+    public function messages()
+    {
+      return $this->hasMany('App\Message');
+    }
 
 }

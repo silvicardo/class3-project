@@ -19,8 +19,8 @@ class PermissionsTableSeeder extends Seeder
 
 
         //Recuperiamo i ruoli
-        $proprietario = Role::where('name', '=', 'proprietario')->first();
-        $ospite = Role::where('name', '=', 'ospite')->first();
+        $proprietario = Role::where('name', '=', 'owner')->first();
+        $ospite = Role::where('name', '=', 'guest')->first();
 
 
         //******PERMESSI APPARTAMENTI*****//
@@ -63,6 +63,22 @@ class PermissionsTableSeeder extends Seeder
         $manageSponshorship->description  = 'manage sponsorships'; // optional
         $manageSponshorship->save();
 
+        //******PERMESSI GUEST*****//
+        //Creare-cancellare
+        $manageGuest = new Permission();
+        $manageGuest->name         = 'manage-guest';
+        $manageGuest->display_name = 'Manage Guests'; // optional
+        $manageGuest->description  = 'manage guests'; // optional
+        $manageGuest->save();
+
+        //******PERMESSI OWNER*****//
+        //Creare-cancellare
+        $manageOwner = new Permission();
+        $manageOwner->name         = 'manage-owner';
+        $manageOwner->display_name = 'Manage Owners'; // optional
+        $manageOwner->description  = 'manage owners'; // optional
+        $manageOwner->save();
+
         //*********************************//
         //******PERMESSI PRORIETARIO*******//
         //*********************************//
@@ -72,13 +88,14 @@ class PermissionsTableSeeder extends Seeder
                                           $editApartment,
                                           $deleteApartment,
                                           $manageSponshorship,
-                                          $searchApartment
+                                          $searchApartment,
+                                          $manageOwner
                                         ]);
 
       //****************************//
       //******PERMESSI OSPITE*******//
       //****************************//
-      $ospite->attachPermission([$viewApartment, $searchApartment]);
+      $ospite->attachPermission([$viewApartment, $searchApartment, $manageGuest]);
 
 
     }

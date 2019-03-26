@@ -1,0 +1,77 @@
+{
+  "_args": [
+    [
+      "leaflet.heat@0.2.0",
+      "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk"
+    ]
+  ],
+  "_from": "leaflet.heat@0.2.0",
+  "_id": "leaflet.heat@0.2.0",
+  "_inBundle": false,
+  "_integrity": "sha1-EJ2M9Ybwre5B8Fr/Ax4np3/swik=",
+  "_location": "/leaflet.heat",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "leaflet.heat@0.2.0",
+    "name": "leaflet.heat",
+    "escapedName": "leaflet.heat",
+    "rawSpec": "0.2.0",
+    "saveSpec": null,
+    "fetchSpec": "0.2.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/leaflet.heat/-/leaflet.heat-0.2.0.tgz",
+  "_spec": "0.2.0",
+  "_where": "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk",
+  "author": {
+    "name": "Vladimir Agafonkin"
+  },
+  "bugs": {
+    "url": "https://github.com/Leaflet/Leaflet.heat/issues"
+  },
+  "description": "A tiny and fast Leaflet heatmap plugin.",
+  "devDependencies": {
+    "simpleheat": "~0.2.0",
+    "uglify-js": "~2.4.15"
+  },
+  "homepage": "https://github.com/Leaflet/Leaflet.heat",
+  "jshintConfig": {
+    "quotmark": "single",
+    "globals": {
+      "L": true,
+      "simpleheat": true
+    },
+    "trailing": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "noempty": true,
+    "nonbsp": true,
+    "undef": true,
+    "unused": true,
+    "browser": true
+  },
+  "keywords": [
+    "heatmap",
+    "canvas",
+    "visualization",
+    "gis",
+    "leaflet",
+    "plugin"
+  ],
+  "main": "dist/leaflet-heat.js",
+  "name": "leaflet.heat",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Leaflet/Leaflet.heat.git"
+  },
+  "scripts": {
+    "prepublish": "uglifyjs node_modules/simpleheat/simpleheat.js src/HeatLayer.js -c -m --comments /Vladimir/ -o dist/leaflet-heat.js",
+    "test": "jshint src"
+  },
+  "version": "0.2.0"
+}
