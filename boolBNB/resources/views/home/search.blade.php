@@ -47,21 +47,22 @@
         <body class='use-all-space'>
           <div class='flex-horizontal use-all-space'>
             <div id='tomtom-example-inputs' class='sidepanel'>
-              <h4>Geocode parameters</h4>
+              {{-- <h4>Geocode parameters</h4> --}}
               <form onsubmit='return false'>
                 <div id='tomtom-example-inputsWrapper' class='scrollbar'>
-                  <div id='langParam' class='sidepanel-input-group'>
+                  {{-- <div id='langParam' class='sidepanel-input-group'>
                     <label>Language</label>
-                  </div>
+                  </div> --}}
 
                   <div class='sidepanel-input-group'>
-                    <input type='text' id='query' name='query' placeholder='Query string' pattern='.+'
+                    {{-- <input id="citta_cercata" type="text" class="form-control" placeholder="Cerca città" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4" value="{{ $citta_cercata }}"> --}}
+                    <input type='text' id='citta_cercata query' name='query' value="{{ $citta_cercata }}" placeholder='Cerca città' pattern='.+'
                     title='this field is required' required>
-                    <label for='query'>Query</label>
+                    <label for='query'>Città</label>
                   </div>
                   <div class='sidepanel-input-group'>
-                    <input type='range' id='limit' name='limit' min='1' max='100' value='10'/>
-                    <label id='limitAmount' for='limit'>Limit (10)</label>
+                    <input type='range' id='limit' name='limit' min='1' max='100' value='1'/>
+                    {{-- <label id='limitAmount' for='limit'>Limit (10)</label> --}}
                   </div>
                   <fieldset id="geoBiasPanel">
                     <legend>Geo Bias:
@@ -109,8 +110,8 @@
 
 
             var languageSelector = tomtom.languageSelector.getHtmlElement(new tomtom.localeService(), 'search');
-            var langParam = document.getElementById('langParam');
-            langParam.insertBefore(languageSelector, langParam.firstChild);
+            // var langParam = document.getElementById('langParam');
+            // langParam.insertBefore(languageSelector, langParam.firstChild);
 
 
             // We will show results here
@@ -121,16 +122,16 @@
             var markersLayer = L.tomTomMarkersLayer().addTo(map);
             var latInput = document.getElementById('latParam');
             var lonInput = document.getElementById('lonParam');
-            var limit = document.getElementById('limit');
+            //var limit = document.getElementById('limit');
             var radius = document.getElementById('radius');
             var geoBias = document.getElementById('geoBias');
 
             function handleRangeUpdate() {
               document.getElementById('radiusLabel').innerHTML = 'Radius (' + radius.value + ' m)';
-              document.getElementById('limitAmount').innerHTML = 'Limit (' + limit.value + ')';
+              //document.getElementById('limitAmount').innerHTML = 'Limit (' + limit.value + ')';
             }
 
-            limit.onchange = handleRangeUpdate;
+            //limit.onchange = handleRangeUpdate;
             radius.onchange = handleRangeUpdate;
 
             function enableGeoBiasCheckbox() {
@@ -163,7 +164,10 @@
 
 
             // Submit button click handler
-            document.getElementById('tomtom-example-submit').onclick = function() {
+
+             document.getElementById('tomtom-example-submit').onclick = function() {
+
+
               clear();
               var options = getOptions();
               if (!options) {
@@ -245,7 +249,7 @@
                 title: 'Search Center\nLatitude: ' + currentLocation[0] +
                 '\nLongitude: ' + currentLocation[1],
                 icon: tomtom.L.icon({
-                  iconUrl: '<your-tomtom-sdk-base-path>/../img/center_marker.svg',
+                  iconUrl: '/sdk/../img/center_marker.svg',
                   iconSize: [24, 24],
                   iconAnchor: [12, 12]
                 })
