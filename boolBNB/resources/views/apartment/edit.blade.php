@@ -44,11 +44,11 @@
             <input type="number" name="daily_price" class="form-control" value="{{ $foundApartment->daily_price }}" placeholder="Inserisci prezzo giornaliero">
           </div>
           <label for="">Scegli gli optional del tuo appartamento</label>
-          
+
           @foreach($data['availableOptionals'] as $optional)
           <div class="form-check  mb-3">
-            <input class="form-check-input" type="checkbox" name="{{ $optional->name }}"
-            value="{{ $optional->id }}" {{ (in_array($optional->id, $foundApartment->optionals()->get()->toArray())) ? 'checked="checked"' : '' }} >
+            <input class="form-check-input" type="checkbox" name="optionals[]"
+            value="{{ $optional->id }}" {{ (in_array($optional->id, $data['apartmentOptionalsIds'])) ? 'checked' : '' }} >
 
             <label class="form-check-label" for="defaultCheck1">
               {{ $optional->name }}

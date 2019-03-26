@@ -43,53 +43,15 @@
 
 
           <label for="">Scegli gli optional del tuo appartamento</label>
+          @foreach ($data['availableOptionals'] as $optional)
+            <div class="form-check mb-3">
+              <input name="optionals[]" class="form-check-input" value="{{$optional->id}}" type="checkbox" >
 
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Wifi
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-            <label class="form-check-label" for="defaultCheck1">
-              Posto macchina
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Piscina
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Portineria
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Vista mare
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Sauna
-            </label>
-          </div>
+              <label class="form-check-label" for="defaultCheck1">
+                {{$optional->name}}
+              </label>
+            </div>
+          @endforeach
 
           {{-- <div class="form-group">
             <label for="image_url">Scegli le immagini del tuo appartamento</label>
@@ -102,7 +64,7 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" class="form-control mt-5" value="Salva Appartamento">
+            <button type="submit" class="form-control mt-5">Salva Appartamento</button>
           </div>
         </form>
       </div>

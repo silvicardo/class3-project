@@ -51,18 +51,14 @@ class SubscriptionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($apartmentId)
+    public function create(Apartment $apartment = null)
     {
-        //Il controllo che sia owner sarà fatto poi sul costruttore
-        $owner = Auth::user();
-
-        //Da controllare che l'apartment id sia veramente dello user
-
-        $apartment = Apartment::find($apartmentId);
-        // dd($apartment);
-        $plans = Plan::all();
-
-        return view('admin.owner.sponsor', compact('owner','plans','apartment'));
+        return view('admin.owner.sponsor',
+        [
+          'owner' => $this->currentUser,
+          'plans' =>  Plan::all(),
+          'selectedApartment' => $apartment
+        ]);
     }
 
     /**

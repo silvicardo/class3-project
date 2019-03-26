@@ -23,7 +23,7 @@ class ApartmentsTableSeeder extends Seeder
       //per generare un indirizzo verosimile
       //per ora popolo con indirizzo e latitudine+longitudine non relazionati
 
-      for ($i=0; $i < 30; $i++) {
+      for ($i=0; $i < 5; $i++) {
 
         $newApartment = new Apartment;
         $newApartment->user_id = User::find(1)->id;//1 proprietario , 2 ospite
