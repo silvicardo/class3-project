@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('user_feedback')
+
+  @if(!empty($error))
+    <div class="container alert alert-danger " role="alert">
+        {{$error}}
+    </div>
+  @endif
+
+  @if(!empty($success))
+    <div class="container alert alert-success " role="alert">
+        {{$success}}
+    </div>
+  @endif
+@endsection
+
 @section('content')
 
 
