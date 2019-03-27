@@ -39,9 +39,7 @@ $(document).ready(function(){
 
   console.log('isAdvanced search = ', isAdvanced);
 
-  const responses  = await tomtom.geocode(createOptions()).go(function(responses){
-
-  });
+  const responses  = await tomtom.geocode(createOptions()).go();
 
   const { lat, lon } = responses[0].position;
 
