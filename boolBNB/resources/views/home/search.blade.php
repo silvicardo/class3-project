@@ -83,5 +83,9 @@
   </script>
 
 
+<<<<<<< HEAD
   <script src="{{ asset('js/search.js') }}" charset="utf-8"></script> 
+=======
+  <script src="{{ asset('js/search.js') }}" charset="utf-8"></script>
+>>>>>>> 99ffcac4fc11635282c845909b2ca4678d103b38
 @endsection
