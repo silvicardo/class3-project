@@ -27,7 +27,7 @@
       <div class="container_profile">
         <div class="container_profile_edit">
           <h2 class="mb-4">Ciao, {{ $guest->name }}</h2>
-          <a href="{{ route('guest.edit', $guest->id )}}">Modifica profilo</a>
+          <a href="{{ route('guest.edit')}}">Modifica profilo</a>
           <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
           <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
         </div>

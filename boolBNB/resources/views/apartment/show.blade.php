@@ -1,7 +1,31 @@
 @extends('layouts.app')
+{{-- PRIMA
+-layout condizione inserire rotta nell’or
+-creazione del file in resources/js/
+-webpack
+-sudo run watch
+- PRENDERE IL VALORE DELL INDIRIZZO DALLA PAGINA
+- CREARE OGGETTO OPZIONI
+{
+     language:  ‘it-IT’,
+     unwrapBbox: true,
+     query: $(‘#INDIRIZZO’).val(),
+     limit: “1”,
+     radius: “0",
+     geoBias: “on”,
+   }
+-PASSARE OPTIONS ALLA FUNZIONE PRINCIPALE E MANEGGIARE
+L’ARRAY RESPONSES CHE RITORNA
+$.getJSON(‘url’, options).then(function(sondata){
+});
+tomtom.geocode(opzioni).go(function(responses){
+    responses[0]
+    //IL VOSTRO CODICE
+    //far partire in quella posizione e metterla in un div
+ });
+in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom --}}
 
 @section('content')
-
 <div class="container">
   <div class="showcardcontainer mt-5">
     <div class="card" style="width: 40rem;">
@@ -13,7 +37,13 @@
        <span><strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}</span><br>
        <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
        <span><strong>Metri quadrati:</strong> {{ $foundApartment->mq }}</span><br>
-       <span><strong>Indirizzo:</strong> {{ $foundApartment->address }}</span><br>
+       <span id="indirizzo">{{ $foundApartment->address }}</span>
+       <div id="latitudine">
+          {{ $foundApartment->latitude}}
+       </div>
+       <div id="longitudine">
+          {{ $foundApartment->longitude}}
+       </div>
 
        <hr>
        @php
@@ -49,13 +79,28 @@
            </div>
            <button type="submit" class="btn btn-primary">Invia</button>
          </form>
-      @endif
-     </div>
 
+      @endif
+
+     </div>
+     <div class='use-all-space'>
+        <div class='flex-horizontal use-all-space'>
+           <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
+
+        </div>
+
+     </div>
     </div>
+
   </div>
 
 </div>
 
+
+@endsection
+@section('scripts')
+  <script>var tomtom = tomtom;</script>
+
+  <script src="{{ asset('js/show.js') }}" charset="utf-8"></script>
 
 @endsection
