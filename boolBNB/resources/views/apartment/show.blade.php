@@ -71,9 +71,11 @@
 
 </div>
 
+
 @endsection
 @section('scripts')
   <script>var tomtom = tomtom;</script>
 
   <script src="{{ asset('js/show.js') }}" charset="utf-8"></script>
+
 @endsection

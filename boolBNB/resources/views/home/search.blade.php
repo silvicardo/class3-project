@@ -79,8 +79,6 @@
 @section('scripts')
   <script>
 
-
-
   var tomtom = tomtom;
   </script>
 
