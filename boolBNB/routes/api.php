@@ -28,7 +28,6 @@ Route::middleware('api.auth')->namespace('Api')->group(function() {
     // Route::post('/qualcosa/{id}/delete', 'QualcosaController@destroy');
     Route::get('/braintree/token', 'BraintreeTokenController@token');
 
-
 });
 
 //rotte api AUTENTICATE

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Subscription;
+use Illuminate\Support\Facades\Hash;
 
 class OwnerController extends Controller
 {
@@ -86,5 +87,31 @@ class OwnerController extends Controller
 
         //da fare passare tipi di Sponsor//
         return view('admin.owner.sponsor', ['currentUser' => $this->currentUser, 'allSponsors' => Subscription::all()]);
+    }
+
+    public function updatePassword(Request $request){
+
+      $data =$request->all();
+      //$this->currentUser->Password
+
+      //$oldPassword = Hash::make($data['old_password']);
+      $this->validate($request, ['old_password' => 'required', 'new_password' => 'required|confirmed|min:8', 'new_password_confirmation' => 'required|min:8']);
+      if (Hash::check($data['old_password'], Auth::user()->password)) {
+        //dd('vecchia password corretta');
+           User::find(Auth::id())->fill([
+            'password' => Hash::make($data['new_password'])
+            ])->save();
+
+           //$request->session()->flash('success', 'Password changed');
+
+            return redirect()->route('owner.show', ['success' => 'Cambio password avvenuto con successo']);
+
+        } else {
+          //dd('vecchia password sbagliata');
+            //$request->session()->flash('error', 'Password does not match');
+            return view('admin.owner.edit', ['error' => 'La vecchia password non è corretta']);
+        }
+
+
     }
 }
