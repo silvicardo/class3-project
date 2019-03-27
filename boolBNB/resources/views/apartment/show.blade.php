@@ -1,4 +1,29 @@
 @extends('layouts.app')
+{{-- PRIMA
+-layout condizione inserire rotta nell’or
+-creazione del file in resources/js/
+-webpack
+-sudo run watch
+- PRENDERE IL VALORE DELL INDIRIZZO DALLA PAGINA
+- CREARE OGGETTO OPZIONI
+{
+     language:  ‘it-IT’,
+     unwrapBbox: true,
+     query: $(‘#INDIRIZZO’).val(),
+     limit: “1”,
+     radius: “0",
+     geoBias: “on”,
+   }
+-PASSARE OPTIONS ALLA FUNZIONE PRINCIPALE E MANEGGIARE
+L’ARRAY RESPONSES CHE RITORNA
+$.getJSON(‘url’, options).then(function(sondata){
+});
+tomtom.geocode(opzioni).go(function(responses){
+    responses[0]
+    //IL VOSTRO CODICE
+    //far partire in quella posizione e metterla in un div
+ });
+in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom --}}
 
 @section('content')
 
