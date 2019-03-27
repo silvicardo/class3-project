@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('user_feedback')
 
   @if(!empty($error))
@@ -87,3 +88,4 @@ $(document).ready(function(){
 </script>
 
 @endsection
+
