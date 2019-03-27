@@ -296,14 +296,14 @@
             */
             map.on('dragend', function() {
               var center = map.getCenter();
-              latInput.value = center.lat.toFixed(7);
-              lonInput.value = center.lng.toFixed(7);
+              latInput.value = center.lat.toFixed(21);
+              lonInput.value = center.lng.toFixed(21);
             });
 
             map.on('zoomend', function() {
               var center = map.getCenter();
-              latInput.value = center.lat.toFixed(7);
-              lonInput.value = center.lng.toFixed(7);
+              latInput.value = center.lat.toFixed(21);
+              lonInput.value = center.lng.toFixed(21);
             });
 
             function getInputLatLng() {
@@ -444,5 +444,5 @@
 @section('scripts')
 
 
-  <script src="{{ asset('js/search.js') }}" charset="utf-8"></script>
+  {{-- <script src="{{ asset('js/search.js') }}" charset="utf-8"></script> --}}
 @endsection
