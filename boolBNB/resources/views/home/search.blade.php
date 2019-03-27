@@ -83,5 +83,5 @@
   </script>
 
 
-  <script src="{{ asset('js/search.js') }}" charset="utf-8"></script>
+  {{-- <script src="{{ asset('js/search.js') }}" charset="utf-8"></script> --}}
 @endsection
