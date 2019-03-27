@@ -79,9 +79,6 @@
 @section('scripts')
   <script>
 
-
-
-  var ciao = 'eccomi';
   var tomtom = tomtom;
   </script>
 
