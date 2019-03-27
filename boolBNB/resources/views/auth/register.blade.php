@@ -28,9 +28,9 @@
                         <div class="form-group row">
                           <label class="col-md-4 col-form-label text-md-right" for="">Seleziona</label>
                           <div class="col-md-6">
-                            <select class="form-control" id="">
-                              <option>Proprietario</option>
-                              <option>Ospite</option>
+                            <select name='role' value='2' class="form-control" id="">
+                              <option value='2'>Ospite</option>
+                              <option value='1'>Proprietario</option>
                             </select>
                           </div>
                         </div>
