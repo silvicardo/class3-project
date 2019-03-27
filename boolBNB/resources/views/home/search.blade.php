@@ -81,7 +81,6 @@
 
 
 
-  var ciao = 'eccomi';
   var tomtom = tomtom;
   </script>
 
