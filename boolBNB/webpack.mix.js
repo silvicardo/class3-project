@@ -16,7 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
   .js('resources/js/search.js', 'public/js/search.js')
   .js('resources/js/navbarSearch.js', 'public/js/navbarSearch.js')
    .js('resources/js/findLatLon.js','public/js/findLatLon.js')
-   // .js('resources/js/form.js', 'sdk/form.js')
    .sass('resources/sass/app.scss', 'public/css');
 
 
