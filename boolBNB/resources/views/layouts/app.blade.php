@@ -28,8 +28,7 @@
 
     @if ($nomePaginaCorrente === 'search'
           || $nomePaginaCorrente === 'apartment.create'
-          || $nomePaginaCorrente === 'apartment.edit'
-          || $nomePaginaCorrente === 'apartment.show' )
+          || $nomePaginaCorrente === 'apartment.edit' )
       <script type='text/javascript' src={{ asset('sdk/form.js')}}></script>
       <script src="{{ asset('sdk/tomtom.min.js') }}"></script>
   @endif
