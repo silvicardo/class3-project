@@ -54,48 +54,26 @@
            </div>
            <button type="submit" class="btn btn-primary">Invia</button>
          </form>
-      @endif
-     </div>
 
+      @endif
+
+     </div>
+     <div class='use-all-space'>
+        <div class='flex-horizontal use-all-space'>
+           <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
+
+        </div>
+
+     </div>
     </div>
+
   </div>
 
 </div>
 
-<body class='use-all-space'>
-         <div class='flex-horizontal use-all-space'>
-
-           <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
-         </div>
-          <script     src="http://code.jquery.com/jquery-3.3.1.min.js"     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="     crossorigin="anonymous"></script>
-         <script>
-         (function(tomtom) {
-           // // Define your product name and version
-           // tomtom.setProductInfo('progettoClasse3', '2');
-           // // Setting TomTom keys
-           // tomtom.searchKey('A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh');
-           // Creating map
-          
-         })(tomtom, window);
-         </script>
-       </body>
-
-
-
-
-
- </div>
-
-
 @endsection
 @section('scripts')
-  <script>
-
-
-
-  var tomtom = tomtom;
-  </script>
-
+  <script>var tomtom = tomtom;</script>
 
   <script src="{{ asset('js/show.js') }}" charset="utf-8"></script>
 @endsection
