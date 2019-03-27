@@ -6,7 +6,7 @@
       <div class="col-12">
         @include('partials.error')
         <h2 class="my-4">Aggiungi Nuovo Appartamento</h2>
-        <form class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
+        <form id="form_appartamento" class="form-group" action="{{$data['action']}}" method="{{$data['method']}}">
           @csrf
           <div class="form-group">
             <label for="title">Titolo</label>
@@ -30,7 +30,7 @@
           </div>
           <div class="form-group">
             <label for="address">Indirizzo</label>
-            <input type="text" name="address" class="form-control" placeholder="Inserisci l'indirizzo">
+            <input id="indirizzo" type="text" name="address" class="form-control" placeholder="Inserisci l'indirizzo">
           </div>
           <div class="form-group">
             <label for="description">Descrizione</label>
@@ -43,53 +43,15 @@
 
 
           <label for="">Scegli gli optional del tuo appartamento</label>
+          @foreach ($data['availableOptionals'] as $optional)
+            <div class="form-check mb-3">
+              <input name="optionals[]" class="form-check-input" value="{{$optional->id}}" type="checkbox" >
 
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Wifi
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-            <label class="form-check-label" for="defaultCheck1">
-              Posto macchina
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Piscina
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Portineria
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Vista mare
-            </label>
-          </div>
-
-          <div class="form-check mb-3">
-            <input name="optional" class="form-check-input" type="checkbox" value="">
-
-            <label class="form-check-label" for="defaultCheck1">
-              Sauna
-            </label>
-          </div>
+              <label class="form-check-label" for="defaultCheck1">
+                {{$optional->name}}
+              </label>
+            </div>
+          @endforeach
 
           {{-- <div class="form-group">
             <label for="image_url">Scegli le immagini del tuo appartamento</label>
@@ -102,10 +64,28 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" class="form-control mt-5" value="Salva Appartamento">
+            <input type="hidden" id="input_lat" name="latitude" value="">
+            <input type="hidden" id="input_lon" name="longitude" value="">
+          </div>
+
+
+          <div class="form-group">
+            <button id="submit_form_appartamento" type="submit" class="form-control mt-5">Salva Appartamento</button>
           </div>
         </form>
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <script>
+
+  var tomtom = tomtom;
+
+  console.log(tomtom);
+  </script>
+
+
+  <script src="{{ asset('js/findLatLon.js') }}" charset="utf-8"></script>
 @endsection

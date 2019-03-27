@@ -47,75 +47,35 @@ class GuestController extends Controller
 
       }
 
-
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
     public function show()
     {
-        $guest = $this->guest;
-        /*$userApartments = null;
-        if (count($guest->apartments) > 0)
-        {
-          $userApartments = $guest->apartments;
-        }*/
-        return view('admin.guest.dashboard', compact('guest'));
+
+        return view('admin.guest.dashboard',  ['guest' => $this->guest]);
 
     }
 
     public function profile(){
 
-
-
       return view('admin.guest.profile', ['guest' => $this->guest]);
 
     }
 
-
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit()
     {
 
         return view('admin.guest.edit', ['guest' => $this->guest]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request)
     {
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy()
     {
-
         $this->guest->delete();
 
-        return redirect()->route('admin.guest.dashboard');
+        return redirect()->route('guest.show');
     }
 }

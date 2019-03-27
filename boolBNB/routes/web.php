@@ -44,9 +44,9 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::get('/edit', 'OwnerController@edit')->name('edit');
   Route::delete('/delete', 'OwnerController@destroy')->name('destroy');
   Route::get('/profile', 'OwnerController@profile')->name('profile');
-  Route::get('/{apartmentId}/sponsor', 'SubscriptionsController@create')->name('sponsor.create');
-  Route::get('/sponsor', 'OwnerController@sponsor')->name('sponsor.newfromnav');
+  Route::get('/sponsor/{apartment?}', 'SubscriptionsController@create')->name('sponsor.create');
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
+  Route::put('/update-password', 'OwnerController@updatePassword')->name('updatePassword');
 
 });
 

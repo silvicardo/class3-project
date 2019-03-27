@@ -26,7 +26,7 @@
       <div class="container_profile">
         <div class="container_profile_edit">
           <h2 class="mb-4">Ciao,{{ $currentUser->name }}</h2>
-          <a href="{{ route('owner.edit', $currentUser->id) }}">Modifica profilo</a>
+          <a href="{{ route('owner.edit') }}">Modifica profilo</a>
           <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
           <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
         </div>

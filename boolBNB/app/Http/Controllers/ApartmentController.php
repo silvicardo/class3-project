@@ -79,6 +79,7 @@ class ApartmentController extends Controller
       //return una view che dica che non sei autorizzato(403 FORBIDDEN)
 
       $data = [
+        'availableOptionals' => Optional::all(),
         'action' => route('apartment.store'),
         'method' => 'POST',
       ];
@@ -99,28 +100,33 @@ class ApartmentController extends Controller
     public function store(Request $request, Faker $faker){
 
         $data = $request->all();
-
         //validazione dei dati da fare
 
         $newApartment = new Apartment;
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
         //per ora dato fake per lat e lon
-        $newApartment->latitude = $faker->latitude;
-        $newApartment->longitude = $faker->longitude;
-
+        $newApartment->latitude = $data['latitude'];
+        $newApartment->longitude = $data['longitude'];
         $newApartment->save();
+        $newApartment->optionals()->sync($data['optionals']);
 
-
-        return redirect()->route('owner.show', Auth::user()->id);
+        return redirect()->route('owner.show');
     }
 
     public function edit($apartmentId){
 
       $foundApartment = Apartment::find($apartmentId);
 
+      $apartmentOptionals = $foundApartment->optionals()->get()->toArray();
+      $optionalsIds = [];
+      foreach ($apartmentOptionals as $optional) {
+        $optionalsIds[] = $optional['id'];
+      }
+
       $data = [
         'availableOptionals' => Optional::all(),
+        'apartmentOptionalsIds'=> $optionalsIds,
         'action' => route('apartment.update', $apartmentId),
         'method' => 'PUT',
       ];
@@ -138,18 +144,22 @@ class ApartmentController extends Controller
 
       //aggiorniamo l'appartamento arrivato dal form di rimande dalla rotta edit
       $apartment->update($data);
+      $apartment->latitude = $data['latitude'];
+      $apartment->longitude = $data['longitude'];
 
       //salviamo il dato aggiornato
       $apartment->save();
+      $apartment->optionals()->sync($data['optionals']);
+      $apartment->save();
 
       //rimandiamo alla show
-      return redirect()->route('owner.show', Auth::user()->id);
+      return redirect()->route('owner.show');
     }
 
     public function destroy($apartmentId){
 
       $foundApartment = Apartment::find($apartmentId);
-
+      $foundApartment->optionals()->detach();
       //if foundApartment non è null
 
       $foundApartment->delete();
@@ -166,7 +176,7 @@ class ApartmentController extends Controller
       //che interrogherà il database e fornirà
       //gli appartamenti di quell'utente aggiornati al netto della cancellazione
       // return redirect()->route('admin.owner.index');
-       return redirect()->route('apartment.index');
+       return redirect()->route('owner.show');
 
     }
 }

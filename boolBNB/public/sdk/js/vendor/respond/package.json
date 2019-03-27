@@ -1,0 +1,61 @@
+{
+  "_args": [
+    [
+      "respond@0.9.0",
+      "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk"
+    ]
+  ],
+  "_from": "respond@0.9.0",
+  "_id": "respond@0.9.0",
+  "_inBundle": false,
+  "_integrity": "sha1-/Ywpjv4Ds7t/T8TLWN3X80tRzWg=",
+  "_location": "/respond",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "respond@0.9.0",
+    "name": "respond",
+    "escapedName": "respond",
+    "rawSpec": "0.9.0",
+    "saveSpec": null,
+    "fetchSpec": "0.9.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/respond/-/respond-0.9.0.tgz",
+  "_spec": "0.9.0",
+  "_where": "/home/ubuntu/jenkins/workspace/rp_start_release_npm/examples-jssdk",
+  "author": {
+    "name": "Shane Gadsby"
+  },
+  "bugs": {
+    "url": "https://github.com/schme16/node-respond/issues"
+  },
+  "description": "respond is an auto-responding Async CLI/CMD wrapper for NodeJS with a syntax based on ",
+  "gitHead": "3a5089cd9b5a28d1b3e595eed1389f998c544434",
+  "homepage": "https://github.com/schme16/node-respond#readme",
+  "keywords": [
+    "node",
+    "nodejs",
+    "suppose",
+    "respond",
+    "child_proccess",
+    "CLI",
+    "CMD",
+    "async",
+    "wrapper"
+  ],
+  "license": "MIT",
+  "main": "main.js",
+  "name": "respond",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schme16/node-respond.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.9.0"
+}
