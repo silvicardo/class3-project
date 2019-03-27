@@ -13,6 +13,12 @@
        <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
        <span><strong>Metri quadrati:</strong> {{ $foundApartment->mq }}</span><br>
        <span id="indirizzo">{{ $foundApartment->address }}</span>
+       <div id="latitudine">
+          {{ $foundApartment->latitude}}
+       </div>
+       <div id="longitudine">
+          {{ $foundApartment->longitude}}
+       </div>
 
        <hr>
        @php
@@ -73,6 +79,7 @@
              key: 'A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh',
              source: 'vector',
              basePath: '/sdk',
+             zoom: 16
            });
            // We will show results here
            var resultsList = tomtom.resultsList()
@@ -83,13 +90,14 @@
              var options = {
                language:  'it-IT',
                unwrapBbox: true,
-               query: 'viale alessandro volta 21 Empoli',
-                //$('#indirizzo').html(),
+               query: $('#indirizzo').html(),
+
                limit: "1",
                radius: "0",
-               center: { lat: "43.7131812", lon: "10.9359877"},
+               center: { lat: parseFloat($('#latitudine').html()), lon: parseFloat($('#longitudine').html())},
                geoBias: "on",
-               position: "10.9359877",
+               position: parseFloat($('#longitudine').html()),
+
              }
 
             console.log(options);
@@ -115,12 +123,14 @@
                  .addMarkers();
 
                  resultsList.clear().unfold();
-                 debugger
+
                  markersLayer.getMarkers().forEach(function(markerLayer, index) {
                    var point = geoResponses[index];
                    var geoResponseWrapper = prepareResultElement(point);
+
                    var viewport = point.viewport;
                    resultsList.addContent(geoResponseWrapper);
+
                    geoResponseWrapper.onclick = function() {
                      if (viewport) {
                        map.fitBounds([viewport.topLeftPoint, viewport.btmRightPoint]);
@@ -130,7 +140,18 @@
                      markerLayer.openPopup();
                    };
                  });
-                 drawSearchCenterMarker();
+                 // var center = getInputLatLng();
+                 // var centerObj = {lat: center[0],
+                 //     lon: center[1]
+                 //   };
+                 //  console.log(center);
+                 //  debugger
+                 //  map.setView(center)
+
+
+                 // drawSearchCenterMarker();
+                 // debugger
+
                  map.fitBounds(markersLayer.getBounds());
                } else {
                  console.log('errore');
@@ -160,20 +181,22 @@
            * Draw search center position
            */
            function drawSearchCenterMarker() {
-             if (!geoBias.checked) {
-               return;
-             }
+
              var currentLocation = getInputLatLng();
+
              var markerOptions = {
-               title: 'Search Center\nLatitude: ' + currentLocation[0] +
-               '\nLongitude: ' + currentLocation[1],
+               title: 'Search Center\nLatitude: ' + 43.7131812 +
+               '\nLongitude: ' + 10.9359877,
                icon: tomtom.L.icon({
-                 iconUrl: '/sdk/../img/center_marker.svg',
+                 iconUrl: './center_marker.svg', //'/sdk/../img/center_marker.svg'
                  iconSize: [24, 24],
                  iconAnchor: [12, 12]
                })
+
              };
-             markersLayer.addLayer(tomtom.L.marker([currentLocation[0], currentLocation[1]], markerOptions)).addTo(map);
+             console.log(markerOptions);
+             markersLayer.addLayer(tomtom.L.marker([43.7131812, 10.9359877], markerOptions)).addTo(map);
+             debugger
            }
            /*
            * Get result distance from search center
@@ -213,6 +236,7 @@
            });
            map.on('zoomend', function() {
              var center = map.getCenter();
+             console.log(center);
              // latInput.value = center.lat.toFixed(7);
              // lonInput.value = center.lng.toFixed(7);
            });
