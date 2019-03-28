@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Subscription;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class OwnerController extends Controller
 {
@@ -71,6 +72,7 @@ class OwnerController extends Controller
 
     public function update(Request $request)
     {
+
       return redirect()->route('owner.show');
 
     }
@@ -104,7 +106,7 @@ class OwnerController extends Controller
 
            //$request->session()->flash('success', 'Password changed');
 
-            return redirect()->route('owner.show', ['success' => 'Cambio password avvenuto con successo']);
+            return redirect()->route('owner.profile', ['success' => 'Cambio password avvenuto con successo']);
 
         } else {
           //dd('vecchia password sbagliata');
@@ -113,5 +115,17 @@ class OwnerController extends Controller
         }
 
 
+    }
+
+
+    public function profilePictureUpdate(Request $request){
+
+      $data = $request->all();
+
+      $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_file']);
+      //dd($data['image_profile']);
+      Auth::user()->update($data);
+
+      return redirect()->route('owner.profile');
     }
 }

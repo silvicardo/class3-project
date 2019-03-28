@@ -11,7 +11,7 @@
                   @foreach($row as $allApartments)
                     <a href="{{route('apartment.show', $allApartments->id) }}">
                       <div class="card" style="width: 16rem;">
-                       <img class="card-img-top" src="{{ $allApartments->image_url}}" alt="Card image cap">
+                       <img class="card-img-top" src="{{ asset('storage/' . $apartment->image_url) }}" alt="Card image cap">
                        <div class="card-body">
                          <h5 class="card-title">Card title</h5>
                          <p class="card-text">{{ $allApartments->description}}</p>

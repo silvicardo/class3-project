@@ -47,6 +47,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::get('/sponsor/{apartment?}', 'SubscriptionsController@create')->name('sponsor.create');
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
   Route::put('/update-password', 'OwnerController@updatePassword')->name('updatePassword');
+  Route::put('/update-picture', 'OwnerController@profilePictureUpdate')->name('profilePictureUpdate');
 
 });
 
@@ -58,6 +59,8 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
   Route::get('/edit', 'GuestController@edit')->name('edit');
   Route::delete('/delete', 'GuestController@destroy')->name('destroy');
   Route::get('/profile', 'GuestController@profile')->name('profile');
+  Route::put('/update-password', 'GuestController@updatePassword')->name('updatePassword');
+  Route::put('/update-picture', 'GuestController@profilePictureUpdate')->name('profilePictureUpdate');
 
 });
 
