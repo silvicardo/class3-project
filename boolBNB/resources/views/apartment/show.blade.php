@@ -37,11 +37,13 @@ in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom 
        <span><strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}</span><br>
        <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
        <span><strong>Metri quadrati:</strong> {{ $foundApartment->mq }}</span><br>
-       <span id="indirizzo">{{ $foundApartment->address }}</span>
-       <div id="latitudine">
+       <span>
+         <strong>Indirizzo</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
+       </span>
+       <div class="d-none" id="latitudine">
           {{ $foundApartment->latitude}}
        </div>
-       <div id="longitudine">
+       <div class="d-none" id="longitudine">
           {{ $foundApartment->longitude}}
        </div>
 
@@ -83,7 +85,7 @@ in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom 
       @endif
 
      </div>
-     <div class='use-all-space'>
+     <div class='use-all-space my-5'>
         <div class='flex-horizontal use-all-space'>
            <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
 

@@ -1,4 +1,10 @@
 .jumbo {
+  .sponsor {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $colorGrey;
+    border-radius: 5px;
+  }
   & p:hover {
     text-decoration: none;
   }
