@@ -104,7 +104,7 @@ class OwnerController extends Controller
 
            //$request->session()->flash('success', 'Password changed');
 
-            return redirect()->route('owner.show', ['success' => 'Cambio password avvenuto con successo']);
+            return redirect()->route('owner.profile', ['success' => 'Cambio password avvenuto con successo']);
 
         } else {
           //dd('vecchia password sbagliata');

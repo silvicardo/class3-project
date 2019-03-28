@@ -58,6 +58,7 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
   Route::get('/edit', 'GuestController@edit')->name('edit');
   Route::delete('/delete', 'GuestController@destroy')->name('destroy');
   Route::get('/profile', 'GuestController@profile')->name('profile');
+  Route::put('/update-password', 'GuestController@updatePassword')->name('updatePassword');
 
 });
 
