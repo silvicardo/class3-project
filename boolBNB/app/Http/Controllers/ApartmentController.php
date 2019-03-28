@@ -62,6 +62,7 @@ class ApartmentController extends Controller
         // // Get the currently authenticated user...
         // $user = Auth::user();
         //dd($id);
+        
         $foundApartment = Apartment::find($apartmentId);
 
         return view('apartment.show', compact('foundApartment'));
