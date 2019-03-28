@@ -12,19 +12,17 @@
   <div class="row">
     <div class="col-sm-5">
       <div class="card d-flex flex-column align-items-center justify-content-center" style="width: 18rem;">
-        <div class="card_user d-flex flex-column align-items-center justify-content-center">
-          <img class="img_user card-img-top" src="{{ asset('storage/' . $currentUser->image_profile) }}" alt="Card image cap">
-          <form id="form_cambio_password" class="form-group" action="{{ route('owner.profilePictureUpdate') }}" method="post" enctype="multipart/form-data" >
-            @method('PUT')
-            @csrf
-            <div class="form-group my-4 ml-5">
-              <label for="image_file">Modifica immagine profilo</label>
-              <br>
-              <input type="file" name="image_file">
-            </div>
-            <button type="submit" class="ml-5 btn btn-primary">Carica Immagine</button>
-          </form>
-        </div>
+        <img class="img_user card-img-top" src="{{ asset('storage/' . $currentUser->image_profile) }}" alt="Card image cap">
+        <form id="form_cambio_password" class="form-group" action="{{ route('owner.profilePictureUpdate') }}" method="post" enctype="multipart/form-data" >
+          @method('PUT')
+          @csrf
+          <div class="form-group my-4 ml-5">
+            <label for="image_file">Modifica immagine profilo</label>
+            <br>
+            <input type="file" name="image_file">
+          </div>
+          <button type="submit" class="ml-5 btn btn-primary">Carica Immagine</button>
+        </form>
         <div class="card-body">
           <h5 class="card-title">User Name: {{ $currentUser->name }}</h5>
           <h6 class="card-title">Email: {{ $currentUser->email }}</h6>
