@@ -39,7 +39,7 @@ class OwnerController extends Controller
 
           $this->currentUser = Auth::user();
 
-          $this->currentUser->role = $this->currentUser->roles()->first()->name;
+          // $this->currentUser->role = $this->currentUser->roles()->first()->name;
 
 
           return $next($request);
