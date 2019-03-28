@@ -14,7 +14,7 @@
     <div class="col-sm-5">
       <div class="card" style="width: 18rem;">
         <div class="card_user">
-          <img class="img_user card-img-top" src="{{ asset('img/avatar1.png') }}" alt="Card image cap">
+          <img class="img_user card-img-top" src="{{ asset($guest->image_profile) }}" alt="Card image cap">
         </div>
         <div class="card-body">
           <h5 class="card-title">User Name: {{ $guest->name }}</h5>

@@ -6,9 +6,14 @@
       <div class="col-12">
         @include('partials.error')
         <h2 class="my-4">Modifica i tuoi dati:</h2>
-        <form class="form-group" action="#" method="post">
+        <form class="form-group" action="#" method="post" enctype="multipart/form-data">
           @method('PUT')
           @csrf
+          <div class="form-group">
+            <label for="#">Modifica immagine profilo</label>
+            <br>
+            <input type="file" name="#">
+          </div>
           <div class="form-group">
             <label for="name">Nome</label>
             <input type="text" name="title" class="form-control" placeholder="inserisci il tuo nome">

@@ -29,7 +29,7 @@ in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom 
 <div class="container">
   <div class="showcardcontainer mt-5">
     <div class="card" style="width: 40rem;">
-     <img class="card-img-top" src="{{ $foundApartment->image_url}}" alt="Card image cap">
+     <img class="card-img-top" src="{{ asset('storage/' . $foundApartment->image_url) }}" alt="Card image cap">
      <div class="card-body">
        <h5 class="card-title">Card title</h5>
        <p class="card-text">{{ $foundApartment->description}}</p>

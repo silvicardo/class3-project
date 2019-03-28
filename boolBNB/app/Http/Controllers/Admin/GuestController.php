@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class GuestController extends Controller
@@ -69,7 +70,7 @@ class GuestController extends Controller
 
     public function update(Request $request)
     {
-
+      $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_profile']);
     }
 
     public function destroy()
