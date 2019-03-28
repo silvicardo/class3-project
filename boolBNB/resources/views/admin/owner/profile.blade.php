@@ -45,7 +45,7 @@
         @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-owner'))
-            <form action="{{ "/owner/" . $currentUser->id . "/delete"}}" method="POST">
+            <form action="{{ route('owner.destroy')}}" method="POST">
               @method('DELETE')
                @csrf
               <button type="submit" class="btn btn-danger">Elimina il tuo account</button>

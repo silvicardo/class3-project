@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Storage;
 class OwnerController extends Controller
 {
 
-      //variabile per conservare l'utente
-      // che passa sul controller
-      //e il suo ruolo
-      protected $currentUser;
-
       //middleware permessi sul costruttore
       public function __construct(){
 
@@ -34,32 +29,19 @@ class OwnerController extends Controller
         //In caso non si soddisfino le proprietà si riviene
         //mandati alla pagina 403:forbidden
 
-        //Popoliamo la var user del controller
-        //per non dover ripetere la ricerca ogni volta
-        $this->middleware(function ($request, $next) {
-
-          $this->currentUser = Auth::user();
-
-          // $this->currentUser->role = $this->currentUser->roles()->first()->name;
-
-
-          return $next($request);
-
-        });
-
       }
 
 
     public function show()
     {
 
-      return view('admin.owner.dashboard', ['currentUser' => $this->currentUser]);
+      return view('admin.owner.dashboard', ['currentUser' => User::find(Auth::id())]);
     }
 
     public function profile(){
 
 
-      return view('admin.owner.profile', ['currentUser' => $this->currentUser]);
+      return view('admin.owner.profile', ['currentUser' => User::find(Auth::id())]);
 
     }
 
@@ -67,7 +49,7 @@ class OwnerController extends Controller
     {
 
         //passare la view con il dato//
-        return view('admin.owner.edit', ['currentUser' => $this->currentUser]);
+        return view('admin.owner.edit', ['currentUser' => User::find(Auth::id())]);
     }
 
     public function update(Request $request)
@@ -80,7 +62,7 @@ class OwnerController extends Controller
     public function destroy()
     {
 
-        $this->currentUser->delete();
+        Auth::user()->delete();
 
         return redirect()->route('owner.show');
 
@@ -88,17 +70,17 @@ class OwnerController extends Controller
     public function sponsor() {
 
         //da fare passare tipi di Sponsor//
-        return view('admin.owner.sponsor', ['currentUser' => $this->currentUser, 'allSponsors' => Subscription::all()]);
+        return view('admin.owner.sponsor', ['currentUser' => User::find(Auth::id()), 'allSponsors' => Subscription::all()]);
     }
 
     public function updatePassword(Request $request){
 
       $data =$request->all();
-      //$this->currentUser->Password
+      //Auth::user()->Password
 
       //$oldPassword = Hash::make($data['old_password']);
       $this->validate($request, ['old_password' => 'required', 'new_password' => 'required|confirmed|min:8', 'new_password_confirmation' => 'required|min:8']);
-      if (Hash::check($data['old_password'], Auth::user()->password)) {
+      if (Hash::check($data['old_password'], User::find(Auth::id())->password)) {
         //dd('vecchia password corretta');
            User::find(Auth::id())->fill([
             'password' => Hash::make($data['new_password'])
@@ -123,7 +105,7 @@ class OwnerController extends Controller
       $data = $request->all();
 
       $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_file']);
-      //dd($data['image_profile']);
+      
       Auth::user()->update($data);
 
       return redirect()->route('owner.profile');
