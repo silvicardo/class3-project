@@ -6,7 +6,7 @@
       <div class="col-12">
         @include('partials.error')
         <h2 class="my-4">Modifica Appartamento</h2>
-        <form id="form_appartamento" class="form-group" action="{{ $data['action']}}" method="post">
+        <form id="form_appartamento" class="form-group" action="{{ $data['action']}}" method="post" enctype="multipart/form-data">
           @method('PUT')
           @csrf
           <input type="hidden" name="user_id" value="{{ $foundApartment->user_id}}">
@@ -56,15 +56,15 @@
           </div>
           @endforeach
 
-          {{-- <div class="form-group">
+          <div class="form-group">
             <label for="image_url">Scegli le immagini del tuo appartamento</label>
             <br>
             <input type="file" name="image_url">
-          </div> --}}
-          <div class="form-group">
+          </div>
+          {{-- <div class="form-group">
             <label for="image_url">Immagine Text Provvisoria</label>
             <input type="text" name="image_url" class="form-control" value="{{ $foundApartment->image_url }}"  placeholder="Inserisci il titolo">
-          </div>
+          </div> --}}
 
           <div class="form-group">
             <input type="hidden" id="input_lat" name="latitude" value="">

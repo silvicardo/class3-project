@@ -15,7 +15,7 @@
     <div class="col-12">
       @include('partials.error')
       <h2 class="my-4">Modifica i tuoi dati:</h2>
-      <form id="form_cambio_password" class="form-group" action="{{ route('owner.updatePassword') }}" method="post">
+      <form id="form_cambio_password" class="form-group" action="{{ route('owner.updatePassword') }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         {{--<div class="form-group">
@@ -27,7 +27,7 @@
           <label for="email">Email</label>
           <input type="number" name="nr_of_rooms" class="form-control" placeholder="Inserisci la tua email">
         </div> --}}
-
+        
         <div class="form-group">
           <label for="old_password">Vecchia Password</label>
           <input type="password" name="old_password" class="form-control" id="" placeholder="Inserisci vecchia Password">
@@ -88,4 +88,3 @@ $(document).ready(function(){
 </script>
 
 @endsection
-

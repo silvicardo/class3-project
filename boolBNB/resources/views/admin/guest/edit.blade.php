@@ -15,12 +15,14 @@
       <div class="col-12">
         @include('partials.error')
         <h2 class="my-4">Modifica i tuoi dati:</h2>
+
         <form id="form_cambio_password" class="form-group" action="{{ route('guest.updatePassword') }}" method="post">
           @method('PUT')
           @csrf
 
 
           {{--<div class="form-group">
+
             <label for="name">Nome</label>
             <input type="text" name="title" class="form-control" placeholder="inserisci il tuo nome">
           </div>--}}

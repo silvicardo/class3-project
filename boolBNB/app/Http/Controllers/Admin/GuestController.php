@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\Hash;
+
 
 
 class GuestController extends Controller
@@ -70,7 +74,10 @@ class GuestController extends Controller
 
     public function update(Request $request)
     {
+
+
         return redirect()->route('guest.show');
+
     }
 
     public function destroy()
