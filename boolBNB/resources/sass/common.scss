@@ -14,11 +14,11 @@ main {
 .profile {
   margin-top: 30px;
   .card_user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
     width: 150px;
-    height: 150px;
     margin: 30px auto;
     .img_user{
       max-width: 100%;

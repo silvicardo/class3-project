@@ -1,3 +1,6 @@
 .showcardcontainer {
   @include flex;
+  .use-all-space {
+    @include flex;
+  }
 }

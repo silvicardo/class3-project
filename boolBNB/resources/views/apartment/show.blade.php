@@ -1,35 +1,9 @@
 @extends('layouts.app')
-{{-- PRIMA
--layout condizione inserire rotta nell’or
--creazione del file in resources/js/
--webpack
--sudo run watch
-- PRENDERE IL VALORE DELL INDIRIZZO DALLA PAGINA
-- CREARE OGGETTO OPZIONI
-{
-     language:  ‘it-IT’,
-     unwrapBbox: true,
-     query: $(‘#INDIRIZZO’).val(),
-     limit: “1”,
-     radius: “0",
-     geoBias: “on”,
-   }
--PASSARE OPTIONS ALLA FUNZIONE PRINCIPALE E MANEGGIARE
-L’ARRAY RESPONSES CHE RITORNA
-$.getJSON(‘url’, options).then(function(sondata){
-});
-tomtom.geocode(opzioni).go(function(responses){
-    responses[0]
-    //IL VOSTRO CODICE
-    //far partire in quella posizione e metterla in un div
- });
-in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom --}}
-
 @section('content')
 <div class="container">
   <div class="showcardcontainer mt-5">
     <div class="card" style="width: 40rem;">
-     <img class="card-img-top" src="{{ $foundApartment->image_url}}" alt="Card image cap">
+     <img class="card-img-top" src="{{ asset('storage/' . $foundApartment->image_url) }}" alt="Card image cap">
      <div class="card-body">
        <h5 class="card-title">Card title</h5>
        <p class="card-text">{{ $foundApartment->description}}</p>
@@ -37,11 +11,20 @@ in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom 
        <span><strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}</span><br>
        <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
        <span><strong>Metri quadrati:</strong> {{ $foundApartment->mq }}</span><br>
-       <span id="indirizzo">{{ $foundApartment->address }}</span>
-       <div id="latitudine">
+       <span>
+         <strong>Optionals:</strong><br>
+       </span>
+       @foreach ($foundApartment->optionals as $optional)
+         <span>{{ $optional->name}}</span><br>
+       @endforeach
+       <span>
+
+         <strong>Indirizzo</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
+       </span>
+       <div class="d-none" id="latitudine">
           {{ $foundApartment->latitude}}
        </div>
-       <div id="longitudine">
+       <div class="d-none" id="longitudine">
           {{ $foundApartment->longitude}}
        </div>
 
@@ -83,7 +66,7 @@ in pagina blade show, inserire section(‘script’) con la var tomtom = tomtom 
       @endif
 
      </div>
-     <div class='use-all-space'>
+     <div class='use-all-space my-5'>
         <div class='flex-horizontal use-all-space'>
            <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
 
