@@ -60,6 +60,7 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
   Route::delete('/delete', 'GuestController@destroy')->name('destroy');
   Route::get('/profile', 'GuestController@profile')->name('profile');
   Route::put('/update-password', 'GuestController@updatePassword')->name('updatePassword');
+  Route::put('/update-picture', 'GuestController@profilePictureUpdate')->name('profilePictureUpdate');
 
 });
 

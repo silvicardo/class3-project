@@ -33,7 +33,7 @@ class CreateApartmentsTable extends Migration
             //from -180 to +180 (degrees) so you need DECIMAL(11, 8).
             $table->decimal('latitude', 10,8);  //la logica nei controller compilerà questo dato
             $table->decimal('longitude', 11, 8); //la logica nei controller compilerà questo dato
-            $table->text('image_url')->nullable(false);
+            $table->string('image_url')->nullable(false);
             //Nel caso si volesse fare un json per gli optionals
             // $table->json('options');
 

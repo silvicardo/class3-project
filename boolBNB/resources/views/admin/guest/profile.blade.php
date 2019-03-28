@@ -12,9 +12,9 @@
 <div class="container profile">
   <div class="row">
     <div class="col-sm-5">
-      <div class="card" style="width: 18rem;">
-        <div class="card_user">
-          <img class="img_user card-img-top" src="{{ asset($guest->image_profile) }}" alt="Card image cap">
+      <div class="card d-flex flex-column align-items-center justify-content-center" style="width: 18rem;">
+        <div class="card_user d-flex flex-column align-items-center justify-content-center">
+          <img class="img_user card-img-top" src="{{-- asset('storage/' . $guest->image_profile) --}}" alt="Card image cap">
         </div>
         <div class="card-body">
           <h5 class="card-title">User Name: {{ $guest->name }}</h5>
