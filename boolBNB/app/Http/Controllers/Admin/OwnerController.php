@@ -40,7 +40,7 @@ class OwnerController extends Controller
 
           $this->currentUser = Auth::user();
 
-          $this->currentUser->role = $this->currentUser->roles()->first()->name;
+          // $this->currentUser->role = $this->currentUser->roles()->first()->name;
 
 
           return $next($request);
@@ -121,7 +121,6 @@ class OwnerController extends Controller
     public function profilePictureUpdate(Request $request){
 
       $data = $request->all();
-
 
       $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_file']);
       //dd($data['image_profile']);

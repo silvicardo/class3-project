@@ -43,7 +43,7 @@ class GuestController extends Controller
           $this->guest = Auth::user();
 
           //ci servirà al momento dell unificazione controller
-          $this->guest->role = $this->guest->roles()->first()->name;
+          // $this->guest->role = $this->guest->roles()->first()->name;
 
 
           return $next($request);
@@ -111,6 +111,17 @@ class GuestController extends Controller
         }
 
 
+    }
+
+    public function profilePictureUpdate(Request $request){
+
+      $data = $request->all();
+
+      $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_file']);
+      //dd($data['image_profile']);
+      Auth::user()->update($data);
+
+      return redirect()->route('guest.profile');
     }
 
 
