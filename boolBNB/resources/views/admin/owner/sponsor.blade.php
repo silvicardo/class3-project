@@ -42,10 +42,14 @@
              </div>
            @endif
 
+           <div id="alert_errore_token" class="container alert alert-primary d-none" role="alert">
+               Errore, dropin non caricato, ricarica la pagina per riprovare
+           </div>
+
            {{-- BOTTONE CONFERMA SCELTA APPARTAMENTO E TIPO SPONSOR --}}
-            <button id="conferma_prima_di_pagare" type="button" class="btn btn-success">Procedi al pagamento</button>
+            <button id="conferma_prima_di_pagare" type="button" class="btn btn-success d-none">Procedi al pagamento</button>
            {{-- BARRA CARICAMENTO LOGICA BRAINTREE --}}
-            <div id="loading-braintree">
+            <div id="loading-braintree" class="d-none">
               <p>Mi sto connettendo al portale carta di credito</p>
               <div class="progress">
                   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0"></div>

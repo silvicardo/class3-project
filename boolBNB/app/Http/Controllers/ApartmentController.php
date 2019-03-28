@@ -7,6 +7,7 @@ use App\Apartment;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Auth;
 use App\Optional;
+use Illuminate\Support\Facades\Storage;
 
 
 class ApartmentController extends Controller
@@ -101,8 +102,10 @@ class ApartmentController extends Controller
     public function store(Request $request, Faker $faker){
 
         $data = $request->all();
+        //dd($data);
+        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+        //dd($data['image_url']);
         //validazione dei dati da fare
-
         $newApartment = new Apartment;
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
@@ -140,6 +143,11 @@ class ApartmentController extends Controller
        //($apartment);
       //i dati modificati dal form
       $data = $request->all();
+
+      if (!empty($data['image_url'])){
+        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+      }
+
 
       $apartment = Apartment::find($id);
 
