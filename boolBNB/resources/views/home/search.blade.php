@@ -29,6 +29,10 @@
           @csrf
           <div class="form-row">
             <div class="form-group col">
+              <label for="radius">Modifica raggio di ricerca in km</label>
+              <input type="number" name="radius" class="form-control" placeholder="Inserisci numero chilometri">
+            </div>
+            <div class="form-group col">
               <label for="nr_of_rooms">Numero stanze</label>
               <input type="number" name="nr_of_rooms" class="form-control" placeholder="Inserisci numero stanze">
             </div>
@@ -37,9 +41,10 @@
               <input type="number" name="nr_of_beds" class="form-control" placeholder="Inserisci numero posti letto">
             </div>
             <div class="form-group col">
-              <label for="radius">Modifica raggio di ricerca in km</label>
-              <input type="number" name="radius" class="form-control" placeholder="Inserisci numero chilometri">
+              <label for="nr_of_bathrooms">Numero bagni</label>
+              <input type="number" name="nr_of_bathrooms" class="form-control" placeholder="Inserisci numero bagni">
             </div>
+
           </div>
 
           <div class="form-group">
@@ -47,7 +52,7 @@
           </div>
           <div class="form-row">
             @foreach ($optionals as $optional)
-              <div class="form-check col">
+              <div class="form-check m-auto">
                 <input name="optional" class="form-check-input" type="checkbox" value="{{$optional->id}}" >
                 <label class="form-check-label" for="defaultCheck1">
                   {{ $optional->name}}
