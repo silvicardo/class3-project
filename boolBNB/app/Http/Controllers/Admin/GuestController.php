@@ -84,7 +84,7 @@ class GuestController extends Controller
     {
         $this->guest->delete();
 
-        return redirect()->route('guest.show');
+        return redirect()->route('home');
     }
 
     public function updatePassword(Request $request){

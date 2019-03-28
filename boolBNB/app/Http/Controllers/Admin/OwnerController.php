@@ -82,7 +82,7 @@ class OwnerController extends Controller
 
         $this->currentUser->delete();
 
-        return redirect()->route('owner.show');
+        return redirect()->route('home');
 
     }
     public function sponsor() {
@@ -121,7 +121,7 @@ class OwnerController extends Controller
     public function profilePictureUpdate(Request $request){
 
       $data = $request->all();
-      
+
 
       $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_file']);
       //dd($data['image_profile']);

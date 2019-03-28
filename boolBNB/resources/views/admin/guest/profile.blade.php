@@ -38,7 +38,7 @@
         @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-guest'))
-            <form action="{{ "/guest/" . $guest->id . "/delete"}}" method="POST">
+            <form action="{{ route('guest.destroy') }}" method="POST">
               @method('DELETE')
                @csrf
               <button type="submit" class="btn btn-danger">Elimina il tuo account</button>
