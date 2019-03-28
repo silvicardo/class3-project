@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Support\Facades\Hash;
+
 
 
 class GuestController extends Controller
@@ -14,7 +18,7 @@ class GuestController extends Controller
       //variabile per conservare l'utente
       // che passa sul controller
       //e il suo ruolo
-      protected $currentUser;
+      protected $guest;
 
       //middleware permessi sul costruttore
       public function __construct(){
@@ -70,7 +74,10 @@ class GuestController extends Controller
 
     public function update(Request $request)
     {
-      $data['image_profile'] = Storage::disk('public')->put('image_profile', $data['image_profile']);
+
+
+        return redirect()->route('guest.show');
+
     }
 
     public function destroy()
@@ -79,4 +86,32 @@ class GuestController extends Controller
 
         return redirect()->route('guest.show');
     }
+
+    public function updatePassword(Request $request){
+
+      $data =$request->all();
+      //$this->currentUser->Password
+
+      //$oldPassword = Hash::make($data['old_password']);
+      $this->validate($request, ['old_password' => 'required', 'new_password' => 'required|confirmed|min:8', 'new_password_confirmation' => 'required|min:8']);
+      if (Hash::check($data['old_password'], Auth::user()->password)) {
+        //dd('vecchia password corretta');
+           User::find(Auth::id())->fill([
+            'password' => Hash::make($data['new_password'])
+            ])->save();
+
+           //$request->session()->flash('success', 'Password changed');
+
+            return redirect()->route('guest.profile', ['success' => 'Cambio password avvenuto con successo']);
+
+        } else {
+          //dd('vecchia password sbagliata');
+            //$request->session()->flash('error', 'Password does not match');
+            return view('admin.guest.edit', ['error' => 'La vecchia password non è corretta']);
+        }
+
+
+    }
+
+
 }
