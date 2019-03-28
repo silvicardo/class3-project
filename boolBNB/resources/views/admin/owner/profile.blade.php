@@ -11,18 +11,18 @@
 <div class="container profile">
   <div class="row">
     <div class="col-sm-5">
-      <div class="card" style="width: 18rem;">
-        <div class="card_user d-flex flex-column align-items-center justify-content-start">
+      <div class="card d-flex flex-column align-items-center justify-content-center" style="width: 18rem;">
+        <div class="card_user d-flex flex-column align-items-center justify-content-center">
           <img class="img_user card-img-top" src="{{ asset('storage/' . $currentUser->image_profile) }}" alt="Card image cap">
-          <form id="form_cambio_password" class="form-group" action="{{ route('owner.profilePictureUpdate') }}" method="post" enctype="multipart/form-data">
+          <form id="form_cambio_password" class="form-group" action="{{ route('owner.profilePictureUpdate') }}" method="post" enctype="multipart/form-data" >
             @method('PUT')
             @csrf
-            <div class="form-group">
+            <div class="form-group my-4 ml-5">
               <label for="image_file">Modifica immagine profilo</label>
               <br>
               <input type="file" name="image_file">
             </div>
-            <button type="submit">Carica Immagine</button>
+            <button type="submit" class="ml-5 btn btn-primary">Carica Immagine</button>
           </form>
         </div>
         <div class="card-body">

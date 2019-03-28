@@ -11,7 +11,7 @@ class SearchController extends Controller
   public function getApartmentsByCity(Request $request){
 
     //estraiamo i dati dal JSON dalla request
-    parse_str($request->getContent(),$data);
+    parse_str($request->getContent(), $data);
     // dd($data);
     //leggiamo la chiave isAdvanced per decidere
     //il tipo di output
@@ -26,8 +26,7 @@ class SearchController extends Controller
         // dd($allApartments);
         foreach ($allApartments as $apartment) {
 
-
-             $lat = deg2rad($apartment->latitude - $data['lat']);
+            $lat = deg2rad($apartment->latitude - $data['lat']);
           	$long = deg2rad($apartment->longitude - $data['lon']);
 
           	$a = sin($lat/2) * sin($lat/2) + cos(deg2rad($data['lat'])) * cos(deg2rad($apartment->latitude)) * sin($long/2) * sin($long/2);
@@ -38,6 +37,14 @@ class SearchController extends Controller
               $risultati[] = $apartment;
             }
         }
+
+        if ($data['isAdvanced'] === 'true'){
+          
+          return response()->json(['error' => 'devi filtrare diego']);
+        }
+        //
+        // dd($data);
+
 
         return response()->json($risultati);
     // }

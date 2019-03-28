@@ -38,9 +38,6 @@ class SubscriptionsController extends Controller
 
         $this->currentUser = Auth::user();
 
-        $this->currentUser->role = $this->currentUser->roles()->first()->name;
-
-
         return $next($request);
 
       });
@@ -72,11 +69,21 @@ class SubscriptionsController extends Controller
          // Recupero il piano
           $plan = Plan::findOrFail($request->plan_id);
 
-          // subscribe the user
-          $request->user()->newSubscription('main', $plan->braintree_plan)->create($request->payment_method_nonce);
 
-          // redirect to home after a successful subscription
-          return redirect()->route('owner.show', $request->user()->id);
+          if(!Auth::user()->subscribedToPlan($plan->braintree_plan, $request->apartment_id)){
+            // subscribe the user
+            $request->user()->newSubscription($request->apartment_id, $plan->braintree_plan)->create($request->payment_method_nonce);
+
+            // redirect to home after a successful subscription
+            return redirect()->route('owner.show');
+
+          } else {
+
+            return redirect()->route('owner.show', ['error' => 'Hai già sottoscritto un piano per questo appartamento']);
+          }
+
+
+
 
     }
 

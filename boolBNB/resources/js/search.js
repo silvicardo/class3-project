@@ -43,7 +43,11 @@ $(document).ready(function(){
 
   const { lat, lon } = responses[0].position;
 
-  const apartments = await $.post('api/search-city', {...extractDataFromOptionsForm(), lat, lon });
+  var backendData = {...extractDataFromOptionsForm(), lat, lon , isAdvanced };
+
+  console.log(backendData);
+
+  const apartments = await $.post('api/search-city', backendData );
 
   console.log('JSON appartamenti trovati ', apartments);
 

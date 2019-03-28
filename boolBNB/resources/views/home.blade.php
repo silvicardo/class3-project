@@ -3,6 +3,10 @@
 @section('content')
   <div class="jumbo">
     <div class="container">
+      <div class="sponsor">
+        <h2>Appartamenti in evidenza</h2>
+
+      </div>
       <div class="row">
         @foreach($allApartments as $key => $apartment)
           <div class="card_appartment col-md-4 mt-5">

@@ -62,6 +62,7 @@ class ApartmentController extends Controller
         // // Get the currently authenticated user...
         // $user = Auth::user();
         //dd($id);
+        
         $foundApartment = Apartment::find($apartmentId);
 
         return view('apartment.show', compact('foundApartment'));
@@ -142,6 +143,7 @@ class ApartmentController extends Controller
        //($apartment);
       //i dati modificati dal form
       $data = $request->all();
+
       if (!empty($data['image_url'])){
         $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
       }
