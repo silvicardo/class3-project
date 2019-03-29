@@ -43,42 +43,56 @@
              @csrf
              <button type="submit" class="btn btn-danger delete">Rimuovi appartamento</button>
            </form>
+           <a id="mostraMappa" href="#">Mostra Mappa <i class="fas fa-arrow-circle-down mt-3"></i></a>
+           <a id="nascondiMappa" class="d-none" href="#">Nascondi Mappa <i class="fas fa-arrow-circle-up mt-3"></i></a>
          </div>
        @else
-         <h2 class="my-5">Richiedi informazioni al proprietario su questo appartamento</h2>
-         <form action="{{route('messages.store')}}" method="post">
-           @csrf
-           @method('POST')
-           <input type="hidden" name="apartment_id" value="{{$foundApartment->id}}">
-           <div class="form-group">
-             <label for="name">Nome</label>
-             <input type="text" name="name" class="form-control" value="{{ $user->name }}" placeholder="Inserisci il tuo nome">
-           </div>
-           <div class="form-group">
-             <label for="email">Email mittente</label>
-             <input type="email" name="email" class="form-control" value="{{ $user->email }}" placeholder="name@example.com">
-           </div>
-           <div class="form-group">
-             <label for="subject">Oggetto messaggio</label>
-             <input type="text" name="subject" class="form-control" value="" placeholder="Oggetto del messaggio">
-           </div>
-           <div class="form-group">
-             <label for="description_body">Messaggio</label>
-             <textarea class="form-control" name="description_body" placeholder="Inserisci il tuo messaggio" rows="3"></textarea>
-           </div>
-           <button type="submit" class="btn btn-primary">Invia</button>
-         </form>
+         <a id="mostraMappa" href="#">Mostra Mappa <i class="fas fa-arrow-circle-down mt-3 mr-5"></i></a>
+         <a id="nascondiMappa" class="d-none" href="#">Nascondi Mappa <i class="fas fa-arrow-circle-up mt-3 mr-5"></i></a>
+         <a id="mostraForm" href="#">Richiedi Informazioni <i class="fas fa-arrow-circle-down mt-3"></i></a>
+         <a id="nascondiForm" class="d-none" href="#">Chiudi informazioni <i class="far fa-times-circle mt-3"></i></a>
+         <div id="form" class="d-none">
+           <h2 class="my-5">Richiedi informazioni al proprietario su questo appartamento</h2>
+           <form action="{{route('messages.store')}}" method="post">
+             @csrf
+             @method('POST')
+             <input type="hidden" name="apartment_id" value="{{$foundApartment->id}}">
+             <div class="form-group">
+               <label for="name">Nome</label>
+               <input type="text" name="name" class="form-control" value="{{ (!empty($user)) ? $user->name : '' }}" placeholder="Inserisci il tuo nome">
+             </div>
+             <div class="form-group">
+               <label for="email">Email mittente</label>
+               <input type="email" name="email" class="form-control" value="{{ (!empty($user)) ? $user->email : '' }}" placeholder="name@example.com">
+             </div>
+             <div class="form-group">
+               <label for="subject">Oggetto messaggio</label>
+               <input type="text" name="subject" class="form-control" value="" placeholder="Oggetto del messaggio">
+             </div>
+             <div class="form-group">
+               <label for="description_body">Messaggio</label>
+               <textarea class="form-control" name="description_body" placeholder="Inserisci il tuo messaggio" rows="3"></textarea>
+             </div>
+             <button type="submit" class="btn btn-primary">Invia</button>
+           </form>
+         </div>
+
+
+
 
       @endif
 
      </div>
-     <div class='use-all-space my-5'>
-        <div class='flex-horizontal use-all-space'>
-           <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
+     <div id="mapContainer" class="d-none">
+       <div class='use-all-space my-5'>
+          <div class='flex-horizontal use-all-space'>
+             <div id='map' style='height:500px;width:500px' class='flex-expand'></div>
 
-        </div>
+          </div>
 
+       </div>
      </div>
+
     </div>
 
   </div>
