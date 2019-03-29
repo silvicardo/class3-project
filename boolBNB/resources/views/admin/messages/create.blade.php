@@ -15,8 +15,12 @@
           <input type="text" name="name" class="form-control" value="{{ $currentUser->name }}" placeholder="Inserisci il tuo nome">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" class="form-control" value="{{ $currentUser->email }}" placeholder="name@example.com">
+          <label for="sender_email">Email mittente</label>
+          <input type="email" name="sender_email" class="form-control" value="{{ $currentUser->email }}" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="recipient_email">Email destinatario</label>
+          <input type="email" name="recipient_email" class="form-control" value="" placeholder="email-destinatario@test.com">
         </div>
         <div class="form-group">
           <label for="message">Messaggio</label>
