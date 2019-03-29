@@ -38,17 +38,9 @@ class SearchController extends Controller
             }
         }
 
-        if ($data['isAdvanced'] === 'true'){
+        //appartamenti filtrati per raggio km ora ha tutti gli appartamenti che sono dentro la distanza definita dal raggio
 
-          // if(!empty($data['nr_of_beds'])){
-          //   //....
-          // }
-          if(!empty($data['nr_of_bathrooms'])){
-            //....
-          }
-          if(!empty($data['nr_of_rooms'])){
-            //....
-          }
+        if ($data['isAdvanced'] === 'true'){
 
           if(!empty($data['optionals'])){
 
@@ -82,12 +74,69 @@ class SearchController extends Controller
 
 
             }
+            $risultati = $appartamentiFiltratiPerOptionals;
+            //return response()->json($appartamentiFiltratiPerOptionals);
+          }
 
-            return response()->json($appartamentiFiltratiPerOptionals);
+          if(!empty($data['nr_of_beds'])){
+
+            $appartamentiFiltratiPerBeds = [];
+
+            foreach ($risultati as $apartment) {
+
+            if ($apartment->nr_of_beds >= $data['nr_of_beds'])  {
+
+              $appartamentiFiltratiPerBeds[] = $apartment;
+
+            }
+
+          }
+          $risultati = $appartamentiFiltratiPerBeds;
+          //return response()->json($appartamentiFiltratiPerBeds);
+         }
+
+
+          if(!empty($data['nr_of_rooms'])){
+
+             $appartamentiFiltratiPerRooms = [];
+
+             foreach ($risultati as $apartment) {
+
+             if ($apartment->nr_of_rooms >= $data['nr_of_rooms'])  {
+
+               $appartamentiFiltratiPerRooms[] = $apartment;
+
+             }
+
+           }
+           $risultati = $appartamentiFiltratiPerRooms;
+           //return response()->json($appartamentiFiltratiPerBeds);
           }
 
 
+
+          if(!empty($data['nr_of_bathrooms'])){
+
+             $appartamentiFiltratiPerBathrooms = [];
+
+             foreach ($risultati as $apartment) {
+
+             if ($apartment->nr_of_bathrooms >= $data['nr_of_bathrooms'])  {
+
+               $appartamentiFiltratiPerBathrooms[] = $apartment;
+
+             }
+
+           }
+           $risultati = $appartamentiFiltratiPerBathrooms;
+           //return response()->json($appartamentiFiltratiPerBeds);
+          }
+
+
+
+
         }
+
 
         return response()->json($risultati);
 
