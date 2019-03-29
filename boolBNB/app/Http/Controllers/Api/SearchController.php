@@ -42,20 +42,56 @@ class SearchController extends Controller
 
         if ($data['isAdvanced'] === 'true'){
 
-          dd($data['optionals']);
-
+          // if(!empty($data['nr_of_beds'])){
+          //   //....
+          // }
+          if(!empty($data['nr_of_bathrooms'])){
+            //....
           }
-          //$filteredOptionals = Optional::where('optional_id', '=', $data->optionals[0]);
+          if(!empty($data['nr_of_rooms'])){
+            //....
+          }
+
+          if(!empty($data['optionals'])){
+
+            $appartamentiFiltratiPerOptionals = [];
+
+            //FILTRAGGIO PER OPTIONALS
+            foreach ($risultati as $appartamento) {
+
+              //CREIAMO UN ARRAY DA CONFRONTARE CON GLI OPTIONALS DEL JSON
+              $optionalsAppartamento = []; //[1,2]
+              foreach ($appartamento->optionals as $optional) {
+                $optionalsAppartamento[] = $optional->id;
+              }
+
+              //ORA $optionalsAppartamento = [1,2] (DA SEEDER)
 
 
-          return response()->json(['error' => ' ']);
+              //VERIFICHIAMO CHE L'APPARTAMENTO CORRENTE ABBIA TUTTI GLI OPTIONALS
+              //RICHIESTI DALLA RICERCA E IN ARRIVO TRAMITE IL JSON($data['optionals'])
+
+              $currentApartmentHasAllJSONOptionals = true; //IN ARRAY PER OGNI OPTIONAL MI RISPONDE TRUE
+              $index = 0; //indice array optional da json
+              while ($currentApartmentHasAllJSONOptionals === true && $index < count($data['optionals'])) {
+                  $currentApartmentHasAllJSONOptionals = in_array($data['optionals'][$index], $optionalsAppartamento);
+                  $index++;
+              }
+
+              if($currentApartmentHasAllJSONOptionals){
+                $appartamentiFiltratiPerOptionals[] =  $appartamento;
+              }
+
+
+            }
+
+            return response()->json($appartamentiFiltratiPerOptionals);
+          }
+
+
         }
-        //
-        // dd($data);
 
-
-        return response()->json($data->all::(optionals);
-    // }
+        return response()->json($risultati);
 
   }
 }
