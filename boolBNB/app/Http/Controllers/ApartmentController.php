@@ -105,9 +105,9 @@ class ApartmentController extends Controller
     public function store(Request $request, Faker $faker){
 
         $data = $request->all();
-        //dd($data);
+        
         $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
-        //dd($data['image_url']);
+
         //validazione dei dati da fare
         $newApartment = new Apartment;
         $newApartment->fill($data);
