@@ -58,4 +58,15 @@ class Apartment extends Model
       return $this->belongsToMany('App\Sponsorship');
     }
 
+    //Relazioni Appartamenti(ONE)<-> MESSAGGI(MANY)
+
+    //un appartamento può avere tanti messaggi
+    //un singolo messaggio può avere un solo appartamento
+
+
+    public function messages()
+    {
+      return $this->hasMany('App\Message');
+    }
+
 }
