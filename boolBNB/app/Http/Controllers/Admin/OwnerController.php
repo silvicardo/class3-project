@@ -51,7 +51,7 @@ class OwnerController extends Controller {
   }
 
   public function updatePassword(Request $request) {
-    $data =$request->all();
+    $data = $request->all();
     //Auth::user()->Password
     //$oldPassword = Hash::make($data['old_password']);
     $this->validate($request, ['old_password' => 'required', 'new_password' => 'required|confirmed|min:8', 'new_password_confirmation' => 'required|min:8']);
