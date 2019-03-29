@@ -52,11 +52,11 @@
            <input type="hidden" name="apartment_id" value="{{$foundApartment->id}}">
            <div class="form-group">
              <label for="name">Nome</label>
-             <input type="text" name="name" class="form-control" value="{{ $user->name }}" placeholder="Inserisci il tuo nome">
+             <input type="text" name="name" class="form-control" value="{{ (!empty($user)) ? $user->name : '' }}" placeholder="Inserisci il tuo nome">
            </div>
            <div class="form-group">
              <label for="email">Email mittente</label>
-             <input type="email" name="email" class="form-control" value="{{ $user->email }}" placeholder="name@example.com">
+             <input type="email" name="email" class="form-control" value="{{ (!empty($user)) ? $user->email : '' }}" placeholder="name@example.com">
            </div>
            <div class="form-group">
              <label for="subject">Oggetto messaggio</label>
