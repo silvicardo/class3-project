@@ -22,6 +22,8 @@
         <div class="col-12">
           <div id="messaggi_inviati" class="container d-none">
             <h2 class="my-4">Ciao {{ $currentUser->name }}, messaggi inviati:</h2>
+
+          @if(count($messages) !== 0)
             <table class="table">
               <thead>
                 <tr>
@@ -36,7 +38,7 @@
               </thead>
 
               <tbody>
-                @forelse ($messages as $message)
+                @foreach ($messages as $message)
 
                   <tr>
                     <td>{{ $message['created_at'] }}</td>
@@ -57,15 +59,20 @@
                       </form>
                     </td>
                   </tr>
-                @empty
-                  <p>nessun messaggio</p>
-                @endforelse
+                @endforeach
               </tbody>
 
             </table>
+          @else
+            <div class="container alert alert-warning" role="alert">
+              Nessun Messaggio Inviato
+            </div>
+          @endif
           </div>
           <div id="messaggi_ricevuti" class="container">
             <h2 class="my-4">Ciao {{ $currentUser->name }}, messaggi ricevuti:</h2>
+
+            @if(count($receivedMessages) !== 0)
             <table class="table">
               <thead>
                 <tr>
@@ -78,7 +85,7 @@
               </thead>
 
               <tbody>
-                @forelse ($receivedMessages as $message)
+                @foreach ($receivedMessages as $message)
 
                   <tr>
                     <td>{{ $message['created_at'] }}</td>
@@ -91,12 +98,15 @@
                       <a href="{{route('messages.show',$message)}}" class="btn btn-primary">Visualizza</a>
                     </td>
                   </tr>
-                @empty
-                  <p>nessun messaggio</p>
-                @endforelse
+                @endforeach
               </tbody>
 
             </table>
+          @else
+            <div class="container alert alert-warning" role="alert">
+              Nessun Messaggio Ricevuto
+            </div>
+          @endif
           </div>
 
         </div>
