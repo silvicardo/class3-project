@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-sm-5">
       <div class="card d-flex flex-column align-items-center justify-content-center" style="width: 18rem;">
-        <img class="img_user card-img-top" src="{{ asset('storage/' . $guest->image_profile) }}" alt="Card image cap">
+        <img class="img_user card-img-top" src="{{ asset('storage/' . $currentUser->image_profile) }}" alt="Card image cap">
         <form class="form-group" action="{{ route('guest.profilePictureUpdate') }}" method="post" enctype="multipart/form-data" >
           @method('PUT')
           @csrf
@@ -25,19 +25,19 @@
           <button type="submit" class="ml-5 btn btn-primary">Carica Immagine</button>
         </form>
         <div class="card-body">
-          <h5 class="card-title">User Name: {{ $guest->name }}</h5>
-          <h6 class="card-title">Email: {{ $guest->email }}</h6>
-          <h6 class="card-title">Registrato il: {{ $guest->created_at }}</h6>
+          <h5 class="card-title">User Name: {{ $currentUser->name }}</h5>
+          <h6 class="card-title">Email: {{ $currentUser->email }}</h6>
+          <h6 class="card-title">Registrato il: {{ $currentUser->created_at }}</h6>
         </div>
       </div>
     </div>
     <div class="col-sm-7">
       <div class="container_profile">
         <div class="container_profile_edit">
-          <h2 class="mb-4">Ciao, {{ $guest->name }}</h2>
-          <a href="{{ route('guest.edit')}}">Modifica profilo</a>
-          <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
-          <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a>
+          <h2 class="mb-4">Ciao, {{ $currentUser->name }}</h2>
+          <a href="{{ route('guest.edit')}}">Modifica password</a>
+          <a href="{{ route('messages.index') }}">Leggi messaggi</a>
+          <a href="{{ route('messages.create') }}">Invia messaggio</a>
         </div>
         @if (!empty($alert))
           <div class="w-50 alert alert-primary" role="alert">
@@ -46,7 +46,7 @@
         @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-guest'))
-            <form action="{{ "/guest/" . $guest->id . "/delete"}}" method="POST">
+            <form action="{{ "/guest/" . $currentUser->id . "/delete"}}" method="POST">
               @method('DELETE')
                @csrf
               <button type="submit" class="btn btn-danger">Elimina il tuo account</button>

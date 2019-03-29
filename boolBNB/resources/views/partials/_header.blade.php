@@ -104,7 +104,7 @@
             <a href="{{route('owner.profile', Auth::User()->id) }}">
               <li class="nav-item">
                 <div class="logo_user">
-                  <img src="{{ asset('storage/' . $currentUser->image_profile) }}" alt="">
+                  <img src="{{ asset('storage/' . Auth::user()->image_profile) }}" alt="">
                 </div>
               </li>
             </a>
@@ -112,7 +112,7 @@
             <a href="{{route('guest.profile', Auth::User()->id) }}">
               <li class="nav-item">
                 <div class="logo_user">
-                  <img src="{{ asset('storage/' . $guest->image_profile) }}" alt="">
+                  <img src="{{ asset('storage/' . Auth::user()->image_profile) }}" alt="">
                 </div>
               </li>
             </a>
