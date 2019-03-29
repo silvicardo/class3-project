@@ -12,14 +12,7 @@ class SearchController extends Controller
 
     //estraiamo i dati dal JSON dalla request
     parse_str($request->getContent(), $data);
-    // dd($data);
-    //leggiamo la chiave isAdvanced per decidere
-    //il tipo di output
-    // if ($data['isAdvanced'] === 'true') {
-    //     $filteredApartments = Apartment::where('optional_id', '=', $data->optionals[0]);
-    //     return response()->json($data);
-    // } else {
-    // return response()->json($data);
+
         $risultati = [];
 
         $allApartments = Apartment::all();
