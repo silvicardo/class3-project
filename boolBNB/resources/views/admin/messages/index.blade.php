@@ -16,8 +16,8 @@
   <div class="container py-5">
 
     <div class="container">
-      <button id="mostra_inviati" type="button" class="btn btn-primary">Inviati</button>
-      <button id="mostra_ricevuti" type="button" class="btn btn-success d-none">Ricevuti</button>
+      <button id="mostra_inviati" type="button" class="btn btn-large btn-primary">Leggi messaggi Inviati</button>
+      <button id="mostra_ricevuti" type="button" class="btn btn-large btn-success d-none">Leggi messaggi Ricevuti</button>
       <div class="row">
         <div class="col-12">
           <div id="messaggi_inviati" class="container d-none">

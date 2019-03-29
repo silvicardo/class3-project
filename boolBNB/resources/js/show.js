@@ -1,6 +1,7 @@
 var $ = require("jquery");
 
 $(document).ready(function(){
+
   var latitudine = parseFloat($('#latitudine').html());
   var longitudine = parseFloat($('#longitudine').html());
   var indirizzo = $('#indirizzo').html();
@@ -71,6 +72,27 @@ $(document).ready(function(){
     } else {
       resultsList.setContent('Results not found.');
     }
+    $('#mostraMappa').click(function(){
+      $('#mapContainer').removeClass('d-none');
+      $('#mostraMappa').addClass('d-none');
+      $('#nascondiMappa').removeClass('d-none');
+    });
+    $('#nascondiMappa').click(function() {
+      $('#mapContainer').addClass('d-none');
+      $('#mostraMappa').removeClass('d-none');
+      $('#nascondiMappa').addClass('d-none');
+    });
+
+    $('#mostraForm').click(function(){
+      $('#form').removeClass('d-none');
+      $('#mostraForm').addClass('d-none');
+      $('#nascondiForm').removeClass('d-none');
+    });
+    $('#nascondiForm').click(function() {
+      $('#form').addClass('d-none');
+      $('#mostraForm').removeClass('d-none');
+      $('#nascondiForm').addClass('d-none');
+    });
   });
 
   /*
