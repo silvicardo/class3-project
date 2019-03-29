@@ -14,12 +14,13 @@
        <span>
          <strong>Optionals:</strong><br>
        </span>
+       <ul>
        @foreach ($foundApartment->optionals as $optional)
-         <span>{{ $optional->name}}</span><br>
+        <li>{{ $optional->name}}</li>
        @endforeach
+       </ul>
        <span>
-
-         <strong>Indirizzo</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
+         <strong>Indirizzo:</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
        </span>
        <div class="d-none" id="latitudine">
           {{ $foundApartment->latitude}}

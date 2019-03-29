@@ -20,7 +20,9 @@
             <label for="image_file">Modifica immagine profilo</label>
             <br>
             <input type="file" name="image_file">
+
           </div>
+
           <button type="submit" class="ml-5 btn btn-primary">Carica Immagine</button>
         </form>
         <div class="card-body">
@@ -37,6 +39,7 @@
           <a href="{{ route('owner.edit') }}">Modifica profilo</a>
           <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
           {{-- <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a> --}}
+
         </div>
         @if (!empty($alert))
           <div class="w-50 alert alert-primary" role="alert">
