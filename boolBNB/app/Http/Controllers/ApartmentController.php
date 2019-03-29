@@ -62,7 +62,7 @@ class ApartmentController extends Controller
         // // Get the currently authenticated user...
         // $user = Auth::user();
         //dd($id);
-        
+
         $foundApartment = Apartment::find($apartmentId);
 
         return view('apartment.show', compact('foundApartment'));
@@ -80,13 +80,16 @@ class ApartmentController extends Controller
       //else (utente è ospite)
       //return una view che dica che non sei autorizzato(403 FORBIDDEN)
 
+
       $data = [
         'availableOptionals' => Optional::all(),
-        'action' => route('apartment.store'),
+        'action' => 'apartment.store',
         'method' => 'POST',
+        'h2' => 'Aggiungi Nuovo Appartamento',
+        'button' => 'Salva Appartamento',
       ];
 
-      return view('apartment.create', compact('data'));
+      return view('apartment.create_edit', compact('data'));
 
       //E' UGUALE ANCHE FARE COSÌ
 
@@ -131,11 +134,13 @@ class ApartmentController extends Controller
       $data = [
         'availableOptionals' => Optional::all(),
         'apartmentOptionalsIds'=> $optionalsIds,
-        'action' => route('apartment.update', $apartmentId),
+        'action' => 'apartment.update',
         'method' => 'PUT',
+        'h2' => 'Modifica Appartamento',
+        'button' => 'Salva modifiche appartamento',
       ];
 
-      return view('apartment.edit', compact('data', 'foundApartment'));
+      return view('apartment.create_edit', compact('data', 'foundApartment'));
 
     }
 

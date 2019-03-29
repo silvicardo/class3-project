@@ -14,7 +14,7 @@
     <div class="form_container row">
       <div class="col-12">
         @include('partials.error')
-        <h2 class="my-4">Modifica i tuoi dati:</h2>
+        <h2 class="my-4">Modifica la tua password:</h2>
 
         <form id="form_cambio_password" class="form-group" action="{{ route('guest.updatePassword') }}" method="post">
           @method('PUT')
