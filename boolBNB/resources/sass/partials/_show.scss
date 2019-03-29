@@ -3,4 +3,8 @@
   .use-all-space {
     @include flex;
   }
+  #mostraMappa, #nascondiMappa, #mostraForm, #nascondiForm {
+    font-size: 17px;
+    color: $colorLightGreen;
+  }
 }
