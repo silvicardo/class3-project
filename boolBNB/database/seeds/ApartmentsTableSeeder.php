@@ -81,5 +81,6 @@ class ApartmentsTableSeeder extends Seeder
       $newApartment->save();
       $newApartment->optionals()->sync([1, 2]);
       $newApartment->save();
+
     }
 }
