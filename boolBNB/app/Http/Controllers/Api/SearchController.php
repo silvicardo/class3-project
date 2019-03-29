@@ -38,15 +38,23 @@ class SearchController extends Controller
             }
         }
 
+
+
         if ($data['isAdvanced'] === 'true'){
-          
-          return response()->json(['error' => 'devi filtrare diego']);
+
+          dd($data['optionals']);
+
+          }
+          //$filteredOptionals = Optional::where('optional_id', '=', $data->optionals[0]);
+
+
+          return response()->json(['error' => ' ']);
         }
         //
         // dd($data);
 
 
-        return response()->json($risultati);
+        return response()->json($data->all::(optionals);
     // }
 
   }
