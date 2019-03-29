@@ -14,12 +14,13 @@
        <span>
          <strong>Optionals:</strong><br>
        </span>
+       <ul>
        @foreach ($foundApartment->optionals as $optional)
-         <span>{{ $optional->name}}</span><br>
+        <li>{{ $optional->name}}</li>
        @endforeach
+       </ul>
        <span>
-
-         <strong>Indirizzo</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
+         <strong>Indirizzo:</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
        </span>
        <div class="d-none" id="latitudine">
           {{ $foundApartment->latitude}}
@@ -45,20 +46,25 @@
          </div>
        @else
          <h2 class="my-5">Richiedi informazioni al proprietario su questo appartamento</h2>
-         <form action="#" method="post">
+         <form action="{{route('messages.store')}}" method="post">
            @csrf
            @method('POST')
+           <input type="hidden" name="apartment_id" value="{{$foundApartment->id}}">
            <div class="form-group">
              <label for="name">Nome</label>
-             <input type="text" name="name" class="form-control" {{--value="{{ $guest->name }}"--}} placeholder="Inserisci il tuo nome">
+             <input type="text" name="name" class="form-control" value="{{ $user->name }}" placeholder="Inserisci il tuo nome">
            </div>
            <div class="form-group">
-             <label for="email">Email</label>
-             <input type="email" name="email" class="form-control" {{--value="{{ $guest->email }}"--}} placeholder="name@example.com">
+             <label for="email">Email mittente</label>
+             <input type="email" name="email" class="form-control" value="{{ $user->email }}" placeholder="name@example.com">
            </div>
            <div class="form-group">
-             <label for="message">Messaggio</label>
-             <textarea class="form-control" name="message" placeholder="Inserisci il tuo messaggio" rows="3"></textarea>
+             <label for="subject">Oggetto messaggio</label>
+             <input type="text" name="subject" class="form-control" value="" placeholder="Oggetto del messaggio">
+           </div>
+           <div class="form-group">
+             <label for="description_body">Messaggio</label>
+             <textarea class="form-control" name="description_body" placeholder="Inserisci il tuo messaggio" rows="3"></textarea>
            </div>
            <button type="submit" class="btn btn-primary">Invia</button>
          </form>

@@ -39,15 +39,57 @@ class SearchController extends Controller
         }
 
         if ($data['isAdvanced'] === 'true'){
-          
-          return response()->json(['error' => 'devi filtrare diego']);
-        }
-        //
-        // dd($data);
 
+          // if(!empty($data['nr_of_beds'])){
+          //   //....
+          // }
+          if(!empty($data['nr_of_bathrooms'])){
+            //....
+          }
+          if(!empty($data['nr_of_rooms'])){
+            //....
+          }
+
+          if(!empty($data['optionals'])){
+
+            $appartamentiFiltratiPerOptionals = [];
+
+            //FILTRAGGIO PER OPTIONALS
+            foreach ($risultati as $appartamento) {
+
+              //CREIAMO UN ARRAY DA CONFRONTARE CON GLI OPTIONALS DEL JSON
+              $optionalsAppartamento = []; //[1,2]
+              foreach ($appartamento->optionals as $optional) {
+                $optionalsAppartamento[] = $optional->id;
+              }
+
+              //ORA $optionalsAppartamento = [1,2] (DA SEEDER)
+
+
+              //VERIFICHIAMO CHE L'APPARTAMENTO CORRENTE ABBIA TUTTI GLI OPTIONALS
+              //RICHIESTI DALLA RICERCA E IN ARRIVO TRAMITE IL JSON($data['optionals'])
+
+              $currentApartmentHasAllJSONOptionals = true; //IN ARRAY PER OGNI OPTIONAL MI RISPONDE TRUE
+              $index = 0; //indice array optional da json
+              while ($currentApartmentHasAllJSONOptionals === true && $index < count($data['optionals'])) {
+                  $currentApartmentHasAllJSONOptionals = in_array($data['optionals'][$index], $optionalsAppartamento);
+                  $index++;
+              }
+
+              if($currentApartmentHasAllJSONOptionals){
+                $appartamentiFiltratiPerOptionals[] =  $appartamento;
+              }
+
+
+            }
+
+            return response()->json($appartamentiFiltratiPerOptionals);
+          }
+
+
+        }
 
         return response()->json($risultati);
-    // }
 
   }
 }
