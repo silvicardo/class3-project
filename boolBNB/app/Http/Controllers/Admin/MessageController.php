@@ -51,7 +51,17 @@ class MessageController extends Controller
 
       }
 
-      if ($messages->isEmpty()){
+      $receivedMessages = Message::where('recipient_mail','=', $currentUser->email)->get();
+
+      foreach ($receivedMessages as &$message) {
+
+        $message['sender_name'] = User::find($message['sender_id'])->name;
+        $message['sender_email'] = User::find($message['sender_id'])->email;
+
+      }
+
+
+      if ($messages->isEmpty() && $receivedMessages->isEmpty()){
 
         return view("admin.{$currentUser->roles()->first()->name}.profile",
                     [
@@ -61,7 +71,9 @@ class MessageController extends Controller
                     );
       }
 
-      return view('admin.messages.index', compact('messages',  'currentUser' ));
+      //$messages = array_merge($messages->toArray(), $receivedMessages->toArray());
+
+      return view('admin.messages.index', compact('messages', 'receivedMessages', 'currentUser' ));
 
     }
 
@@ -110,12 +122,13 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+
       dd($message->id);
       $foundMessage = Message::find($message->id);
-      dd($foundMessage);
+      //dd($foundMessage);
       if(!empty($foundMessage))
       {
-        return view('messages.show', compact($message));
+        return view('messages.show', ['message' => $foundMessage]);
       }
 
       else
