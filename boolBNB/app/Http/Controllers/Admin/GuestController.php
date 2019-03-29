@@ -69,4 +69,3 @@ class GuestController extends Controller {
       return redirect()->route('guest.profile');
     }
   }
-
