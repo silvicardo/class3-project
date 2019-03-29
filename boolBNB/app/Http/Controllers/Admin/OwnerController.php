@@ -9,6 +9,7 @@ use App\Subscription;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
+
 class OwnerController extends Controller {
   //middleware permessi sul costruttore
   public function __construct() {
@@ -65,8 +66,10 @@ class OwnerController extends Controller {
       //dd('vecchia password sbagliata');
       //$request->session()->flash('error', 'Password does not match');
       return view('admin.owner.edit', ['error' => 'La vecchia password non è corretta']);
+
     }
   }
+
 
   public function profilePictureUpdate(Request $request) {
     $data = $request->all();
@@ -75,4 +78,5 @@ class OwnerController extends Controller {
     Auth::user()->update($data);
     return redirect()->route('owner.profile');
   }
+
 }

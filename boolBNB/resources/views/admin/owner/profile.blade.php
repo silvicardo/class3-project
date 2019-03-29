@@ -35,10 +35,11 @@
     <div class="col-sm-7">
       <div class="container_profile">
         <div class="container_profile_edit">
-          <h2 class="mb-4">Ciao, {{ $currentUser->name }}</h2>
-          <a href="{{ route('owner.edit') }}">Modifica password</a>
-          <a href="{{ route('messages.index') }}">Leggi messaggi</a>
-          <a href="{{ route('messages.create') }}">Invia messaggio</a>
+          <h2 class="mb-4">Ciao,{{ $currentUser->name }}</h2>
+          <a href="{{ route('owner.edit') }}">Modifica profilo</a>
+          <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
+          {{-- <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a> --}}
+
         </div>
         @if (!empty($alert))
           <div class="w-50 alert alert-primary" role="alert">
@@ -47,7 +48,7 @@
         @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-owner'))
-            <form action="{{ "/owner/" . $currentUser->id . "/delete"}}" method="POST">
+            <form action="{{ route('owner.destroy')}}" method="POST">
               @method('DELETE')
                @csrf
               <button type="submit" class="btn btn-danger">Elimina il tuo account</button>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
+
 class GuestController extends Controller {
   //middleware permessi sul costruttore
   public function __construct(){
@@ -68,3 +69,4 @@ class GuestController extends Controller {
       return redirect()->route('guest.profile');
     }
   }
+

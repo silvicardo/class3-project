@@ -47,7 +47,6 @@ class ApartmentsTableSeeder extends Seeder
       //   // randomElements($array = array ('a','b','c'), $count = 1) // array('c')
       // }
 
-
       $newApartment = new Apartment;
       $newApartment->user_id = User::find(1)->id;//1 proprietario , 2 ospite
       $newApartment->title = 'App Milano';

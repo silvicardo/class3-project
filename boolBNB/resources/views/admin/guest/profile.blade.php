@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-
 <div class="container profile">
   <div class="row">
     <div class="col-sm-5">
@@ -35,9 +34,11 @@
       <div class="container_profile">
         <div class="container_profile_edit">
           <h2 class="mb-4">Ciao, {{ $currentUser->name }}</h2>
-          <a href="{{ route('guest.edit')}}">Modifica password</a>
-          <a href="{{ route('messages.index') }}">Leggi messaggi</a>
-          <a href="{{ route('messages.create') }}">Invia messaggio</a>
+
+          <a href="{{ route('guest.edit')}}">Modifica profilo</a>
+          <a href="{{ route('messages.index') }}">Leggi i tuoi messaggi</a>
+          {{-- <a href="{{ route('messages.create') }}">Invia un nuovo messaggio</a> --}}
+
         </div>
         @if (!empty($alert))
           <div class="w-50 alert alert-primary" role="alert">
@@ -46,7 +47,9 @@
         @endif
         <div class="container_profile_delete">
           @if (!empty(Auth::user()) && Auth::user()->can('manage-guest'))
-            <form action="{{ "/guest/" . $currentUser->id . "/delete"}}" method="POST">
+
+            <form action="{{ route('guest.destroy')}}" method="POST">
+
               @method('DELETE')
                @csrf
               <button type="submit" class="btn btn-danger">Elimina il tuo account</button>

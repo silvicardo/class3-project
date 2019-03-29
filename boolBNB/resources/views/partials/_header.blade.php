@@ -56,12 +56,12 @@
 
               @if(Auth::user()->hasRole('owner'))
 
-              <a class="dropdown-item" href="{{route('owner.profile', Auth::User()->id)}}"
+              <a class="dropdown-item" href="{{route('owner.profile', Auth::user()->id)}}"
               >
               {{ __('Profilo') }}
               </a>
 
-              <a class="dropdown-item" href="{{route('owner.show', Auth::User()->id)}}"
+              <a class="dropdown-item" href="{{route('owner.show', Auth::user()->id)}}"
               >
               {{ __('I tuoi appartamenti') }}
               </a>
@@ -74,12 +74,12 @@
 
               @else
 
-              <a class="dropdown-item" href="{{route('guest.profile', Auth::User()->id)}}"
+              <a class="dropdown-item" href="{{route('guest.profile', Auth::user()->id)}}"
               >
               {{ __('Profilo') }}
               </a>
 
-              <a class="dropdown-item" href="{{route('guest.show', Auth::User()->id)}}"
+              <a class="dropdown-item" href="{{route('guest.show', Auth::user()->id)}}"
               >
               {{ __('Le tue prenotazioni') }}
               </a>
@@ -101,7 +101,7 @@
 
           @if(Auth::user()->hasRole('owner'))
 
-            <a href="{{route('owner.profile', Auth::User()->id) }}">
+            <a href="{{route('owner.profile', Auth::user()->id) }}">
               <li class="nav-item">
                 <div class="logo_user">
                   <img src="{{ asset('storage/' . Auth::user()->image_profile) }}" alt="">
@@ -109,7 +109,7 @@
               </li>
             </a>
           @else
-            <a href="{{route('guest.profile', Auth::User()->id) }}">
+            <a href="{{route('guest.profile', Auth::user()->id) }}">
               <li class="nav-item">
                 <div class="logo_user">
                   <img src="{{ asset('storage/' . Auth::user()->image_profile) }}" alt="">
