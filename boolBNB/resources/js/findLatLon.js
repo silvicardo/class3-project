@@ -39,7 +39,7 @@ $(document).ready(function(){
       //compilare gli input nascosti
       $('#input_lat').val(result.position.lat);
       $('#input_lon').val(result.position.lon);
-      debugger
+      
       $('#form_appartamento').submit();
 
     })
