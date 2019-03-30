@@ -20,13 +20,8 @@ use Illuminate\Http\Request;
 //rotte api NON autenticate
 Route::middleware('api.auth')->namespace('Api')->group(function() {
 
-    //Template rotte Api ()
-    // Route::get('/qualcosa', 'QualcosaController@index');
-    // Route::post('/qualcosa', 'QualcosaController@create');
-    // Route::get('/qualcosa/{id}', 'QualcosaController@show');
-    // Route::post('/qualcosa/{id}', 'QualcosaController@update');
-    // Route::post('/qualcosa/{id}/delete', 'QualcosaController@destroy');
     Route::get('/braintree/token', 'BraintreeTokenController@token');
+    Route::post('/apartment/update-nr-of-views', 'ApartmentController@updateNrOfViews');
 
 });
 

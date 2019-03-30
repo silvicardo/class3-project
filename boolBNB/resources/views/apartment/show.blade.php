@@ -1,13 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
+  @php
+  $user = Auth::user();
+  @endphp
 <div class="container">
 
   <div class="showcardcontainer mt-5">
 
-    <div class="card" style="width: 40rem;">
+    <div id="apartment_card" class="card" style="width: 40rem;" data-apartment-id="{{ $foundApartment->id}}"
+      data-user-id="{{ (!empty($user)) ? $user->id : 'non-registrato'}}" >
      <img class="card-img-top" src="{{ asset('storage/' . $foundApartment->image_url) }}" alt="Card image cap">
-     <div class="card-body">
+     <div class="card-body" >
        <h5 class="card-title">{{ $foundApartment->title}}</h5>
        <span>
          <strong>Indirizzo:</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
@@ -33,9 +37,6 @@
        </div>
 
        <hr>
-       @php
-       $user = Auth::user();
-       @endphp
        {{-- Se l'utente è registrato ed è il proprietario dell'appartamento --}}
       @if($user !== null && $user->can('manage-owner') && $user->id === $foundApartment->user_id)
          <div class="comandi_appartamento">

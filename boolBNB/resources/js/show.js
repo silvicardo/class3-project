@@ -1,6 +1,26 @@
 var $ = require("jquery");
+//ACCEDIAMO ALL'ENV PER LEGGERE LA CHIAVE PER LA NOSTRA API
+var dotEnv = require('dotenv');
+dotEnv.config();
+var {MIX_API_AUTH_KEY} = process.env;
+
 
 $(document).ready(function(){
+
+  console.log($('#apartment_card').data('apartment-id'));
+  //INCREMENTA IL COUNTER DI VISITE DI UN DETERMINATO APPARTAMENTO
+    $.ajax({
+      url: '/api/apartment/update-nr-of-views',
+      method: 'POST',
+      headers: {'Authorization': `Bearer ${MIX_API_AUTH_KEY}`},
+      data: { apartment_id: $('#apartment_card').data('apartment-id'), user_id: $('#apartment_card').data('user-id')} ,
+      success: function(response){
+        console.log(response);
+      },
+      fail: function(error){
+        console.log(error.message)
+      }
+    });
 
   var latitudine = parseFloat($('#latitudine').html());
   var longitudine = parseFloat($('#longitudine').html());
@@ -44,5 +64,6 @@ $(document).ready(function(){
   map.on('zoomend', function() {
     var center = map.getCenter();
   });
+
 
 });

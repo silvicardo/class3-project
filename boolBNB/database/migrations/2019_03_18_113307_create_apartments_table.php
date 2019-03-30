@@ -34,6 +34,7 @@ class CreateApartmentsTable extends Migration
             $table->decimal('latitude', 10,8);  //la logica nei controller compilerà questo dato
             $table->decimal('longitude', 11, 8); //la logica nei controller compilerà questo dato
             $table->string('image_url')->nullable(false);
+            $table->integer('views')->default(0);
             //Nel caso si volesse fare un json per gli optionals
             // $table->json('options');
 
