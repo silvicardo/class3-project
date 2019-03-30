@@ -77,11 +77,11 @@ class ApartmentController extends Controller
 
             //logica recupero dati
 
-            $views =  View::get()->groupBy(function($d) {
+            $views =  View::where('apartment_id','=',$request->header('apartment_id'))->get()->groupBy(function($d) {
 
                              return Carbon::parse($d->created_at)->format('F');
                          });
-            $messages =  Message::get()->groupBy(function($d) {
+            $messages =  Message::where('apartment_id','=',$request->header('apartment_id'))->get()->groupBy(function($d) {
 
                              return Carbon::parse($d->created_at)->format('F');
                          });
@@ -99,7 +99,7 @@ class ApartmentController extends Controller
                               'messaggi' => [
                                   'anni'=> [
                                           'nr_anno' => '2019',
-                                          'messaggi' =>  $messages
+                                          'mesi' =>  $messages
                                             ]
                                           ]
                                         ]

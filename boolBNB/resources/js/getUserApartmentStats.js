@@ -8,34 +8,18 @@ dotEnv.config();
 
 $(document).ready(function(){
 
-  console.log('buonanotte');
+  console.log('Stats');
 
-  $('#richiedi_stats').click(function(){
+  $('#form_stats').submit(function(event){
+
+    event.preventDefault()
+
     var idAppartamentoScelto = $('#select-appartamento').val();
     var userId = $('#form_stats').data('user-id');
 
     console.log(idAppartamentoScelto);
     console.log(userId);
 
-  /*
-
-  //
-  //   var graficoMessaggi = new Chart($('#chart_messaggi'), {
-  //     "type": "line",
-  //     "data": {
-  //         "labels": ["January", "February", "March", "April", "May", "June", "July"],
-  //         "datasets": [{
-  //             "label": "My First Dataset",
-  //             "data": [65, 59, 80, 81, 56, 55, 40],
-  //             "fill": false,
-  //             "borderColor": "rgb(75, 192, 192)",
-  //             "lineTension": 0.1
-  //         }]
-  //     },
-  //     "options": {}
-  // });
-    // console.log($('#apartment_card').data('apartment-id'));
-  */
       $.ajax({
         url: '/api/apartment/stats',
         method: 'GET',
@@ -45,7 +29,7 @@ $(document).ready(function(){
          user_id: userId} ,
         success: function(response){
 
-          console.log(response.views.anni.mesi);
+          console.log(response);
 
           var visitePerMese = response.views.anni.mesi
           var messaggiPerMese = response.messaggi.anni.mesi
