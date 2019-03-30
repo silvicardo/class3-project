@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Carbon\Carbon;
 use App\Apartment;
 use App\View;
+use App\User;
+use App\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -55,28 +57,81 @@ class ApartmentController extends Controller
 
     }
 
-    public function getNrOfViews(Request $request)
+    public function apartmentStats(Request $request)
     {
       //estraiamo i dati dal JSON dalla request
       parse_str($request->getContent(), $data);
+      // !$request->hasHeader('Authorization')
 
-      if(!empty($data['apartment_id'])){
+      //VEDIAMO SE MI HAI DATO TUTTI I DATI NECESSARI PER PROCEDERE
+      // if(!empty($data['user_id']) && !empty($data['apartment_id'])){
+      if($request->hasHeader('apartment_id') && $request->hasHeader('user_id')){
 
-        $apartmentToUpdate = Apartment::find($data['apartment_id']);
+        $apartment = Apartment::find($request->header('apartment_id'));
 
-        $apartmentToUpdate->views = $apartmentToUpdate['views'] + 1;
+        //VEDIAMO SE SEI IL PROPRIETARIO
+        if($request->header('user_id') == $apartment->user_id){
 
-        $apartmentToUpdate->save();
+          //VEDIAMO SE HAI TROVATO UN APPARTAMENTO CON L ID RICHIESTO
+          if($apartment !== null){
 
+            //logica recupero dati
+
+            $views =  View::get()->groupBy(function($d) {
+
+                             return Carbon::parse($d->created_at)->format('F');
+                         });
+            $messages =  Message::get()->groupBy(function($d) {
+
+                             return Carbon::parse($d->created_at)->format('F');
+                         });
+
+
+
+          return response()->json([
+                              'views' => [
+                                  'anni'=> [
+                                          'nr_anno' => '2019',
+                                          'mesi' =>  $views
+                                            ]
+                                          ],
+
+                              'messaggi' => [
+                                  'anni'=> [
+                                          'nr_anno' => '2019',
+                                          'messaggi' =>  $messages
+                                            ]
+                                          ]
+                                        ]
+                                      );
+
+
+
+            return response()->json([
+              'status' => 'success',
+              'message' => 'dati per chart restituiti',
+            ]);
+
+          }
+
+            return response()->json([
+              'status' => 'error',
+              'message' => 'Nessun Appartamento con questo id',
+            ]);
+
+          }
+
+        //se non sono il proprietario
         return response()->json([
-          'status' => 'success',
-          'message' => 'views update succesful',
+          'status' => 'error',
+          'message' => 'non sei il proprietario, no dati',
         ]);
       } else {
 
+        //DATI MANCANTI
         return response()->json([
             'status' => 'error',
-            'message' => 'An error occurred!'
+            'message' => 'Dati insufficienti'
           ]);
       }
 

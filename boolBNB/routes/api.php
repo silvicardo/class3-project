@@ -17,15 +17,17 @@ use Illuminate\Http\Request;
 //Tutti gli url delle rotte iniziano con /api/
 //il namespace fa riferimento ai controller -> App/Http/Controllers/Api/quiSonoIcontroller
 
-//rotte api NON autenticate
+//rotte api AUTENTICATE
+
 Route::middleware('api.auth')->namespace('Api')->group(function() {
 
     Route::get('/braintree/token', 'BraintreeTokenController@token');
     Route::post('/apartment/update-nr-of-views', 'ApartmentController@updateNrOfViews');
+    Route::get('/apartment/stats','ApartmentController@apartmentStats');
 
 });
 
-//rotte api AUTENTICATE
+//rotte api NON autenticate
 Route::namespace('Api')->group(function() {
     Route::post('/search-city', 'SearchController@getApartmentsByCity');
     //Template rotte Api ()
