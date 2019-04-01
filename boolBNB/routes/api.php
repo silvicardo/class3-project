@@ -29,12 +29,8 @@ Route::middleware('api.auth')->namespace('Api')->group(function() {
 
 //rotte api NON autenticate
 Route::namespace('Api')->group(function() {
-    Route::post('/search-city', 'SearchController@getApartmentsByCity');
-    //Template rotte Api ()
-    // Route::get('/qualcosa', 'QualcosaController@index');
-    // Route::post('/qualcosa', 'QualcosaController@create');
-    // Route::get('/qualcosa/{id}', 'QualcosaController@show');
-    // Route::post('/qualcosa/{id}', 'QualcosaController@update');
-    // Route::post('/qualcosa/{id}/delete', 'QualcosaController@destroy');
+
+        Route::post('/search-city', 'SearchController@getApartmentsByCity');
+
 
 });
