@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/findLatLon.js": "/js/findLatLon.js",
+    "/js/getUserApartmentStats.js": "/js/getUserApartmentStats.js",
     "/js/navbarSearch.js": "/js/navbarSearch.js",
     "/js/search.js": "/js/search.js",
     "/js/show.js": "/js/show.js",
