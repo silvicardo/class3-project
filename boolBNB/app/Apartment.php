@@ -51,11 +51,11 @@ class Apartment extends Model
       return $this->hasMany('App\Reservation');
     }
 
-    //RELAZIONE APPARTAMENTO(MANY) <---> SPONSORIZZAZIONE(MANY)
-    //Un appartamento ha una sola sponsorizzazione alla volta, ma può averne molte totali
-    //Una sponsorizzazion può avere multipli appartamenti
-    public function sponsorship(){
-      return $this->belongsToMany('App\Sponsorship');
+    //RELAZIONE APPARTAMENTO(ONE) <--->  SUBSCRIPTIONS(MANY)
+    //Un appartamento può avere una subscription alla volta, ma molte nel tempo
+    //Una subscription può avere un singolo appartamento
+    public function subscriptions(){
+      return $this->hasMany('App\Subscription');
     }
 
     //Relazioni Appartamenti(ONE)<-> MESSAGGI(MANY)
