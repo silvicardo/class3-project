@@ -69,4 +69,15 @@ class Apartment extends Model
       return $this->hasMany('App\Message');
     }
 
+    //Relazioni Appartamenti(ONE)<-> VIEWS(MANY)
+
+    //un appartamento può avere tante visualizzazioni
+    //una singola visualizzazione può avere un solo appartamento
+
+
+    public function views()
+    {
+      return $this->hasMany('App\View');
+    }
+
 }

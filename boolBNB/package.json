@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "braintree-web-drop-in": "^1.16.0",
+    "chart.js": "^2.8.0",
     "dotenv": "^7.0.0",
     "fs": "0.0.1-security",
     "geocomplete": "^1.7.0",

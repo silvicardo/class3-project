@@ -79,4 +79,9 @@ class OwnerController extends Controller {
     return redirect()->route('owner.profile');
   }
 
+  public function stats(){
+
+    return view('admin.owner.stats', ['currentUser' => Auth::user()]);
+  }
+
 }
