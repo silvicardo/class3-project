@@ -58,11 +58,7 @@ class ApartmentController extends Controller
 
     public function show($apartmentId)
     {
-        //
-        // // Get the currently authenticated user...
-        // $user = Auth::user();
-        //dd($id);
-
+        
         $foundApartment = Apartment::find($apartmentId);
 
         return view('apartment.show', compact('foundApartment'));
@@ -91,13 +87,6 @@ class ApartmentController extends Controller
 
       return view('apartment.create_edit', compact('data'));
 
-      //E' UGUALE ANCHE FARE COSÌ
-
-        // $action = route('apartment.store');
-        // $method = 'POST';
-
-
-      // return view('apartment.create', compact('action','method'));
 
     }
 
@@ -145,7 +134,7 @@ class ApartmentController extends Controller
     }
 
     public function update(Request $request, $id){
-       //($apartment);
+
       //i dati modificati dal form
       $data = $request->all();
 

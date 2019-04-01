@@ -45,8 +45,7 @@ class GuestController extends Controller {
 
   public function updatePassword(Request $request) {
     $data =$request->all();
-    //$this->currentUser->Password
-    //$oldPassword = Hash::make($data['old_password']);
+
     $this->validate($request, ['old_password' => 'required', 'new_password' => 'required|confirmed|min:8', 'new_password_confirmation' => 'required|min:8']);
     if (Hash::check($data['old_password'], Auth::user()->password)) {
       //dd('vecchia password corretta');

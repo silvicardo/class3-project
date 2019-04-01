@@ -20,4 +20,4 @@ class StaticPageController extends Controller
 }
 
 
-// aggiungere return view in base al frontend
+
