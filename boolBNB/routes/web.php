@@ -48,6 +48,7 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
   Route::put('/update-password', 'OwnerController@updatePassword')->name('updatePassword');
   Route::put('/update-picture', 'OwnerController@profilePictureUpdate')->name('profilePictureUpdate');
+  Route::get('/stats', 'OwnerController@stats')->name('stats');
 
 });
 

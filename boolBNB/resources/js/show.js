@@ -1,148 +1,62 @@
 var $ = require("jquery");
+//ACCEDIAMO ALL'ENV PER LEGGERE LA CHIAVE PER LA NOSTRA API
+var dotEnv = require('dotenv');
+dotEnv.config();
+var {MIX_API_AUTH_KEY} = process.env;
+
 
 $(document).ready(function(){
 
+  console.log($('#apartment_card').data('apartment-id'));
+  //INCREMENTA IL COUNTER DI VISITE DI UN DETERMINATO APPARTAMENTO
+    $.ajax({
+      url: '/api/apartment/update-nr-of-views',
+      method: 'POST',
+      headers: {'Authorization': `Bearer ${MIX_API_AUTH_KEY}`},
+      data: { apartment_id: $('#apartment_card').data('apartment-id'), user_id: $('#apartment_card').data('user-id')} ,
+      success: function(response){
+        console.log(response);
+      },
+      fail: function(error){
+        console.log(error.message)
+      }
+    });
+
   var latitudine = parseFloat($('#latitudine').html());
   var longitudine = parseFloat($('#longitudine').html());
+  var center = [latitudine, longitudine];
   var indirizzo = $('#indirizzo').html();
 
+  //CREAZIONE MAPPA
   var map = tomtom.L.map('map', {
     key: 'A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh',
+    center,
     source: 'vector',
     basePath: '/sdk',
-  })
-  //.setView([parseFloat($('#latitudine').html()), parseFloat($('#longitudine').html())], 6);
+  }).setView(center, 17)
 
-  // We will show results here
+  //LA RESULT LIST È NECESSARIA, VA CREATA MA NON LA MOSTRIAMO
   var resultsList = tomtom.resultsList().addTo(map);
+  $('.tomtom-results-list').addClass('d-none');
 
+  //METTIAMO IL MARKER SULL'INDIRIZZO DELL'APPARTAMENTO
   var markersLayer = L.tomTomMarkersLayer().addTo(map);
+  var marker = tomtom.L.marker(center, { draggable: false }).bindPopup(indirizzo).addTo(map);
 
-  clear();
-  var options = {
-    language:  'it-IT',
-    unwrapBbox: true,
-    query: indirizzo,
-    limit: "1",
-    radius: "0",
-    center: { lat: latitudine, lon: longitudine },
-    geoBias: "on",
-    position: longitudine,
-  }
-
-  console.log(options);
-
-  tomtom.geocode(options).go(function(geoResponses) {
-
-    if (geoResponses.length > 0) {
-      var markerOpt = {
-        noMarkerClustering: true
-      };
-      var popupOpt = {
-        popupHoverContent: getResultAddress,
-        popupContent: prepareResultElement
-      };
-
-      markersLayer.setMarkersData(geoResponses)
-      .setMarkerOptions(markerOpt)
-      .setPopupOptions(popupOpt)
-
-      .addMarkers();
-
-      resultsList.clear().unfold();
-
-      markersLayer.getMarkers().forEach(function(markerLayer, index) {
-        var point = geoResponses[index];
-        var geoResponseWrapper = prepareResultElement(point);
-
-        var viewport = point.viewport;
-        resultsList.addContent(geoResponseWrapper);
-
-        geoResponseWrapper.onclick = function() {
-          if (viewport) {
-            map.fitBounds([viewport.topLeftPoint, viewport.btmRightPoint]);
-          } else {
-            map.panTo(markerLayer.getLatLng());
-          }
-          markerLayer.openPopup();
-        };
-      });
-
-      map.fitBounds(markersLayer.getBounds());
-    } else {
-      resultsList.setContent('Results not found.');
-    }
-    $('#mostraMappa').click(function(){
-      $('#mapContainer').removeClass('d-none');
-      $('#mostraMappa').addClass('d-none');
-      $('#nascondiMappa').removeClass('d-none');
-    });
-    $('#nascondiMappa').click(function() {
-      $('#mapContainer').addClass('d-none');
-      $('#mostraMappa').removeClass('d-none');
-      $('#nascondiMappa').addClass('d-none');
-    });
-
-    $('#mostraForm').click(function(){
-      $('#form').removeClass('d-none');
-      $('#mostraForm').addClass('d-none');
-      $('#nascondiForm').removeClass('d-none');
-    });
-    $('#nascondiForm').click(function() {
-      $('#form').addClass('d-none');
-      $('#mostraForm').removeClass('d-none');
-      $('#nascondiForm').addClass('d-none');
-    });
+  //AL CLICK DEI BOTTONI TOGGLO MAPPA/FORM
+  $('#mostraMappa, #nascondiMappa, #mostraForm, #nascondiForm')
+    .on('click', () => {
+    //TOGGLO MAPPA
+    $('#mapContainer').toggleClass('d-none');
+    $('#mostraMappa').toggleClass('d-none');
+    $('#nascondiMappa').toggleClass('d-none');
+    //TOGGLO FORM
+    $('#form').toggleClass('d-none');
+    $('#mostraForm').toggleClass('d-none');
+    $('#nascondiForm').toggleClass('d-none');
   });
 
-  /*
-  * Get result address from response
-  */
-  function getResultAddress(result) {
-    if (typeof result.address === 'undefined') {
-      return '';
-    }
-    var address = [];
-    if (typeof result.address.freeformAddress !== 'undefined') {
-      address.push(result.address.freeformAddress);
-    }
-    if (typeof result.address.countryCodeISO3 !== 'undefined') {
-      address.push(result.address.countryCodeISO3);
-    }
-    return address.join(', ');
-  }
-  /*
-  *
-  * Get result distance from search center
-  */
-  function getResultDistance(result) {
-    if (typeof result.dist !== 'undefined') {
-      return result.dist;
-    }
-    return null;
-  }
-  /*
-  * Prepare result element for popup and result list
-  */
-  function prepareResultElement(result) {
-    var resultElement = tomtom.L.DomUtil.create('div', 'geoResponse-result');
-    var adress = getResultAddress(result);
-    var distance = getResultDistance(result);
-    if (typeof adress !== 'undefined') {
-      var addressWrapper = tomtom.L.DomUtil.create('div', 'geoResponse-result-address');
-      addressWrapper.innerHTML = adress;
-      resultElement.appendChild(addressWrapper);
-    }
-    if (typeof distance !== 'undefined') {
-      var distanceElement = tomtom.L.DomUtil.create('div', 'geoResponse-result-distance');
-      distanceElement.innerHTML = tomtom.unitFormatConverter.formatDistance(distance);
-      resultElement.appendChild(distanceElement);
-    }
-    return resultElement;
-  }
-  /*
-  * Reflect changes on the map in the input
-  */
+  //AL DRAG DELLA MAPPA RIPOSIZIONA IL CENTRO DELLA MAPPA
   map.on('dragend', function() {
     var center = map.getCenter();
   });
@@ -151,13 +65,5 @@ $(document).ready(function(){
     var center = map.getCenter();
   });
 
-  /*
-
-  * Clears markers and geocode results.
-  */
-  function clear() {
-    resultsList.clear();
-    markersLayer.clearLayers();
-  }
 
 });

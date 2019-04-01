@@ -6,24 +6,12 @@ $(document).ready(function(){
 
   console.log('latLon script');
 
-  //*********PUNTATORI JQUERY********//
-
-
-  //**************VARIABILI***********//
-
-
-
-  //**************PRIMO AVVIO PAGINA***********//
-
-
   // Define your product name and version
   tomtom.setProductInfo('progettoClasse3', '2');
   // Setting TomTom keys
   tomtom.searchKey('A8p4RHYLPVFkmdSk3a0acLxVQKvCJNzh');
 
   //**************LISTENERS***********//
-
-
 
   $('#submit_form_appartamento').click((event)=>{
     event.preventDefault();
@@ -39,7 +27,7 @@ $(document).ready(function(){
       //compilare gli input nascosti
       $('#input_lat').val(result.position.lat);
       $('#input_lon').val(result.position.lon);
-      
+
       $('#form_appartamento').submit();
 
     })
