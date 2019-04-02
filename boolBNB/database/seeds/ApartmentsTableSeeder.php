@@ -59,7 +59,7 @@ class ApartmentsTableSeeder extends Seeder
       $newApartment->address = 'Via Monte Rosa, 91, Milano';
       $newApartment->latitude = 45.477936;
       $newApartment->longitude = 9.1429304;
-      $newApartment->image_url = $faker->imageUrl(640, 480, 'city');
+      $newApartment->image_url = null;
       $newApartment->save();
       $newApartment->optionals()->sync([1, 2]);
       $newApartment->save();
@@ -74,10 +74,10 @@ class ApartmentsTableSeeder extends Seeder
       $newApartment->description = $faker->paragraph(5, true);
       $newApartment->mq = $faker->numberBetween(30,120);
       $newApartment->daily_price = $faker->numberBetween(30,200);
-      $newApartment->address = 'Via Cesare Cocchi, Firenze';
-      $newApartment->latitude = 43.7962437;
-      $newApartment->longitude = 11.2401303;
-      $newApartment->image_url = $faker->imageUrl(640, 480, 'city');
+      $newApartment->address = 'Piazzale Michelangelo, 1, Firenze';
+      $newApartment->latitude = 43.7629314;
+      $newApartment->longitude = 11.2628674;
+      $newApartment->image_url = null;
       $newApartment->save();
       $newApartment->optionals()->sync([1, 2]);
       $newApartment->save();
