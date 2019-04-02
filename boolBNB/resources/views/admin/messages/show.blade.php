@@ -7,12 +7,13 @@
 
     <div class="card w-50">
       <div class="card-body">
-        <h5 class="card-title">{{$message->subject}}</h5>
-        <span>Creato il: {{$message->created_at}}</span><br>
-        <span>Nome mittente: {{$sender->name}}</span><br>
-        <span>Mail mittente: {{$sender->mail}}</span><br>
+        <h5 class="card-title"><strong>Oggetto: </strong>{{$message->subject}}</h5>
+        <span><strong>Creato il: </strong> {{$message->created_at}}</span><br>
 
-        <p>Contenuto mail:{{$message->description }}</p>
+        <span><strong>Nome mittente: </strong> {{----}}</span><br>
+        <span><strong>Mail mittente: </strong> {{-- --}}</span><br>
+
+        <p><strong>Contenuto mail: </strong> {{$message->description_body }}</p>
       </div>
     </div>
 

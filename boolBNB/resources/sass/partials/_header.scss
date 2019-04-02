@@ -38,7 +38,7 @@
       input {
         border-style: none;
         outline: none;
-        height: 100%;
+        height: calc(100% - 2px);
         width: 60%;
         font-size: 15px;
         color: $colorGreyStrong;

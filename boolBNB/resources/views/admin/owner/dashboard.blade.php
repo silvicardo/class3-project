@@ -14,10 +14,7 @@
     </div>
   @endif
 
-  @php
-  if (!empty($isStorageImage)){ dd($isStorageImage);}
-
-  @endphp
+  
 @endsection
 
 
