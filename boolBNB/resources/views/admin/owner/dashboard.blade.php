@@ -30,7 +30,7 @@
 
       <h2  class="ownerhello mb-5">Ciao {{ $currentUser->name }}, ecco i tuoi appartamenti:</h2>
 
-      <a href="{{route('owner.stats')}}" class="btn btn-info">Mostra statistiche dei tuoi appartamenti</a>
+      <a href="{{route('owner.stats')}}" class="btn btn-large btn-info mb-5 mr-5">Mostra statistiche appartamenti</a>
       <a href="{{ route('apartment.create', $currentUser->id)}}" class="btn btn-large btn-success mb-5 mr-5">Crea nuovo appartamento</a>
       <a href="{{ route('owner.sponsor.create')}}" class="btn btn-large btn-warning text-white mb-5">Sponsorizza un appartamento</a>
       <div class="row">
