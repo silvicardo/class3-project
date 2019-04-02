@@ -15,9 +15,6 @@
   @endif
 
 
-   {{-- dd($isStorageImage) --}}
-
-
 @endsection
 
 

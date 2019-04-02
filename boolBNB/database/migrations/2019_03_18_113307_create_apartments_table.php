@@ -1,9 +1,15 @@
-<?php
+0
+1 0 silvicardo/class3-project
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+class3-project/boolBNB/database/migrations/2019_03_18_113307_create_apartments_table.php
+@silvicardo silvicardo Relazioni -> Appartamento e Prenotazioni, Utenti e Sponsorizzazioni, …
+15de84a 14 days ago
+53 lines (47 sloc)  2.02 KB
 
+<?php
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateApartmentsTable extends Migration
 {
     /**
@@ -14,7 +20,6 @@ class CreateApartmentsTable extends Migration
     public function up()
     {
         Schema::create('apartments', function (Blueprint $table) {
-
             $table->increments('id');
             $table->timestamps();
             $table->string('title', 30)->nullable(false);//Titolo inserzione
@@ -33,14 +38,11 @@ class CreateApartmentsTable extends Migration
             //from -180 to +180 (degrees) so you need DECIMAL(11, 8).
             $table->decimal('latitude', 10,8);  //la logica nei controller compilerà questo dato
             $table->decimal('longitude', 11, 8); //la logica nei controller compilerà questo dato
-            $table->string('image_url')->nullable(true);
-            $table->integer('views')->default(0);
+            $table->text('image_url')->nullable(false);
             //Nel caso si volesse fare un json per gli optionals
             // $table->json('options');
-
         });
     }
-
     /**
      * Reverse the migrations.
      *

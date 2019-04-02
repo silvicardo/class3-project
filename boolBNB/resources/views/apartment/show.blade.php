@@ -3,7 +3,6 @@
 
   @php
   $user = Auth::user();
-  dd($isStorageImage);
   @endphp
 <div class="container">
 
@@ -17,7 +16,7 @@
        <span>
          <strong>Indirizzo:</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
        </span>
-       <p class="card-text"><strong>Descrizione: </strong>{{ $foundApartment->description}}</p>
+       <p class="card-text">{{ $foundApartment->description}}</p>
        <span><strong>Numero stanze:</strong> {{ $foundApartment->nr_of_rooms}}</span><br>
        <span><strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}</span><br>
        <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
