@@ -14,7 +14,7 @@
     </div>
   @endif
 
-  
+
 @endsection
 
 
@@ -41,7 +41,11 @@
           <div class="col-md-4 mb-5">
             <div href="{{route('apartment.show', $apartment['id']) }}">
               <div class="card">
+                @if ($isStorageImage)
                 <img class="card-img-top" src="{{ asset('storage/' . $apartment['image_url']) }}" alt="Card image cap">
+                @else
+                <img class="card-img-top" src="{{$apartment['image_url']}}" alt="Card image cap">
+                @endif
                 <div class="card-body">
                   <h5 class="card-title">{{ $apartment['title'] }}</h5>
                   <p class="card-text">{{ $apartment['description']}}</p>

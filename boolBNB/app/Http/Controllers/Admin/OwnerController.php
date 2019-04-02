@@ -23,8 +23,8 @@ class OwnerController extends Controller {
     //mandati alla pagina 403:forbidden
   }
 
-  public function show() {
-    return view('admin.owner.dashboard', ['currentUser' =>  Auth::user()]);
+  public function show($isStorageImage = false) {
+    return view('admin.owner.dashboard', ['currentUser' =>  Auth::user(), 'isStorageImage' => $isStorageImage]);
   }
 
   public function profile() {
