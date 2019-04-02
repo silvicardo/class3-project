@@ -58,7 +58,7 @@ class ApartmentController extends Controller
 
     public function show($apartmentId)
     {
-        
+
         $foundApartment = Apartment::find($apartmentId);
 
         return view('apartment.show', compact('foundApartment'));
@@ -94,8 +94,8 @@ class ApartmentController extends Controller
     public function store(Request $request, Faker $faker){
 
         $data = $request->all();
-        
-        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+
+        //$data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
 
         //validazione dei dati da fare
         $newApartment = new Apartment;
@@ -104,10 +104,18 @@ class ApartmentController extends Controller
         //per ora dato fake per lat e lon
         $newApartment->latitude = $data['latitude'];
         $newApartment->longitude = $data['longitude'];
+        if (empty($data['image_url'])) {
+          $data['image_url'] = $faker->imageUrl(640, 480, 'city');
+          $isStorageImage = false;
+
+        } else {
+          $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+            $isStorageImage = true;
+        }
         $newApartment->save();
         $newApartment->optionals()->sync($data['optionals']);
 
-        return redirect()->route('owner.show');
+        return redirect()->route('owner.show', $isStorageImage);
     }
 
     public function edit($apartmentId){
