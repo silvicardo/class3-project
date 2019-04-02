@@ -35,7 +35,7 @@
       <a href="{{ route('owner.sponsor.create')}}" class="btn btn-large btn-warning text-white mb-5">Sponsorizza un appartamento</a>
       <div class="row">
         @foreach(array_reverse($currentUser->apartments()->get()->toArray()) as $apartment)
-          <div class="col-md-4 mb-5">
+          <div class="col-md-4 mb-4">
             <div href="{{route('apartment.show', $apartment['id']) }}">
               <div class="card">
                 <img class="card-img-top" src="{{ asset('storage/' . $apartment['image_url']) }}" alt="Card image cap">
