@@ -5,6 +5,7 @@ use App\Apartment;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Auth;
 use App\Optional;
+use Illuminate\Support\Facades\Storage;
 class ApartmentController extends Controller
 {
     //middleware permessi sul costruttore
@@ -41,10 +42,7 @@ class ApartmentController extends Controller
     }
     public function show($apartmentId)
     {
-        //
-        // // Get the currently authenticated user...
-        // $user = Auth::user();
-        //dd($id);
+
         $foundApartment = Apartment::find($apartmentId);
         return view('apartment.show', compact('foundApartment'));
     }
@@ -59,17 +57,18 @@ class ApartmentController extends Controller
       //return una view che dica che non sei autorizzato(403 FORBIDDEN)
       $data = [
         'availableOptionals' => Optional::all(),
-        'action' => route('apartment.store'),
+        'action' => 'apartment.store',
         'method' => 'POST',
+        'h2' => 'Aggiungi Nuovo Appartamento',
+        'button' => 'Salva Appartamento',
       ];
-      return view('apartment.create', compact('data'));
-      //E' UGUALE ANCHE FARE COSÌ
-        // $action = route('apartment.store');
-        // $method = 'POST';
-      // return view('apartment.create', compact('action','method'));
+      return view('apartment.create_edit', compact('data'));
     }
     public function store(Request $request, Faker $faker){
         $data = $request->all();
+
+        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+
         //validazione dei dati da fare
         $newApartment = new Apartment;
         $newApartment->fill($data);
@@ -91,15 +90,19 @@ class ApartmentController extends Controller
       $data = [
         'availableOptionals' => Optional::all(),
         'apartmentOptionalsIds'=> $optionalsIds,
-        'action' => route('apartment.update', $apartmentId),
+        'action' => 'apartment.update',
         'method' => 'PUT',
+        'h2' => 'Modifica Appartamento',
+        'button' => 'Salva modifiche appartamento',
       ];
-      return view('apartment.edit', compact('data', 'foundApartment'));
+      return view('apartment.create_edit', compact('data', 'foundApartment'));
     }
     public function update(Request $request, $id){
-       //($apartment);
       //i dati modificati dal form
       $data = $request->all();
+      if (!empty($data['image_url'])){
+        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+      }
       $apartment = Apartment::find($id);
       //aggiorniamo l'appartamento arrivato dal form di rimande dalla rotta edit
       $apartment->update($data);
