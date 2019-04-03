@@ -54,7 +54,7 @@ class ApartmentsTableSeeder extends Seeder
       $newApartment->address = 'Via Monte Rosa, 91, Milano';
       $newApartment->latitude = 45.477936;
       $newApartment->longitude = 9.1429304;
-      // $newApartment->image_url = $faker->imageUrl(640, 480, 'city');
+      $newApartment->image_url = 'https://www.labaleine.fr/sites/baleine/files/image-not-found.jpg';
       $newApartment->save();
       $newApartment->optionals()->sync([1, 2]);
       $newApartment->save();
@@ -71,7 +71,7 @@ class ApartmentsTableSeeder extends Seeder
       $newApartment->address = 'Via Cesare Cocchi, Firenze';
       $newApartment->latitude = 43.7962437;
       $newApartment->longitude = 11.2401303;
-      // $newApartment->image_url = $faker->imageUrl(640, 480, 'city');
+      $newApartment->image_url = 'https://www.labaleine.fr/sites/baleine/files/image-not-found.jpg';
       $newApartment->save();
       $newApartment->optionals()->sync([1, 2]);
       $newApartment->save();

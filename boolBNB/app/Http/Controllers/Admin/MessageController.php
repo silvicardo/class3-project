@@ -99,12 +99,23 @@ class MessageController extends Controller
 
     public function show(Message $message)
     {
+      $currentUser = Auth::user();
+      //visualizzare messaggi del mittente
+      $messages = Message::where('sender_id','=', $currentUser->id)->get();
+      $receivedMessages = Message::where('recipient_mail','=', $currentUser->email)->get();
+
+      foreach ($receivedMessages as &$message) {
+
+        $message['sender_name'] = User::find($message['sender_id'])->name;
+        $message['sender_email'] = User::find($message['sender_id'])->email;
+
+      }
       //dd($message->id);
       $foundMessage = Message::find($message->id);
       //dd($foundMessage);
       if(!empty($foundMessage))
       {
-        return view('admin.messages.show', ['message' => $foundMessage]);
+        return view('admin.messages.show', compact('messages', 'message', 'receivedMessages', 'currentUser'));
       }
 
       else

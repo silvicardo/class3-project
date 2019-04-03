@@ -10,17 +10,29 @@
 
     <div id="apartment_card" class="card" style="width: 40rem;" data-apartment-id="{{ $foundApartment->id}}"
       data-user-id="{{ (!empty($user)) ? $user->id : 'non-registrato'}}" >
-     <img class="card-img-top" src="{{ asset('storage/' . $foundApartment->image_url) }}" alt="Card image cap">
+     <img class="card-img-top" src="{{ ($foundApartment->image_url == 'https://www.labaleine.fr/sites/baleine/files/image-not-found.jpg') ? $foundApartment->image_url : (asset('storage/' . $foundApartment->image_url)) }}" alt="Card image cap">
      <div class="card-body" >
-       <h5 class="card-title">{{ $foundApartment->title}}</h5>
+       <h5 class="card-title">
+         <strong>Appartamento: </strong>{{ $foundApartment->title}}
+       </h5>
+       <p class="card-text">
+         <strong>Descrizione: </strong>{{ $foundApartment->description}}
+       </p>
        <span>
          <strong>Indirizzo:</strong> <span id="indirizzo">{{ $foundApartment->address }}</span>
-       </span>
-       <p class="card-text">{{ $foundApartment->description}}</p>
-       <span><strong>Numero stanze:</strong> {{ $foundApartment->nr_of_rooms}}</span><br>
-       <span><strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}</span><br>
-       <span><strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}</span><br>
-       <span><strong>Metri quadrati:</strong> {{ $foundApartment->mq }}</span><br>
+       </span><br>
+       <span>
+         <strong>Numero stanze:</strong> {{ $foundApartment->nr_of_rooms}}
+       </span><br>
+       <span>
+         <strong>Numero posti letto:</strong> {{ $foundApartment->nr_of_beds}}
+       </span><br>
+       <span>
+         <strong>Numero bagni:</strong> {{ $foundApartment->nr_of_bathrooms}}
+       </span><br>
+       <span>
+         <strong>Metri quadrati:</strong> {{ $foundApartment->mq }}
+       </span><br>
        <span>
          <strong>Optionals:</strong><br>
        </span>

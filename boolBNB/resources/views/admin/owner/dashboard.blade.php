@@ -13,10 +13,7 @@
         {{$success}}
     </div>
   @endif
-
-
 @endsection
-
 
 @section('content')
 
@@ -41,11 +38,7 @@
           <div class="col-md-4 mb-4">
             <div href="{{route('apartment.show', $apartment['id']) }}">
               <div class="card">
-                @if ($isStorageImage)
-                <img class="card-img-top" src="{{ asset('storage/' . $apartment['image_url']) }}" alt="Card image cap">
-                @else
-                <img class="card-img-top" src="{{$apartment['image_url']}}" alt="Card image cap">
-                @endif
+                <img class="card-img-top" src="{{ ($apartment['image_url'] == 'https://www.labaleine.fr/sites/baleine/files/image-not-found.jpg') ? $apartment['image_url'] : (asset('storage/' . $apartment['image_url'])) }}" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">{{ $apartment['title'] }}</h5>
                   <p class="card-text">{{ $apartment['description']}}</p>

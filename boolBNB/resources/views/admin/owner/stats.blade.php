@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container py-5">
-  <h1>Ciao {{ $currentUser->name}}</h1>
+  <h1>Ciao {{ $currentUser->name}},</h1>
 
   {{-- SCEGLI APPARTAMENTO SE NON NE È STATO PASSATO UNO --}}
   {{-- @if(!$userPassedApartment) --}}
