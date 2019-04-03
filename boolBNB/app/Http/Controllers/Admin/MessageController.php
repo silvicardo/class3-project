@@ -29,7 +29,7 @@ class MessageController extends Controller
       //mandati alla pagina 403:forbidden
 
     }
-      
+
 
     public function index()
     {
@@ -96,11 +96,11 @@ class MessageController extends Controller
 
     }
 
-    
+
     public function show(Message $message)
     {
 
-      dd($message->id);
+      //dd($message->id);
       $foundMessage = Message::find($message->id);
       //dd($foundMessage);
       if(!empty($foundMessage))
