@@ -59,10 +59,12 @@ class ApartmentController extends Controller
       //return una view che dica che non sei autorizzato(403 FORBIDDEN)
       $data = [
         'availableOptionals' => Optional::all(),
-        'action' => route('apartment.store'),
+        'action' => 'apartment.store',
         'method' => 'POST',
+        'h2' => 'Crea un nuovo appartmento',
+        'button' => 'Salva'
       ];
-      return view('apartment.create', compact('data'));
+      return view('apartment.create_edit', compact('data'));
       //E' UGUALE ANCHE FARE COSÌ
         // $action = route('apartment.store');
         // $method = 'POST';
@@ -91,10 +93,12 @@ class ApartmentController extends Controller
       $data = [
         'availableOptionals' => Optional::all(),
         'apartmentOptionalsIds'=> $optionalsIds,
-        'action' => route('apartment.update', $apartmentId),
+        'action' => 'apartment.update',
         'method' => 'PUT',
+        'h2' => 'Edita appartamento ' . $foundApartment->title,
+        'button' => 'Aggiorna'
       ];
-      return view('apartment.edit', compact('data', 'foundApartment'));
+      return view('apartment.create_edit', compact('data', 'foundApartment'));
     }
     public function update(Request $request, $id){
        //($apartment);
