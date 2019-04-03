@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Plan;
 use App\User;
 use App\Apartment;
+use App\Subscription;
 use Illuminate\Support\Facades\Auth;
 
 class SubscriptionsController extends Controller
+
 {
 
     //middleware permessi sul costruttore
@@ -26,10 +28,10 @@ class SubscriptionsController extends Controller
 
       //In caso non si soddisfino le proprietà si riviene
       //mandati alla pagina 403:forbidden
-     
+
     }
-    
-    
+
+
     public function create(Apartment $apartment = null)
     {
         return view('admin.owner.sponsor',
@@ -40,7 +42,7 @@ class SubscriptionsController extends Controller
         ]);
     }
 
-    
+
     public function store(Request $request)
     {
          // Recupero il piano
@@ -48,8 +50,15 @@ class SubscriptionsController extends Controller
 
 
           if(!Auth::user()->subscribedToPlan($plan->braintree_plan, $request->apartment_id)){
+
             // subscribe the user
             $request->user()->newSubscription($request->apartment_id, $plan->braintree_plan)->create($request->payment_method_nonce);
+
+            $last = Subscription::all()->last();
+
+            $last->apartment()->associate($request->apartment_id);
+
+             $last->save();
 
             // redirect to home after a successful subscription
             return redirect()->route('owner.show');

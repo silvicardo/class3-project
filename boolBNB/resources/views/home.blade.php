@@ -3,10 +3,19 @@
 @section('content')
   <div class="jumbo">
     <div class="container">
-      {{-- <div class="sponsor">
-        <h2>Appartamenti in evidenza</h2>
 
-      </div> --}}
+      @if(!empty($sponsoredApartments))
+
+       <div class="jumbotron">
+          <h2>Appartamenti in evidenza</h2>
+          <ul>
+            @foreach($sponsoredApartments as $sponsoredApartment)
+              <li>{{$sponsoredApartment->title}}</li>
+            @endforeach
+          </ul>
+        </div>
+
+      @endif
       <div class="row">
         @foreach($allApartments as $key => $apartment)
           <div class="card_appartment col-md-4 mt-5">
