@@ -99,6 +99,7 @@ Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 
 Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
 Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
+Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
 
 //***************PUBLIC PAGES***************//
 
