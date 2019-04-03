@@ -44,17 +44,37 @@ $(document).ready(function(){
   var marker = tomtom.L.marker(center, { draggable: false }).bindPopup(indirizzo).addTo(map);
 
   //AL CLICK DEI BOTTONI TOGGLO MAPPA/FORM
-  $('#mostraMappa, #nascondiMappa, #mostraForm, #nascondiForm')
-    .on('click', () => {
-    //TOGGLO MAPPA
-    $('#mapContainer').toggleClass('d-none');
+  // $('#mostraMappa, #nascondiMappa, #mostraForm, #nascondiForm')
+  //   .on('click', () => {
+  //   //TOGGLO MAPPA
+  //   $('#mapContainer').toggleClass('d-none');
+  //   $('#mostraMappa').toggleClass('d-none');
+  //   $('#nascondiMappa').toggleClass('d-none');
+  //   //TOGGLO FORM
+  //   $('#form').toggleClass('d-none');
+  //   $('#mostraForm').toggleClass('d-none');
+  //   $('#nascondiForm').toggleClass('d-none');
+  // });
+  $('#nascondiMappa').click(function() {
+    $('#mapContainer').slideUp('fast');
     $('#mostraMappa').toggleClass('d-none');
     $('#nascondiMappa').toggleClass('d-none');
-    //TOGGLO FORM
-    $('#form').toggleClass('d-none');
+  });
+  $('#mostraMappa').click(function() {
+    $('#mapContainer').slideDown('fast');
+    $('#mostraMappa').toggleClass('d-none');
+    $('#nascondiMappa').toggleClass('d-none');
+  })
+  $('#mostraForm').click(function() {
+    $('#form').removeClass('d-none').slideDown('fast');
     $('#mostraForm').toggleClass('d-none');
     $('#nascondiForm').toggleClass('d-none');
   });
+  $('#nascondiForm').click(function() {
+    $('#form').slideUp('fast');
+    $('#mostraForm').toggleClass('d-none');
+    $('#nascondiForm').toggleClass('d-none');
+  })
 
   //AL DRAG DELLA MAPPA RIPOSIZIONA IL CENTRO DELLA MAPPA
   map.on('dragend', function() {
