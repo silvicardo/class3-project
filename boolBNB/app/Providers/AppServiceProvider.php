@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use Laravel\Cashier\Cashier; //per settare € come moneta
 use Braintree_Configuration;
 use Illuminate\Support\Carbon;
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+      Schema::defaultStringLength(191);
       //Carbon
 
       // Carbon::serializeUsing(function ($carbon) {
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
       //       return $carbon->format('F');
       //   });
       //BrainTree
+
       Braintree_Configuration::environment(config('services.braintree.environment'));
       Braintree_Configuration::merchantId(config('services.braintree.merchant_id'));
       Braintree_Configuration::publicKey(config('services.braintree.public_key'));

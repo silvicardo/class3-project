@@ -4,21 +4,21 @@
 @section('content')
 
 <div class="container py-5">
-  <h1>Ciao {{ $currentUser->name}}</h1>
+  <h1>Ciao {{ $currentUser->name}},</h1>
 
   {{-- SCEGLI APPARTAMENTO SE NON NE È STATO PASSATO UNO --}}
   {{-- @if(!$userPassedApartment) --}}
   <form id="form_stats" action="#" method="GET" data-user-id="{{$currentUser->id}}">
     @csrf
     <div class="form-group">
-       <h3 class="sponsorlabel">Scegli uno dei tuoi appartamenti:</h3>
+       <h3 class="sponsorlabel mb-5">Scegli uno dei tuoi appartamenti:</h3>
        <select id="select-appartamento" name="apartment_id" class="form-control form-control-lg">
          @foreach ($currentUser->apartments as $apartment)
          <option value="{{ $apartment->id }}">{{ $apartment->title }}</option>
          @endforeach
        </select>
      </div>
-     <button id="richiedi_stats" type="submit" class="btn btn-success">Mostra statistiche</button>
+     <button id="richiedi_stats" type="submit" class="btn btn-success mt-4">Mostra statistiche</button>
   </form>
 
  {{-- @endif --}}
