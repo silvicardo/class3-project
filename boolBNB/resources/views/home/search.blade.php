@@ -16,11 +16,18 @@
 
     <div id="ho_caricato">
 
-      <div class="barraricerca input-group mb-5">
-        <input id="citta_cercata" type="text" class="form-control" placeholder="Cerca città" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4" value="{{ $citta_cercata }}">
+      {{-- <div class="barraricerca input-group mb-5">
+        <input id="citta_cercata" type="text" class="form-control" placeholder="Cerca città" aria-label="Recipient's username" aria-describedby="button-addon2" value="{{ $citta_cercata }}">
         <div class="input-group-append" id="button-addon4">
           <button id="go_search" class="btn btn-outline-secondary" type="button">Avvia la ricerca</button>
           <button id="toggle_advanced" class="btn btn-outline-secondary" type="button">Ricerca avanzata</button>
+        </div>
+      </div> --}}
+      <div class="barraricerca input-group mb-5">
+        <input id="citta_cercata" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $citta_cercata }}">
+        <div class="input-group-append">
+          <button id="go_search" class="btn btn-outline-secondary" type="button">Ricerca</button>
+          <button id="toggle_advanced" class="btn btn-outline-secondary" type="button">Avanzata</button>
         </div>
       </div>
 
@@ -28,31 +35,31 @@
         <form id="advanced_form" class="form-group">
           @csrf
           <div class="form-row">
-            <div class="form-group col">
-              <label for="radius">Modifica raggio di ricerca in km</label>
-              <input type="number" name="radius" class="form-control" placeholder="Inserisci numero chilometri">
+            <div class="form-group col-sm-6">
+              <label for="radius">Raggio (Km)</label>
+              <input type="number" name="radius" class="form-control" placeholder="Numero chilometri">
             </div>
-            <div class="form-group col">
+            <div class="form-group col-sm-6">
               <label for="nr_of_rooms">Numero stanze</label>
-              <input type="number" name="nr_of_rooms" class="form-control" placeholder="Inserisci numero stanze">
+              <input type="number" name="nr_of_rooms" class="form-control" placeholder="Numero stanze">
             </div>
-            <div class="form-group col">
-              <label for="nr_of_beds">Numero di posti letto</label>
-              <input type="number" name="nr_of_beds" class="form-control" placeholder="Inserisci numero posti letto">
+            <div class="form-group col-sm-6">
+              <label for="nr_of_beds">Numero posti letto</label>
+              <input type="number" name="nr_of_beds" class="form-control" placeholder="Numero posti letto">
             </div>
-            <div class="form-group col">
+            <div class="form-group col-sm-6">
               <label for="nr_of_bathrooms">Numero bagni</label>
-              <input type="number" name="nr_of_bathrooms" class="form-control" placeholder="Inserisci numero bagni">
+              <input type="number" name="nr_of_bathrooms" class="form-control" placeholder="Numero bagni">
             </div>
 
           </div>
 
-          <div class="form-group">
-            <label for="">Ricerca per optional appartamento</label>
+          <div class="form-group mt-4">
+            <label for="">Ricerca per optional appartamento:</label>
           </div>
           <div class="form-row">
             @foreach ($optionals as $optional)
-              <div class="form-check m-auto">
+              <div class="form-check col-md-3 ml-4 mt-4">
                 <input name="optional" class="form-check-input" type="checkbox" value="{{$optional->id}}" >
                 <label class="form-check-label" for="defaultCheck1">
                   {{ $optional->name}}
@@ -69,7 +76,7 @@
 
       <div class="container">
 
-            <div id="risultati" class="row">
+            <div id="risultati" class="row mt-5">
 
             </div>
 

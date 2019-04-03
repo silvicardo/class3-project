@@ -28,16 +28,9 @@ class MessageController extends Controller
       //In caso non si soddisfino le proprietà si riviene
       //mandati alla pagina 403:forbidden
 
-      // Auth::user()->roles()->first()->name;
-
     }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
@@ -71,17 +64,12 @@ class MessageController extends Controller
                     );
       }
 
-      //$messages = array_merge($messages->toArray(), $receivedMessages->toArray());
 
       return view('admin.messages.index', compact('messages', 'receivedMessages', 'currentUser' ));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
 
@@ -93,12 +81,6 @@ class MessageController extends Controller
                     ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -107,28 +89,33 @@ class MessageController extends Controller
         $newMessage->sender_id = Auth::user()->id;
         $newMessage->recipient_mail = User::find(Apartment::find($data['apartment_id'])->user_id)->email;
         $newMessage->fill($data);
-        // dd($newMessage);
+
         $newMessage->save();
 
         return redirect()->route('messages.index',['success' => 'Messaggio consegnato']);
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Message $message)
     {
+      $currentUser = Auth::user();
+      //visualizzare messaggi del mittente
+      $messages = Message::where('sender_id','=', $currentUser->id)->get();
+      $receivedMessages = Message::where('recipient_mail','=', $currentUser->email)->get();
 
-      dd($message->id);
+      foreach ($receivedMessages as &$message) {
+
+        $message['sender_name'] = User::find($message['sender_id'])->name;
+        $message['sender_email'] = User::find($message['sender_id'])->email;
+
+      }
+      //dd($message->id);
       $foundMessage = Message::find($message->id);
       //dd($foundMessage);
       if(!empty($foundMessage))
       {
-        return view('messages.show', ['message' => $foundMessage]);
+        return view('admin.messages.show', compact('messages', 'message', 'receivedMessages', 'currentUser'));
       }
 
       else
@@ -140,13 +127,6 @@ class MessageController extends Controller
 
 
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
         $foundMessage = Message::find($request['message_id']);
