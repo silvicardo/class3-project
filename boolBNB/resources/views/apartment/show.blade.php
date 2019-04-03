@@ -4,9 +4,9 @@
   @php
   $user = Auth::user();
   @endphp
-<div class="container">
+ <div class="container">
 
-  {{ }}
+
 
   <div class="showcardcontainer mt-5">
 

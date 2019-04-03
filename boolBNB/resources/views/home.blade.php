@@ -8,11 +8,21 @@
 
        <div class="jumbotron">
           <h2>Appartamenti in evidenza</h2>
-          <ul>
-            @foreach($sponsoredApartments as $sponsoredApartment)
-              <li>{{$sponsoredApartment->title}}</li>
+          <div class="row">
+            @foreach($sponsoredApartments as $key => $sponsoredApartment)
+              <div class="card_appartment col-md-4 mt-5">
+                <a href="{{route('apartment.show', $sponsoredApartment->id) }}">
+                  <div class="card cardsponsor">
+                   <img class="card-img-top" src="{{ ($sponsoredApartment->image_url == 'https://www.labaleine.fr/sites/baleine/files/image-not-found.jpg') ? $sponsoredApartment->image_url : (asset('storage/' . $sponsoredApartment->image_url)) }}" alt="Card image cap">
+                   <div class="card-body">
+                     <h5 class="card-title">{{ $sponsoredApartment->title }}</h5>
+                     <p class="card-text">{{ $sponsoredApartment->description}}</p>
+                   </div>
+                  </div>
+                </a>
+              </div>
             @endforeach
-          </ul>
+          </div>
         </div>
 
       @endif
