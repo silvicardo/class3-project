@@ -15,9 +15,9 @@ class AddApartmentToSubscriptions extends Migration
     {
         Schema::table('subscriptions', function (Blueprint $table) {
 
-            $table->unsignedInteger('apartment_id')->after('id');
+            $table->unsignedInteger('apartment_id')->after('id')->nullable();
 
-            $table->foreign('apartment_id')->references('id')->on('subscriptions');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
 
         });
     }

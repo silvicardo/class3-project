@@ -94,7 +94,7 @@ $(document).ready(function(){
         }
       });
   })
-
+/*
   function creaGraficiStats({messaggi, views}) {
 
     var months = ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"];
@@ -151,6 +151,6 @@ $(document).ready(function(){
 
 
   }
-
+*/
 
 });

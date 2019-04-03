@@ -6,6 +6,8 @@
   @endphp
 <div class="container">
 
+  {{ }}
+
   <div class="showcardcontainer mt-5">
 
     <div id="apartment_card" class="card" style="width: 40rem;" data-apartment-id="{{ $foundApartment->id}}"
