@@ -6,8 +6,8 @@
 
       @if(!empty($sponsoredApartments))
 
-       <div class="jumbotron">
-          <h2>Appartamenti in evidenza</h2>
+       <div class="jumbotron mt-5">
+          <h2>Appartamenti in evidenza:</h2>
           <div class="row">
             @foreach($sponsoredApartments as $key => $sponsoredApartment)
               <div class="card_appartment col-md-4 mt-5">
@@ -28,7 +28,7 @@
       @endif
       <div class="row">
         @foreach($allApartments as $key => $apartment)
-          <div class="card_appartment col-md-4 mt-5">
+          <div class="card_appartment col-md-4 my-5">
             <a href="{{route('apartment.show', $apartment->id) }}">
               <div class="card">
                <img class="card-img-top" src="{{ ($apartment->image_url == 'https://www.labaleine.fr/sites/baleine/files/image-not-found.jpg') ? $apartment->image_url : (asset('storage/' . $apartment->image_url)) }}" alt="Card image cap">
