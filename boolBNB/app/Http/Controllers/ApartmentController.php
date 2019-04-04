@@ -42,6 +42,11 @@ class ApartmentController extends Controller
     }
     public function show($apartmentId)
     {
+<<<<<<< HEAD
+
+        $foundApartment = Apartment::find($apartmentId);
+=======
+>>>>>>> 8291c609fc978fe05f0212d05b6559b1e50ac137
 
         $foundApartment = Apartment::find($apartmentId);
         return view('apartment.show', compact('foundApartment'));
@@ -66,9 +71,14 @@ class ApartmentController extends Controller
     }
     public function store(Request $request, Faker $faker){
         $data = $request->all();
+<<<<<<< HEAD
+=======
 
         $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+>>>>>>> 8291c609fc978fe05f0212d05b6559b1e50ac137
 
+        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
+        
         //validazione dei dati da fare
         $newApartment = new Apartment;
         $newApartment->fill($data);

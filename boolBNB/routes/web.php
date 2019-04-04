@@ -63,6 +63,7 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
   Route::put('/update-password', 'GuestController@updatePassword')->name('updatePassword');
   Route::put('/update-picture', 'GuestController@profilePictureUpdate')->name('profilePictureUpdate');
 
+
 });
 
 //***************MESSAGES PAGES***************//
@@ -72,8 +73,13 @@ Route::prefix('messages')->namespace('Admin')->name('messages.')->group(function
   Route::get('/', 'MessageController@index')->name('index');
   Route::get('/create', 'MessageController@create')->name('create');
   Route::post('/', 'MessageController@store')->name('store');
+<<<<<<< HEAD
+  Route::get('/show{message}', 'MessageController@show')->name('show');
+=======
   Route::get('/show/{message}', 'MessageController@show')->name('show');
+>>>>>>> 8291c609fc978fe05f0212d05b6559b1e50ac137
   Route::delete('/delete','MessageController@destroy')->name('destroy');
+
 
 });
 

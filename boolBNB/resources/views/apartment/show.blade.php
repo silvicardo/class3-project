@@ -4,9 +4,9 @@
   @php
   $user = Auth::user();
   @endphp
-<div class="container">
+ <div class="container">
 
-  {{ }}
+
 
   <div class="showcardcontainer mt-5">
 
@@ -120,6 +120,7 @@
   </div>
 
 </div>
+
 
 @endsection
 @section('scripts')
