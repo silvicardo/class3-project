@@ -46,6 +46,9 @@ Route::prefix('owner')->namespace('Admin')->name('owner.')->group(function(){
   Route::get('/profile', 'OwnerController@profile')->name('profile');
   Route::get('/sponsor/{apartment?}', 'SubscriptionsController@create')->name('sponsor.create');
   Route::post('/sponsor', 'SubscriptionsController@store')->name('sponsor.store');
+  Route::put('/update-password', 'OwnerController@updatePassword')->name('updatePassword');
+  Route::put('/update-picture', 'OwnerController@profilePictureUpdate')->name('profilePictureUpdate');
+  Route::get('/stats', 'OwnerController@stats')->name('stats');
 
 });
 
@@ -57,6 +60,8 @@ Route::prefix('guest')->namespace('Admin')->name('guest.')->group(function(){
   Route::get('/edit', 'GuestController@edit')->name('edit');
   Route::delete('/delete', 'GuestController@destroy')->name('destroy');
   Route::get('/profile', 'GuestController@profile')->name('profile');
+  Route::put('/update-password', 'GuestController@updatePassword')->name('updatePassword');
+  Route::put('/update-picture', 'GuestController@profilePictureUpdate')->name('profilePictureUpdate');
 
 });
 
@@ -67,7 +72,7 @@ Route::prefix('messages')->namespace('Admin')->name('messages.')->group(function
   Route::get('/', 'MessageController@index')->name('index');
   Route::get('/create', 'MessageController@create')->name('create');
   Route::post('/', 'MessageController@store')->name('store');
-  Route::get('/show', 'MessageController@show')->name('show');
+  Route::get('/show/{message}', 'MessageController@show')->name('show');
   Route::delete('/delete','MessageController@destroy')->name('destroy');
 
 });
@@ -93,6 +98,7 @@ Route::post('/iscriviti', 'AdmissionController@save')->name('admission.save');
 //***************STATIC PAGES***************//
 
 Route::get('/privacyPolicy', 'StaticPageController@privacyPolicy')->name('static_pages.privacy');
+Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
 Route::get('/workWithUs', 'StaticPageController@workWithUs')->name('static_pages.workWithUs');
 
 //***************PUBLIC PAGES***************//

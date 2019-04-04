@@ -14,7 +14,7 @@
     <!-- Scripts -->
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    @if ($nomePaginaCorrente === 'search')
+    @if ($nomePaginaCorrente === 'search' || $nomePaginaCorrente === 'apartment.show')
         <link rel='stylesheet' type='text/css' href="{{ asset('sdk/map.css')}}"/>
     @endif
     <!-- Fonts -->

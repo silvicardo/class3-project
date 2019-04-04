@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = ['subject', 'description_body', 'recipient_mail', 'sender_id'];
+    protected $fillable = ['subject', 'description_body', 'recipient_mail', 'sender_id', 'apartment_id'];
 
     protected $table = 'messages';
 
@@ -20,4 +20,14 @@ class Message extends Model
       return $this->belongsTo('App\User');
     }
 
+
+    //Relazioni Appartamenti(ONE)<-> MESSAGGI(MANY)
+
+    //un appartamento può avere tanti messaggi
+    //un singolo messaggio può avere un solo appartamento
+
+    public function apartment()
+    {
+      return $this->belongsTo('App\Apartment');
+    }
 }
