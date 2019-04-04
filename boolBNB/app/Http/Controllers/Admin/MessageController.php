@@ -111,7 +111,6 @@ class MessageController extends Controller
 
       $receivedMessages = Message::where('recipient_mail','=', $currentUser->email)->get();
 
-
       foreach ($receivedMessages as &$message) {
 
         $message['sender_name'] = User::find($message['sender_id'])->name;
@@ -127,6 +126,7 @@ class MessageController extends Controller
         'emailDestinatario' => 'Email destinatario',
 
       ];
+
       //dd($message->id);
       $foundMessage = Message::find($message->id);
       //dd($foundMessage);
