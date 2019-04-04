@@ -1,7 +1,9 @@
 footer {
-  margin-top:50px; 
+  //margin-top:50px;
   width: 100%;
   height: 300px;
+  border-top: 1px solid $colorGreyStrong;
+  padding-top: 50px;
   h3 {
     margin-left: 40px;
     font-weight: 600;
