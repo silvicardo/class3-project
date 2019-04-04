@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Controllers\Controller;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,7 +120,7 @@ class MessageController extends Controller
 
       }
       $utente = (Auth::user()->roles()->first()->name === 'owner');
-      
+
       $data = [
         'nomeMittente' => 'Nome mittente',
         'emailMittente' => 'Email mittente',
