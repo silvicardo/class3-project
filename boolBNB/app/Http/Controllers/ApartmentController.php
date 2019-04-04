@@ -6,6 +6,8 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Auth;
 use App\Optional;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+
 class ApartmentController extends Controller
 {
     //middleware permessi sul costruttore
@@ -41,12 +43,7 @@ class ApartmentController extends Controller
         return view('apartment.index', compact('allApartments'));
     }
     public function show($apartmentId)
-    {
-<<<<<<< HEAD
-
-        $foundApartment = Apartment::find($apartmentId);
-=======
->>>>>>> 8291c609fc978fe05f0212d05b6559b1e50ac137
+  {
 
         $foundApartment = Apartment::find($apartmentId);
         return view('apartment.show', compact('foundApartment'));
@@ -71,14 +68,9 @@ class ApartmentController extends Controller
     }
     public function store(Request $request, Faker $faker){
         $data = $request->all();
-<<<<<<< HEAD
-=======
 
         $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
->>>>>>> 8291c609fc978fe05f0212d05b6559b1e50ac137
 
-        $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
-        
         //validazione dei dati da fare
         $newApartment = new Apartment;
         $newApartment->fill($data);

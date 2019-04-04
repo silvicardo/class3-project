@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,7 +119,7 @@ class MessageController extends Controller
 
       }
       $utente = (Auth::user()->roles()->first()->name === 'owner');
-      
+
       $data = [
         'nomeMittente' => 'Nome mittente',
         'emailMittente' => 'Email mittente',
