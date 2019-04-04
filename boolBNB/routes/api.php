@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 Route::middleware('api.auth')->namespace('Api')->group(function() {
 
     Route::get('/braintree/token', 'BraintreeTokenController@token');
+
     Route::post('/apartment/update-nr-of-views', 'ApartmentController@updateNrOfViews');
     Route::get('/apartment/stats','ApartmentController@apartmentStats');
 
