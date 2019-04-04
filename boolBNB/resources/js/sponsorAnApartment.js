@@ -24,12 +24,12 @@ $(document).ready(function(){
         $('#conferma_prima_di_pagare').removeClass('d-none');
 
         //ASCOLTIAMO IL CLICK DEL BOTTONE SCELTE AVVENUTE
-        $('#conferma_prima_di_pagare').click(attemptAndManageBraintreeDropinCreation.bind(this))
+        $('#conferma_prima_di_pagare').click(attemptAndManageBraintreeDropinCreation.bind(this,dropin,token))
       },
       fail: tokenUnavailable,
    })
 
-   function attemptAndManageBraintreeDropinCreation(){
+   function attemptAndManageBraintreeDropinCreation(dropin, token){
 
                //MOSTRIAMO ED ANIMIAMO FINO AL 75% LA PROGRESS BAR
                $('#loading-braintree').removeClass('d-none');
@@ -42,7 +42,7 @@ $(document).ready(function(){
                    locale:'it_IT'
                  }
 
-               this.dropin.create(options,function (createErr, instance){
+               dropin.create(options,function (createErr, instance){
 
                    console.log('Errori ? -> ', createErr);
 
@@ -60,7 +60,33 @@ $(document).ready(function(){
 
                    $('#loading-braintree').remove();
 
-                   $('#payment-button').click(payNowBtnHandler.bind(null, instance))
+                   $('#payment-button').click(function(event){
+                     //BLOCCHIAMO IL SUBMIT DEL FORM
+                     event.preventDefault();
+
+                     //TENTIAMO IL PAGAMENTO
+                     instance.requestPaymentMethod(function (err, payload) {
+
+                       //SE CI SONO ERRORI FAI .....
+
+                       //SE TUTTO OK FAI...
+
+
+                       //CREA UN INPUT NASCOSTO DOVE METTI L'ID DI AVVENUTO PAGAMENTO
+                       var nuance = $("<input>")
+                          .attr("type", "hidden")
+                          .attr("name", "payment_method_nonce").val(payload.nonce);
+
+                         //LO INSERIAMO NEL FORM CON APPEND
+                         $('#payment-form').append(nuance);
+
+                         //SUBMIT DEL FORM
+                         //INVIA AL NOSTRO SERVER I DATI DI PAGAMENTO
+                         //L'APPARTAMENTO SCELTO(ID), IL PIANO SPONSOR SCELTO(ID), E L'ID
+                         //DI TRANSAZIONE AVVENUTA (payload)
+                         $('#payment-form').submit();
+                     });
+                   })
 
                    console.log('fatto');
 
@@ -78,36 +104,6 @@ $(document).ready(function(){
      $('#alert_errore_token').html('Errore nel caricamento del metodo di pagamento');
 
    }
-
-
-  function payNowBtnHandler(event, instance){
-
-    //BLOCCHIAMO IL SUBMIT DEL FORM
-    event.preventDefault();
-
-    //TENTIAMO IL PAGAMENTO
-    instance.requestPaymentMethod(function (err, payload) {
-
-      //SE CI SONO ERRORI FAI .....
-
-      //SE TUTTO OK FAI...
-
-
-      //CREA UN INPUT NASCOSTO DOVE METTI L'ID DI AVVENUTO PAGAMENTO
-      var nuance = $("<input>")
-         .attr("type", "hidden")
-         .attr("name", "payment_method_nonce").val(payload.nonce);
-
-        //LO INSERIAMO NEL FORM CON APPEND
-        $('#payment-form').append(nuance);
-
-        //SUBMIT DEL FORM
-        //INVIA AL NOSTRO SERVER I DATI DI PAGAMENTO
-        //L'APPARTAMENTO SCELTO(ID), IL PIANO SPONSOR SCELTO(ID), E L'ID
-        //DI TRANSAZIONE AVVENUTA (payload)
-        $('#payment-form').submit();
-    });
-  }
 
    function tokenUnavailable(error){
 

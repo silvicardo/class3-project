@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Message;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -100,25 +99,40 @@ class MessageController extends Controller
     public function show(Message $message)
     {
       $currentUser = Auth::user();
+
       //visualizzare messaggi del mittente
       $messages = Message::where('sender_id','=', $currentUser->id)->get();
+
+      foreach ($messages as &$message) {
+
+        $message['recipient_name'] = User::find(Apartment::find($message['apartment_id'])->user_id)->name;
+
+      }
+
       $receivedMessages = Message::where('recipient_mail','=', $currentUser->email)->get();
 
-<<<<<<< HEAD
-=======
       foreach ($receivedMessages as &$message) {
 
         $message['sender_name'] = User::find($message['sender_id'])->name;
         $message['sender_email'] = User::find($message['sender_id'])->email;
 
       }
->>>>>>> 8291c609fc978fe05f0212d05b6559b1e50ac137
+      $utente = (Auth::user()->roles()->first()->name === 'owner');
+      
+      $data = [
+        'nomeMittente' => 'Nome mittente',
+        'emailMittente' => 'Email mittente',
+        'nomeDestinatario' => 'Nome destinatario',
+        'emailDestinatario' => 'Email destinatario',
+
+      ];
+
       //dd($message->id);
       $foundMessage = Message::find($message->id);
       //dd($foundMessage);
       if(!empty($foundMessage))
       {
-        return view('admin.messages.show', compact('messages', 'message', 'receivedMessages', 'currentUser'));
+        return view('admin.messages.show', compact('messages', 'message', 'utente', 'data', 'receivedMessages', 'currentUser'));
       }
 
       else
