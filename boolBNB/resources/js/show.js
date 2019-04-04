@@ -4,6 +4,7 @@ var dotEnv = require('dotenv');
 dotEnv.config();
 var {MIX_API_AUTH_KEY} = process.env;
 
+console.log('ciao');
 
 $(document).ready(function(){
 
