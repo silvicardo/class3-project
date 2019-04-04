@@ -43,6 +43,7 @@ class ApartmentController extends Controller
         return view('apartment.index', compact('allApartments'));
     }
     public function show($apartmentId)
+
   {
 
         $foundApartment = Apartment::find($apartmentId);
@@ -70,7 +71,7 @@ class ApartmentController extends Controller
         $data = $request->all();
 
         $data['image_url'] = Storage::disk('public')->put('image_apartment', $data['image_url']);
-
+        
         //validazione dei dati da fare
         $newApartment = new Apartment;
         $newApartment->fill($data);

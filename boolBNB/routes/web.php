@@ -73,7 +73,12 @@ Route::prefix('messages')->namespace('Admin')->name('messages.')->group(function
   Route::get('/', 'MessageController@index')->name('index');
   Route::get('/create', 'MessageController@create')->name('create');
   Route::post('/', 'MessageController@store')->name('store');
+
   Route::get('/show{message}', 'MessageController@show')->name('show');
+
+  Route::delete('/delete','MessageController@destroy')->name('destroy');
+
+
 });
 
 
